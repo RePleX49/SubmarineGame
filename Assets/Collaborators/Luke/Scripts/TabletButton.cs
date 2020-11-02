@@ -21,24 +21,17 @@ public class TabletButton : MonoBehaviour
         
     }
 
-    void ChangeImage()
+    public void ChangeImage()
     {
-
+        symbolImage.material.SetTexture("_MainTex", manager.tabletData.symbolTexs[(int)activeSymbol]);
     }
 
-    IEnumerator ButtonPush()
+    public void TryButton()
     {
-        float timeElapsed = 0.0f;
-
-        while(timeElapsed < manager.tabletData.pushDuration)
+        // Check if button matches the current correct symbol
+        if(activeSymbol == manager.answerSymbol)
         {
-            timeElapsed += Time.deltaTime;
-            Vector3 newPos = new Vector3(0.0f, transform.localPosition.y 
-                - Mathf.Sin((2 * Mathf.PI) * (timeElapsed / manager.tabletData.pushDuration) * 2.0f), 0.0f);
-
-            transform.localPosition += newPos;
+            manager.UpdatePuzzle();
         }
-
-        yield return null;
     }
 }

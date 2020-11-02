@@ -7,6 +7,8 @@ public class CamController : MonoBehaviour
     public Transform target;
     public Transform viewCamera;
 
+    public float raycastDistance = 20.0f;
+
     [Header("Player Settings")]
     public float mouseSensitivity = 10.0f;
     public float turnRate = 1.0f;
@@ -29,6 +31,30 @@ public class CamController : MonoBehaviour
         Cursor.visible = false;
 
         startingEuler = transform.eulerAngles;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            RaycastHit Hit;
+            if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
+            {
+                if (Hit.transform.gameObject.CompareTag("Button"))
+                {
+                    TabletButton buttonScript = Hit.transform.gameObject.GetComponent<TabletButton>();
+
+                    if (buttonScript)
+                    {
+                        buttonScript.TryButton();
+                    }
+                    else
+                    {
+                        Debug.Log("Could not find button script");
+                    }
+                }
+            }
+        }      
     }
 
     // Update is called once per frame

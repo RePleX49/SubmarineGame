@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b822365ebfe9342894c632da2ddc20, type: 3}
   m_Name: TabletIconData
   m_EditorClassIdentifier: 
-  symbolTextures: []
+  symbolTexs:
+  - {fileID: 2800000, guid: bf649c2f425d440518c3c7b2ce5f20bb, type: 3}
+  - {fileID: 2800000, guid: 3d6aadb81c13946c197a53fe16ff5fbc, type: 3}
+  - {fileID: 2800000, guid: 2a7f4ceaaad464ad2b8049bae35518fe, type: 3}
+  - {fileID: 2800000, guid: 65bfa631ec459794dbc8e9b6e9b70398, type: 3}
+  - {fileID: 2800000, guid: ad7b3d1f1159acb4684e5c251e8508d1, type: 3}
+  - {fileID: 2800000, guid: a7291cdd8988b114fa82370b53ad76bd, type: 3}
+  pushDuration: 1

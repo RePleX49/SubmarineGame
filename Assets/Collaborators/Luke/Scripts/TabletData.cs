@@ -5,6 +5,5 @@ using UnityEngine;
 [CreateAssetMenu]
 public class TabletData : ScriptableObject
 {
-    public Texture2D[] symbolTextures;
-    public float pushDuration = 1.0f;
+    public Texture2D[] symbolTexs;
 }
