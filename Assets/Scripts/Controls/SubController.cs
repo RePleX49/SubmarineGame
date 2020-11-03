@@ -6,6 +6,10 @@ public class SubController : MonoBehaviour
 {
     public float turnAroundSpeed = 0.2f;
     public float moveSpeed = 20.0f;
+    float currentSpeed = 0.0f;
+    float currentVelocity = 0.0f;
+    public float speedSmoothTime = 1.0f;
+
     public float maxSpeed = 40.0f;
     public float acceleration = 2.0f;
 
@@ -20,23 +24,32 @@ public class SubController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float targetSpeed = 0.0f;
+
         if (Input.GetKey(KeyCode.W))
         {
-            moveSpeed = Mathf.Clamp(moveSpeed + (acceleration * Time.deltaTime), 0.0f, maxSpeed);
+            targetSpeed = moveSpeed;
+            
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            moveSpeed = Mathf.Clamp(moveSpeed - (acceleration * Time.deltaTime), 0.0f, maxSpeed);
+            targetSpeed = -moveSpeed;
         }
 
-        // function to handle actual movement
-        Move();
+        currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref currentVelocity, speedSmoothTime);
+        MoveForward();
     }
 
-    void Move()
+    void MoveForward()
     {
-        Vector3 velocity = transform.forward * moveSpeed;
+        Vector3 velocity = transform.forward * currentSpeed;
+        cc.Move(velocity * Time.deltaTime);
+    }
+
+    void MoveBackward()
+    {
+        Vector3 velocity = -transform.forward * moveSpeed;
         cc.Move(velocity * Time.deltaTime);
     }
 }
