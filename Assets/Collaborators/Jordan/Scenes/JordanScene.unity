@@ -2425,6 +2425,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PerspectiveCubes
       objectReference: {fileID: 0}
+    - target: {fileID: 1610857629919628027, guid: 6c7956ad49e414bd780a527e32f2950d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c7956ad49e414bd780a527e32f2950d, type: 3}
 --- !u!1001 &2250640125335929685
@@ -2712,7 +2716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8344061837991535231, guid: 5a58dc4f154624d5c972ca2e4020e31e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a58dc4f154624d5c972ca2e4020e31e, type: 3}
