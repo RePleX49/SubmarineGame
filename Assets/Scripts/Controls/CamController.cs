@@ -60,23 +60,28 @@ public class CamController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        // yaw for looking side to side, pitch for looking up and down
-        yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
-        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
-
-        Vector3 newRotation = new Vector3(pitch, yaw) + startingEuler;
-
-        transform.eulerAngles = newRotation;
-
-        // SmoothDamp for camera lag
-        Vector3 newPosition = target.position + cameraOffset;
-        if (target)
+        if (Systems.player.canMove)
         {
-            target.forward = Vector3.Lerp(target.forward, transform.forward, turnRate * Time.deltaTime);
-            transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref targetSmoothVelocity, targetSmoothTime);
+
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            // yaw for looking side to side, pitch for looking up and down
+            yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+            pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
+
+            Vector3 newRotation = new Vector3(pitch, yaw) + startingEuler;
+
+            transform.eulerAngles = newRotation;
+
+            // SmoothDamp for camera lag
+            Vector3 newPosition = target.position + cameraOffset;
+            if (target)
+            {
+                target.forward = Vector3.Lerp(target.forward, transform.forward, turnRate * Time.deltaTime);
+                transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref targetSmoothVelocity, targetSmoothTime);
+            }
         }
     }
 }
