@@ -17,10 +17,21 @@ public class IntroPuzzleController : MonoBehaviour
     //An array holding all possible symbols
     [SerializeField] private Texture[] allSymbols;
 
+    public GameObject doorHolder;
+
+    public GameObject doorTarget;
+
+    public float doorMoveDuration;
+
+    public int puzzleTag;
+
     // Start is called before the first frame update
     void Start()
     {
-        //SetUpClues();
+        if (puzzleTag == 0)
+        {
+            SetUpClues();
+        }
     }
 
     //Populate the clues with the correct symbols for the solution
@@ -64,6 +75,9 @@ public class IntroPuzzleController : MonoBehaviour
     //To be implemented in the future, open the door and load the next area
     private void OpenDoor() {
         Debug.Log("Open the Door! You Win!!");
+
+        StartCoroutine(Systems.transforms.LerpMove(doorHolder.transform, doorTarget.transform.position, 
+        doorHolder.transform.rotation, doorHolder.transform.localScale, doorMoveDuration));
     
     }
 
