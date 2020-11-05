@@ -30,6 +30,6 @@ Material:
     m_Floats:
     - __dirty: 0
     m_Colors:
-    - _FillColor: {r: 0.764151, g: 0, b: 0.42518258, a: 0}
-    - _OutlineColor: {r: 1.6544503, g: 0.29875967, b: 0.25597143, a: 0}
+    - _FillColor: {r: 0.54687357, g: 0, b: 0.8018868, a: 0}
+    - _OutlineColor: {r: 1.6544502, g: 0.2598613, b: 1.2620903, a: 0}
   m_BuildTextureStacks: []
