@@ -34,4 +34,15 @@ public class Transformations : MonoBehaviour
         
     }
 
+    public IEnumerator LerpMaterial(MeshRenderer rend, Material newMat, float duration)
+    {
+        Material oldMat = rend.materials[0];
+        for (float timer = 0; timer < duration; timer += Time.deltaTime)
+        {
+            rend.materials[0].Lerp(oldMat, newMat, timer / duration);
+            yield return null;
+        }
+        rend.materials[0] = newMat;
+    }
+
 }

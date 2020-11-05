@@ -10,7 +10,7 @@ Material:
   m_Name: MAT_Symbol 6
   m_Shader: {fileID: 4800000, guid: 2117493bcd509e040aa2ca3febd38a74, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -28,8 +28,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - __dirty: 0
+    - __dirty: 1
     m_Colors:
-    - _FillColor: {r: 0.6674709, g: 1, b: 0.390566, a: 0}
-    - _OutlineColor: {r: 0, g: 0.3113208, b: 0.06348502, a: 0}
+    - _FillColor: {r: 0.21302497, g: 0.4716981, b: 0, a: 0}
+    - _OutlineColor: {r: 0.50166357, g: 1.2392157, b: 0, a: 0}
   m_BuildTextureStacks: []

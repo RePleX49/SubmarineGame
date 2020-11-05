@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RealisticMovingTexture
+  m_Shader: {fileID: 4800000, guid: 672596cd11ddeba47bce2b9d39e81e4b, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _Amplitude: 0.2
+    - _ChromaticAberration: 0
+    - _Frequency: 1.4
+    - _Metallic: 0
+    - _OffsetAmplitude: 0
+    - _OffsetLengthScalar: 12.1
+    - _OffsetMagnitudeScalar: 12.6
+    - _OffsetTime: 0
+    - _OffsetX: 0
+    - _OffsetZ: 0
+    - _Opacity: 0.5
+    - _Power: 2.22
+    - _Refraction: 0
+    - _Smoothness: 0
+    - _TransAmbient: 0.2
+    - _TransDirect: 1
+    - _TransNormalDistortion: 0
+    - _TransScattering: 1
+    - _TransShadow: 0.9
+    - _Translucency: 0
+    - __dirty: 0
+    m_Colors:
+    - _AlbedoColor: {r: 1, g: 1, b: 1, a: 0}
+    - _EmissiveColor: {r: 0, g: 2.1688416, b: 0.24653712, a: 0}
+    - _FresnelColor: {r: 0, g: 2.0934627, b: 5.161172, a: 0}
+    - _TranslucencyParam: {r: 1, g: 1, b: 1, a: 0}
+  m_BuildTextureStacks: []

@@ -38,11 +38,15 @@ public class Cam : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            //Debug.Log("Click");
             RaycastHit Hit;
+
             if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
             {
+                //Debug.Log("Hit");
                 if (Hit.transform.gameObject.CompareTag("Button"))
                 {
+                    //Debug.Log("Tagged");
                     TabletButton buttonScript = Hit.transform.gameObject.GetComponent<TabletButton>();
 
                     if (buttonScript)
@@ -51,7 +55,28 @@ public class Cam : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Could not find button script");
+                        //Debug.Log("Cont");
+                        ScrollerButton scrollerButton = Hit.transform.gameObject.GetComponent<ScrollerButton>();
+
+                        if (scrollerButton)
+                        {
+                            //Debug.Log("Script");
+                            scrollerButton.TryButton();
+                        }
+                        else
+                        {
+
+                            DoorButton doorButton = Hit.transform.gameObject.GetComponent<DoorButton>();
+
+                            if (doorButton)
+                            {
+                                doorButton.TryButton();
+                            }
+                            else
+                            {
+                                Debug.Log("Could not find button script");
+                            }
+                        }
                     }
                 }
             }

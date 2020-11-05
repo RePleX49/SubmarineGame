@@ -42,6 +42,7 @@ public class SymbolScroller : MonoBehaviour
             currentSymbol = 0;
         }
 
+        //StartCoroutine(Systems.transforms.LerpMaterial(gameObject.GetComponent<MeshRenderer>(), symbols[currentSymbol], 1f));
         gameObject.GetComponent<MeshRenderer>().material = symbols[currentSymbol];
         //material.SetTexture("_MainTex", symbols[currentSymbol]);
 
