@@ -27,6 +27,8 @@ public class IntroPuzzleController : MonoBehaviour
 
     public AudioSource incorrectBeep;
 
+    public AudioSource correctBeep;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +79,7 @@ public class IntroPuzzleController : MonoBehaviour
 
     //To be implemented in the future, open the door and load the next area
     private void OpenDoor() {
+        correctBeep.Play();
         Debug.Log("Open the Door! You Win!!");
 
         StartCoroutine(Systems.transforms.LerpMove(doorHolder.transform, doorTarget.transform.position, 
