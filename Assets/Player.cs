@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
         canMove = false;
         Vector3 position = transform.position;
         Quaternion rotation = transform.rotation;
-        Vector3 camPosition = Systems.cam.gameObject.transform.position;
+        Vector3 camPosition = Systems   .cam.gameObject.transform.position;
         Quaternion camRotation = Systems.cam.gameObject.transform.rotation;
         for (float timer = 0; timer < time; timer += Time.deltaTime)
         {
