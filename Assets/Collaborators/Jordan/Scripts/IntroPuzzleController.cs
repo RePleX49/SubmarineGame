@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IntroPuzzleController : MonoBehaviour
 {
-
+    [Header("Button Settings")]
     //An array containing the series of correct inputs for the puzzle in int form
     [SerializeField] private int[] correctInput;
 
