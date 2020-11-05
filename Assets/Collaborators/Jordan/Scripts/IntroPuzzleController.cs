@@ -20,7 +20,7 @@ public class IntroPuzzleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SetUpClues();
+        //SetUpClues();
     }
 
     //Populate the clues with the correct symbols for the solution
