@@ -9,17 +9,17 @@ public class SymbolScroller : MonoBehaviour
 
     [SerializeField] private int numOfSymbols;
 
-    [SerializeField] private Texture[] symbols;
+    [SerializeField] private Material[] symbols;
 
-    private Material material;
+    //private Material material;
 
 
     // Start is called before the first frame update
     void Start()
     {
         numOfSymbols = symbols.Length;
-        material = gameObject.GetComponent<MeshRenderer>().material;
-        material.SetTexture("_MainTex", symbols[currentSymbol]);
+        gameObject.GetComponent<MeshRenderer>().material = symbols[currentSymbol];
+        //material.SetTexture("_MainTex", symbols[currentSymbol]);
     }
 
     // Update is called once per frame
@@ -42,7 +42,8 @@ public class SymbolScroller : MonoBehaviour
             currentSymbol = 0;
         }
 
-        material.SetTexture("_MainTex", symbols[currentSymbol]);
+        gameObject.GetComponent<MeshRenderer>().material = symbols[currentSymbol];
+        //material.SetTexture("_MainTex", symbols[currentSymbol]);
 
 
     }

@@ -15,7 +15,7 @@ public class IntroPuzzleController : MonoBehaviour
     [SerializeField] private GameObject[] clues;
 
     //An array holding all possible symbols
-    [SerializeField] private Texture[] allSymbols;
+    [SerializeField] private Material[] allSymbols;
 
     public GameObject doorHolder;
 
@@ -24,6 +24,8 @@ public class IntroPuzzleController : MonoBehaviour
     public float doorMoveDuration;
 
     public int puzzleTag;
+
+    public AudioSource incorrectBeep;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,7 @@ public class IntroPuzzleController : MonoBehaviour
     {
         for (int i = 0; i < clues.Length; i++)
         {
-            clues[i].GetComponent<MeshRenderer>().material.SetTexture("_MainTex", allSymbols[correctInput[i]]);
+            clues[i].GetComponent<MeshRenderer>().material = allSymbols[correctInput[i]];
             //set the texture of each clue to the corresponding correct symbol 
         }
     }
@@ -69,6 +71,7 @@ public class IntroPuzzleController : MonoBehaviour
         {
             //the inputs are incorrect
             Debug.Log("Incorrect Combination.");
+            incorrectBeep.Play();
         }
     }
 

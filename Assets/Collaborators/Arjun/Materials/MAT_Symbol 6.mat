@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_Symbol
+  m_Name: MAT_Symbol 6
   m_Shader: {fileID: 4800000, guid: 2117493bcd509e040aa2ca3febd38a74, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
