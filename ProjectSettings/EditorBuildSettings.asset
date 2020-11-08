@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Collaborators/Luke/Scenes/ViewPuzzleA.unity
     guid: e91116f105c5c9c47bf0c40092b9b5d0
+  - enabled: 0
+    path: Assets/Collaborators/Jordan/Scenes/IntroPuzzleSceneA.unity
+    guid: eacf8cff8c36f4aa9b5a5196b5d30bb5
+  - enabled: 1
+    path: Assets/Collaborators/Jordan/Scenes/IntroPuzzleSceneB.unity
+    guid: 6401c64b2042d574da59996c8ea87e08
   m_configObjects: {}
