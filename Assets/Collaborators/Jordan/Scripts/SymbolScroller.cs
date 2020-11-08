@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SymbolScroller : MonoBehaviour
 {
-
+    [Header("This'll be the starting symbol shown on the button, 0 should be blank")]
+    [Header("Hey pals let's populate locales")]
     [SerializeField] private int currentSymbol = 0;
-
-    [SerializeField] private int numOfSymbols;
-
+    [Header("Put all the symbols of the color you want in here, including the blank")]
     [SerializeField] private Material[] symbols;
+    private int numOfSymbols;
 
     //private Material material;
 
@@ -19,20 +19,18 @@ public class SymbolScroller : MonoBehaviour
     {
         numOfSymbols = symbols.Length;
         gameObject.GetComponent<MeshRenderer>().material = symbols[currentSymbol];
-        //material.SetTexture("_MainTex", symbols[currentSymbol]);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
 
+
+    //takes in the tag from which button was pressed
     public void ChangeSymbol (int tagUpDown)
     {
-        //Debug.Log("Change");
+        //changes the current symbol
         currentSymbol += tagUpDown;
+
+        //wrap around
         if (currentSymbol < 0)
         {
             currentSymbol = numOfSymbols - 1;
@@ -42,13 +40,12 @@ public class SymbolScroller : MonoBehaviour
             currentSymbol = 0;
         }
 
-        //StartCoroutine(Systems.transforms.LerpMaterial(gameObject.GetComponent<MeshRenderer>(), symbols[currentSymbol], 1f));
+        //change to the correct material
         gameObject.GetComponent<MeshRenderer>().material = symbols[currentSymbol];
-        //material.SetTexture("_MainTex", symbols[currentSymbol]);
-
 
     }
 
+    //getter for managers
     public int GetCurrentSymbol()
     {
         return currentSymbol;
