@@ -1,33 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &3807793889156422792
-BoxCollider:
+--- !u!1 &2260899297799834990
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4042378207622554077}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.0000005, y: 2.0000005, z: 2}
-  m_Center: {x: -0.000002861023, y: 0.0000038146973, z: 0}
---- !u!114 &3807793889156422799
-MonoBehaviour:
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7471490395371679228}
+  m_Layer: 0
+  m_Name: RotationHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7471490395371679228
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4042378207622554077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c65786f2c946419d9f36a2fd89c8864, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagUpDown: -1
-  scrollObject: {fileID: 0}
-  rotateObject: {fileID: 3807793889283386879}
+  m_GameObject: {fileID: 2260899297799834990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.700007, y: 32.400017, z: 7.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3807793889283386878}
+  m_Father: {fileID: 3807793889695445060}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3807793889283386877
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,11 +59,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3807793889283386877}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 13.700003, y: 32.40001, z: 7.47}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6, y: 2, z: 6}
   m_Children: []
-  m_Father: {fileID: 3807793889695445060}
-  m_RootOrder: 2
+  m_Father: {fileID: 7471490395371679228}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &3807793889283386874
 MeshFilter:
@@ -176,7 +179,7 @@ Transform:
   m_Children:
   - {fileID: 3698221805672020839}
   - {fileID: 3698221805065580830}
-  - {fileID: 3807793889283386878}
+  - {fileID: 7471490395371679228}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -206,6 +209,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagUpDown: 1
+  scrollObject: {fileID: 0}
+  rotateObject: {fileID: 3807793889283386879}
+--- !u!65 &3807793889156422792
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042378207622554077}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0000005, y: 2.0000005, z: 2}
+  m_Center: {x: -0.000002861023, y: 0.0000038146973, z: 0}
+--- !u!114 &3807793889156422799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4042378207622554077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c65786f2c946419d9f36a2fd89c8864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagUpDown: -1
   scrollObject: {fileID: 0}
   rotateObject: {fileID: 3807793889283386879}
 --- !u!1001 &3807793889156422796

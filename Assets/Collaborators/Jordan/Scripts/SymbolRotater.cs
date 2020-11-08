@@ -11,7 +11,8 @@ public class SymbolRotater : MonoBehaviour
     [Header("Set this number to the symbol you want the button to show")]
     [SerializeField] private int currentSymbol = 0;
 
-    private Vector3 symbolRot = new Vector3();
+    private GameObject rotHolder;
+    private Vector3 symbolRot = new Vector3(0,0,0);
 
     [Header("Set this baby to a number 0-7 if you want the symbol to start at a rotation")]
     [SerializeField]private int currentRot = 0;
@@ -23,6 +24,9 @@ public class SymbolRotater : MonoBehaviour
     {
         //sets to the correct symbol to display
         gameObject.GetComponent<MeshRenderer>().material = symbols[currentSymbol];
+        symbolRot.z = currentRot * 45;
+        rotHolder = gameObject.transform.parent.gameObject;
+        rotHolder.transform.eulerAngles = symbolRot;
     }
 
     // Update is called once per frame
@@ -51,7 +55,7 @@ public class SymbolRotater : MonoBehaviour
 
         //actually set the rotation in increments of 45 degrees
         symbolRot.z = currentRot * 45;
-        gameObject.transform.eulerAngles = symbolRot;
+        rotHolder.transform.eulerAngles = symbolRot;
     }
 
     //getter for the manager script
