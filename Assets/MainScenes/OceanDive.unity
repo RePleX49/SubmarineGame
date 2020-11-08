@@ -5012,7 +5012,7 @@ MonoBehaviour:
   prefab: {fileID: 299882161991272334, guid: eeaf3b3948f883c49b0b4fbf762c75e3, type: 3}
   radius: 20
   spawnAmount: 120
-  bPreviewRegion: 1
+  bPreviewRegion: 0
   colorOne: {r: 1, g: 0.4198113, b: 0.4198113, a: 1}
   colorTwo: {r: 0.61607885, g: 0.4481132, b: 1, a: 1}
 --- !u!4 &1282147405

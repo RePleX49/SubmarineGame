@@ -7,6 +7,8 @@ public class CamController : MonoBehaviour
     public Transform target;
     public Transform viewCamera;
 
+    public float raycastDistance = 20.0f;
+
     [Header("Player Settings")]
     public float mouseSensitivity = 10.0f;
     public float turnRate = 1.0f;
@@ -31,26 +33,55 @@ public class CamController : MonoBehaviour
         startingEuler = transform.eulerAngles;
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            RaycastHit Hit;
+            if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
+            {
+                if (Hit.transform.gameObject.CompareTag("Button"))
+                {
+                    TabletButton buttonScript = Hit.transform.gameObject.GetComponent<TabletButton>();
+
+                    if (buttonScript)
+                    {
+                        buttonScript.TryButton();
+                    }
+                    else
+                    {
+                        Debug.Log("Could not find button script");
+                    }
+                }
+            }
+        }      
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        // yaw for looking side to side, pitch for looking up and down
-        yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
-        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
-
-        Vector3 newRotation = new Vector3(pitch, yaw) + startingEuler;
-
-        transform.eulerAngles = newRotation;
-
-        // SmoothDamp for camera lag
-        Vector3 newPosition = target.position + cameraOffset;
-        if (target)
+        if (Systems.player.canMove)
         {
-            target.forward = Vector3.Lerp(target.forward, transform.forward, turnRate * Time.deltaTime);
-            transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref targetSmoothVelocity, targetSmoothTime);
+
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            // yaw for looking side to side, pitch for looking up and down
+            yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+            pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
+
+            Vector3 newRotation = new Vector3(pitch, yaw) + startingEuler;
+
+            transform.eulerAngles = newRotation;
+
+            // SmoothDamp for camera lag
+            Vector3 newPosition = target.position + cameraOffset;
+            if (target)
+            {
+                target.forward = Vector3.Lerp(target.forward, transform.forward, turnRate * Time.deltaTime);
+                transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref targetSmoothVelocity, targetSmoothTime);
+            }
         }
     }
 }
