@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SymbolRotaterJordanImp : MonoBehaviour
+public class SymbolRotater : MonoBehaviour
 {
     [Header("(for future randomization)")]
     [Header("Put all the symbols of the color you want in here")]
