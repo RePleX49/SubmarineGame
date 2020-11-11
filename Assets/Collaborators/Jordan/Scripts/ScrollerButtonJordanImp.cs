@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollerButton : MonoBehaviour
+public class ScrollerButtonJordanImp : MonoBehaviour
 {
     [Header("1 for Up Scrolling Button, -1 for Down")]
     [Header("Button Settings")]
@@ -11,7 +11,7 @@ public class ScrollerButton : MonoBehaviour
     [Header("Leave the non used one blank")]
     [Header("The object with the Symbol Scroller or Rotater Script that this button is linked to")]
     public SymbolScroller scrollObject;
-    public SymbolRotater rotateObject;
+    public SymbolRotaterJordanImp rotateObject;
 
 
     public void TryButton()

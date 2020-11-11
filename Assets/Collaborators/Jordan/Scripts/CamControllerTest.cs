@@ -55,7 +55,7 @@ public class CamControllerTest : MonoBehaviour
                     else
                     {
                         //Debug.Log("Cont");
-                        ScrollerButton scrollerButton = Hit.transform.gameObject.GetComponent<ScrollerButton>();
+                        ScrollerButtonJordanImp scrollerButton = Hit.transform.gameObject.GetComponent<ScrollerButtonJordanImp>();
 
                         if (scrollerButton)
                         {

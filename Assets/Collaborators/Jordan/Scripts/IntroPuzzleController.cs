@@ -77,7 +77,7 @@ public class IntroPuzzleController : MonoBehaviour
         for (int i = 0; i < correctInput.Length; i++)
         {
             SymbolScroller inputScriptScroll = inputs[i].GetComponent<SymbolScroller>();
-            SymbolRotater inputScriptRot = inputs[i].GetComponent<SymbolRotater>();
+            SymbolRotaterJordanImp inputScriptRot = inputs[i].GetComponent<SymbolRotaterJordanImp>();
 
             if (inputScriptScroll)
             {

@@ -53,16 +53,16 @@ public class Cam : MonoBehaviour
                     {
                         buttonScript.TryButton();
                     }
-                    else
-                    {
+                    //else
+                    //{
                         //Debug.Log("Cont");
-                        ScrollerButton scrollerButton = Hit.transform.gameObject.GetComponent<ScrollerButton>();
+                        //ScrollerButton scrollerButton = Hit.transform.gameObject.GetComponent<ScrollerButton>();
 
-                        if (scrollerButton)
-                        {
-                            //Debug.Log("Script");
-                            scrollerButton.TryButton();
-                        }
+                        //if (scrollerButton)
+                        //{
+                        //    //Debug.Log("Script");
+                        //    scrollerButton.TryButton();
+                        //}
                         else
                         {
 
@@ -84,30 +84,30 @@ public class Cam : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
-    {
-        if (Systems.player.canMove)
-        {
+    //void LateUpdate()
+    //{
+        //if (Systems.player.canMove)
+        //{
 
 
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            // yaw for looking side to side, pitch for looking up and down
-            yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
-            pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-            pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
+            //// yaw for looking side to side, pitch for looking up and down
+            //yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+            //pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            //pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
 
-            Vector3 newRotation = new Vector3(pitch, yaw) + startingEuler;
+            //Vector3 newRotation = new Vector3(pitch, yaw) + startingEuler;
 
-            transform.eulerAngles = newRotation;
+            //transform.eulerAngles = newRotation;
 
-            // SmoothDamp for camera lag
-            Vector3 newPosition = target.position + cameraOffset;
-            if (target)
-            {
-                target.forward = Vector3.Lerp(target.forward, transform.forward, turnRate * Time.deltaTime);
-                transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref targetSmoothVelocity, targetSmoothTime);
-            }
-        }
-    }
-}
+            //// SmoothDamp for camera lag
+            //Vector3 newPosition = target.position + cameraOffset;
+            //if (target)
+            //{
+            //    target.forward = Vector3.Lerp(target.forward, transform.forward, turnRate * Time.deltaTime);
+            //    transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref targetSmoothVelocity, targetSmoothTime);
+//        //    //}
+//        //}
+//    }
+//}
