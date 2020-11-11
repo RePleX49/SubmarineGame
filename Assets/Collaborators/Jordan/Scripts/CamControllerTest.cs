@@ -60,14 +60,14 @@ public class CamControllerTest : MonoBehaviour
                         if (scrollerButton)
                         {
                             //Debug.Log("Script");
-                            scrollerButton.TryButton();
+                            scrollerButton.UseButton();
                         } else {
 
                             DoorButton doorButton = Hit.transform.gameObject.GetComponent<DoorButton>();
 
                             if (doorButton)
                             {
-                                doorButton.TryButton();
+                                doorButton.UseButton();
                             }
                             else
                             {

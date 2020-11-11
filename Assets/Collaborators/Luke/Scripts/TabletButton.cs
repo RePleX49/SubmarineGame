@@ -15,12 +15,6 @@ public class TabletButton : MonoBehaviour
         manager = FindObjectOfType<TabletManager>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void ChangeImage()
     {
         symbolImage.material.SetTexture("_MainTex", manager.tabletData.symbolTexs[(int)activeSymbol]);

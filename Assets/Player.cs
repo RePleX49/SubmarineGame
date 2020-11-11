@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float turnAroundSpeed = 0.2f;
     [SerializeField] private float forwardMoveSpeed = 20.0f;
     [SerializeField] private float sideMoveSpeed = 10.0f;
+    [SerializeField] private float upMoveSpeed = 6.0f;
     [SerializeField] private Vector3 currentSpeed = Vector3.zero;
     [SerializeField] private Vector3 currentVelocity = Vector3.zero;
     [SerializeField] private float speedSmoothTime = 1.0f;
@@ -19,7 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem[] rightParticles;
 
     [SerializeField] private bool dockable = false;
-    [SerializeField] public bool canMove = false;
+    public bool canMove = false;
+
     [SerializeField] private Vector3 alignmentPosition = new Vector3();
     [SerializeField] private Quaternion alignmentRotation = new Quaternion();
 
@@ -49,35 +51,35 @@ public class Player : MonoBehaviour
         {
             targetSpeed.x = forwardMoveSpeed;
             foreach(ParticleSystem particle in forwardParticles) { particle.emissionRate = 40f; }
-            foreach (ParticleSystem particle in rightParticles) { particle.emissionRate = 0f; }
-            foreach (ParticleSystem particle in leftParticles) { particle.emissionRate = 0f; }
         }
         else if (Input.GetKey(KeyCode.S))
         {
             targetSpeed.x = -forwardMoveSpeed * 0.5f;
-            foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 0f; }
-            foreach (ParticleSystem particle in rightParticles) { particle.emissionRate = 0f; }
-            foreach (ParticleSystem particle in leftParticles) { particle.emissionRate = 0f; }
         }
         else if (Input.GetKey(KeyCode.A))
         {
             targetSpeed.z = -sideMoveSpeed;
-            foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 0f; }
-            foreach (ParticleSystem particle in rightParticles) { particle.emissionRate = 0f; }
             foreach (ParticleSystem particle in leftParticles) { particle.emissionRate = 40f; }
         }
         else if (Input.GetKey(KeyCode.D))
         {
             targetSpeed.z = sideMoveSpeed;
-            foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 0f; }
             foreach (ParticleSystem particle in rightParticles) { particle.emissionRate = 40f; }
-            foreach (ParticleSystem particle in leftParticles) { particle.emissionRate = 0f; }
         }
         else
         {
             foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 0f; }
             foreach (ParticleSystem particle in rightParticles) { particle.emissionRate = 0f; }
             foreach (ParticleSystem particle in leftParticles) { particle.emissionRate = 0f; }
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            targetSpeed.y = upMoveSpeed;
+        }
+        else if (Input.GetKey(KeyCode.LeftControl))
+        {
+            targetSpeed.y = -upMoveSpeed;
         }
 
         currentSpeed = Vector3.SmoothDamp(currentSpeed, targetSpeed, ref currentVelocity, speedSmoothTime);
@@ -87,7 +89,7 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        Vector3 velocity = (transform.forward * currentSpeed.x) + (transform.up * currentSpeed.y) + (transform.right * currentSpeed.z);
+        Vector3 velocity = (transform.forward * currentSpeed.x) + (Vector3.up * currentSpeed.y) + (transform.right * currentSpeed.z);
         cc.Move(velocity * Time.deltaTime);
     }
 

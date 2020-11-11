@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< HEAD:Assets/Collaborators/Jordan/Scripts/ScrollerButtonJordanImp.cs
 public class ScrollerButtonJordanImp : MonoBehaviour
+=======
+public class ScrollerButton : ButtonScript
+>>>>>>> b1ccafcc49fbbc00d06e25fdd49ce7c4cc45dc8c:Assets/Collaborators/Jordan/Scripts/ScrollerButton.cs
 {
     [Header("1 for Up Scrolling Button, -1 for Down")]
     [Header("Button Settings")]
@@ -13,17 +17,15 @@ public class ScrollerButtonJordanImp : MonoBehaviour
     public SymbolScroller scrollObject;
     public SymbolRotaterJordanImp rotateObject;
 
-
-    public void TryButton()
+    public override void UseButton()
     {
         if (scrollObject)
         {
             scrollObject.ChangeSymbol(tagUpDown);
         }
-        else
+        else if(rotateObject)
         {
             rotateObject.ChangeRot(tagUpDown);
         }
     }
-
 }
