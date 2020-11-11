@@ -6,4 +6,5 @@ using UnityEngine;
 public class TabletData : ScriptableObject
 {
     public Texture2D[] symbolTexs;
+    public Material[] symbolMats;
 }

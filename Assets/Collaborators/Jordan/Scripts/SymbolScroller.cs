@@ -22,8 +22,6 @@ public class SymbolScroller : MonoBehaviour
 
     }
 
-
-
     //takes in the tag from which button was pressed
     public void ChangeSymbol (int tagUpDown)
     {
