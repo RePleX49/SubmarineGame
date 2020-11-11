@@ -9,7 +9,7 @@ public class IntroPuzzleController : MonoBehaviour
     [SerializeField] private int[] correctInput;
 
     //An array to hold references to the objects (scripts) providing the inputs
-    [SerializeField] private SymbolScroller[] inputs;
+    [SerializeField] private GameObject[] inputs;
 
     //An array to hold the objects displaying the clues, this script will populate them with the correct answers
     [SerializeField] private GameObject[] clues;
@@ -72,11 +72,25 @@ public class IntroPuzzleController : MonoBehaviour
 
         for (int i = 0; i < correctInput.Length; i++)
         {
-            //if any inputs are not correct, the entire answer is rejected
-            if (correctInput[i] != inputs[i].GetCurrentSymbol())
+            SymbolScroller inputScriptScroll = inputs[i].GetComponent<SymbolScroller>();
+            SymbolRotater inputScriptRot = inputs[i].GetComponent<SymbolRotater>();
+
+            if (inputScriptScroll)
             {
-                correct = false;
-                break;
+                //if any inputs are not correct, the entire answer is rejected
+                if (correctInput[i] != inputScriptScroll.GetCurrentSymbol())
+                {
+                    correct = false;
+                    break;
+                }
+            }
+            else
+            {
+                if (correctInput[i] != inputScriptRot.GetCurrentRot())
+                {
+                    correct = false;
+                    break;
+                }
             }
         }
 
