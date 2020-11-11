@@ -36,6 +36,11 @@ public class IntroPuzzleController : MonoBehaviour
         {
             SetUpClues();
         }
+
+        if (puzzleTag == 2)
+        {
+            SetUpClueRot();
+        }
     }
 
     //Populate the clues with the correct symbols for the solution
@@ -46,10 +51,7 @@ public class IntroPuzzleController : MonoBehaviour
             clues[i].GetComponent<MeshRenderer>().material = allSymbols[correctInput[i]];
             //set the texture of each clue to the corresponding correct symbol 
         }
-        if (puzzleTag == 2)
-        {
-            SetUpClueRot();
-        }
+        
     }
 
     private void SetUpClueRot()
@@ -59,6 +61,8 @@ public class IntroPuzzleController : MonoBehaviour
             Vector3 clueRot = new Vector3(0,0,0);
             clueRot.z = correctInput[i] * 45;
             clues[i].transform.eulerAngles = clueRot;
+            clues[i].GetComponent<MeshRenderer>().material = allSymbols[i];
+
             //clues[i].GetComponent<MeshRenderer>().material = allSymbols[correctInput[i]];
             //set the texture of each clue to the corresponding correct symbol 
         }
