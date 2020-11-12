@@ -46,37 +46,46 @@ public class Cam : MonoBehaviour
                 //Debug.Log("Hit");
                 if (Hit.transform.gameObject.CompareTag("Button"))
                 {
-                    //Debug.Log("Tagged");
-                    TabletButton buttonScript = Hit.transform.gameObject.GetComponent<TabletButton>();
 
-                    if (buttonScript)
+                    ////Debug.Log("Tagged");
+                    //TabletButton buttonScript = Hit.transform.gameObject.GetComponent<TabletButton>();
+
+                    //if (buttonScript)
+                    //{
+                    //    buttonScript.TryButton();
+                    //}
+                    ////else
+                    ////{
+                        ////Debug.Log("Cont");
+                        ////ScrollerButton scrollerButton = Hit.transform.gameObject.GetComponent<ScrollerButton>();
+
+                        ////if (scrollerButton)
+                        ////{
+                        ////    //Debug.Log("Script");
+                        ////    scrollerButton.TryButton();
+                        ////}
+                        //else
+                        //{
+
+                        //    DoorButton doorButton = Hit.transform.gameObject.GetComponent<DoorButton>();
+
+                        //    if (doorButton)
+                        //    {
+                        //        doorButton.TryButton();
+                        //    }
+                        //    else
+                        //    {
+                        //        Debug.Log("Could not find button script");
+                        //    }
+                        //}
+
+                    //Debug.Log("Cont");
+                    ButtonScript button = Hit.transform.gameObject.GetComponent<ButtonScript>();
+                    
+                    if(button)
                     {
-                        buttonScript.TryButton();
-                    }
-                    else
-                    {
-                        //Debug.Log("Cont");
-                        ScrollerButton scrollerButton = Hit.transform.gameObject.GetComponent<ScrollerButton>();
+                        button.UseButton();
 
-                        if (scrollerButton)
-                        {
-                            //Debug.Log("Script");
-                            scrollerButton.TryButton();
-                        }
-                        else
-                        {
-
-                            DoorButton doorButton = Hit.transform.gameObject.GetComponent<DoorButton>();
-
-                            if (doorButton)
-                            {
-                                doorButton.TryButton();
-                            }
-                            else
-                            {
-                                Debug.Log("Could not find button script");
-                            }
-                        }
                     }
                 }
             }
@@ -84,12 +93,39 @@ public class Cam : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    //void LateUpdate()
+    //{
+        //if (Systems.player.canMove)
+        //{
+
+
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
+            //// yaw for looking side to side, pitch for looking up and down
+            //yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+            //pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            //pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
+
+            //Vector3 newRotation = new Vector3(pitch, yaw) + startingEuler;
+
+            //transform.eulerAngles = newRotation;
+
+            //// SmoothDamp for camera lag
+            //Vector3 newPosition = target.position + cameraOffset;
+            //if (target)
+            //{
+            //    target.forward = Vector3.Lerp(target.forward, transform.forward, turnRate * Time.deltaTime);
+            //    transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref targetSmoothVelocity, targetSmoothTime);
+//        //    //}
+//        //}
+//    }
+//}
+
     void LateUpdate()
     {
         if (Systems.player.canMove)
         {
-
-
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             // yaw for looking side to side, pitch for looking up and down
@@ -111,3 +147,4 @@ public class Cam : MonoBehaviour
         }
     }
 }
+

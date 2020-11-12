@@ -591,17 +591,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7135600066829687483, guid: 8c43307ea85d9664e8ce716a31146be0, type: 3}
   m_PrefabInstance: {fileID: 34882199}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &49077763 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2426613771131451888, guid: e1ba61dcfc6684f8c89c2df206d931db, type: 3}
-  m_PrefabInstance: {fileID: 2426613771103414259}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58b5cabfc7f66418a84ef6cdc9619c83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &50836004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,11 +2397,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 11.67
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 6.65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2420,19 +2409,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.49833924
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5016553
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.49833924
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5016553
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_RootOrder
@@ -2440,11 +2429,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 89.62
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -3108,10 +3097,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctInput: 06000000010000000500000002000000
   inputs:
-  - {fileID: 49077763}
-  - {fileID: 1437805333}
-  - {fileID: 1176801689}
-  - {fileID: 954200863}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   clues:
   - {fileID: 1867437018}
   - {fileID: 1071954934}
@@ -11999,6 +11988,7 @@ MonoBehaviour:
   turnAroundSpeed: 0.2
   forwardMoveSpeed: 8
   sideMoveSpeed: 5
+  upMoveSpeed: 6
   currentSpeed: {x: 0, y: 0, z: 0}
   currentVelocity: {x: 0, y: 0, z: 0}
   speedSmoothTime: 0.5
@@ -48865,7 +48855,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497094975}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cba7613b33bbb4b4fa21c291022c4332, type: 3}
   m_Name: 
@@ -48885,7 +48875,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497094975}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59d1e7e513532474fb46f36d6d84ec25, type: 3}
   m_Name: 
@@ -50462,12 +50452,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctInput: 010000000300000004000000020000000100000004000000
   inputs:
-  - {fileID: 2136470069}
-  - {fileID: 574853151}
-  - {fileID: 1484080239}
-  - {fileID: 1892278869}
-  - {fileID: 981871839}
-  - {fileID: 1604577815}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   clues: []
   allSymbols:
   - {fileID: 2100000, guid: 0778eb4ae0afc4e91a0f17871566da97, type: 2}
