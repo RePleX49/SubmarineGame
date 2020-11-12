@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float turnAroundSpeed = 0.2f;
     [SerializeField] private float forwardMoveSpeed = 20.0f;
+    [SerializeField] private float forwardMin = 20.0f;
+    [SerializeField] private float speedBoost = 10f;
+    [SerializeField] private float forwardMax = 80f;
     [SerializeField] private float sideMoveSpeed = 10.0f;
     [SerializeField] private float upMoveSpeed = 6.0f;
     [SerializeField] private Vector3 currentSpeed = Vector3.zero;
@@ -46,6 +49,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         Vector3 targetSpeed = Vector3.zero;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(SpeedBoost(5f));
+
+        }
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -134,5 +143,24 @@ public class Player : MonoBehaviour
         transform.rotation = alignmentRotation;
         yield return new WaitForSeconds(waitTime);
         canMove = true;
+    }
+
+    private IEnumerator SpeedBoost(float timeLimit)
+    {
+        if (forwardMoveSpeed < forwardMax) { forwardMoveSpeed = 32f; }
+        foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 480f; }
+
+        for (float timer = 0; timer < timeLimit; timer += Time.deltaTime)
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                break;
+            }
+            yield return null;
+        }
+
+        foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 40f; }
+        forwardMoveSpeed = 8f;
+        //StopAllCoroutines();
     }
 }
