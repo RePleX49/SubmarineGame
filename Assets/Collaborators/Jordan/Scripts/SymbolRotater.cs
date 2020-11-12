@@ -23,7 +23,7 @@ public class SymbolRotater : MonoBehaviour
     {
         //sets to the correct symbol to display
         gameObject.GetComponent<MeshRenderer>().material = symbols[(int)currentSymbol];
-        symbolRot.z = currentRot * 45.0f;
+        symbolRot.z = currentRot * 45;
         rotHolder = gameObject.transform.parent.gameObject;
         rotHolder.transform.localEulerAngles = symbolRot;
     }
