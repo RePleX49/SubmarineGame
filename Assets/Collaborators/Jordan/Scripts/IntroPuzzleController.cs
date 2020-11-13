@@ -39,7 +39,7 @@ public class IntroPuzzleController : MonoBehaviour
             SetUpClues();
         }
 
-        if (puzzleTag == 2)
+        if (puzzleTag == 2 || puzzleTag == -2)
         {
             SetUpClueRot();
         }
