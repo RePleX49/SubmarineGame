@@ -3120,6 +3120,7 @@ MonoBehaviour:
   puzzleTag: 0
   incorrectBeep: {fileID: 286378361}
   correctBeep: {fileID: 1941295335}
+  doorManager: {fileID: 0}
 --- !u!4 &265432888
 Transform:
   m_ObjectHideFlags: 0
@@ -11989,6 +11990,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnAroundSpeed: 0.2
   forwardMoveSpeed: 8
+  forwardMin: 20
+  speedBoost: 10
+  forwardMax: 80
   sideMoveSpeed: 5
   upMoveSpeed: 6
   currentSpeed: {x: 0, y: 0, z: 0}
@@ -17059,8 +17063,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.421, y: -0.236, z: -1.0059986}
   m_LocalScale: {x: 0.03, y: 0.02, z: 0.019999998}
-  m_Children:
-  - {fileID: 665786916}
+  m_Children: []
   m_Father: {fileID: 585910916}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -17847,7 +17850,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 618910205}
+    m_TransformParent: {fileID: 1203599957}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17859,7 +17862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 40.75001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -17879,7 +17882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 90a2f12f51fa14d6c98947518c89b3aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -35451,6 +35454,7 @@ Transform:
   m_LocalScale: {x: 0.03, y: 0.02, z: 0.019999998}
   m_Children:
   - {fileID: 730119302}
+  - {fileID: 665786916}
   m_Father: {fileID: 585910916}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -50643,6 +50647,7 @@ MonoBehaviour:
   puzzleTag: 1
   incorrectBeep: {fileID: 286378361}
   correctBeep: {fileID: 1941295335}
+  doorManager: {fileID: 0}
 --- !u!4 &1627721615
 Transform:
   m_ObjectHideFlags: 0

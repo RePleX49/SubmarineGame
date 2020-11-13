@@ -11,11 +11,14 @@ public class PropellerSpin : MonoBehaviour
     private int shaderScale = 1;
 
     private Material propellerMat;
+    private Material propellerMat1;
 
     // Start is called before the first frame update
     void Start()
     {
-        propellerMat = gameObject.GetComponent<MeshRenderer>().material;
+        propellerMat = gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material;
+        propellerMat1 = gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material;
+
     }
 
     // Update is called once per frame
@@ -29,7 +32,9 @@ public class PropellerSpin : MonoBehaviour
             if (timeScale != shaderScale)
             {
                 propellerMat.SetFloat("_TimeScale", timeScale);
+                propellerMat1.SetFloat("_TimeScale", timeScale);
                 shaderScale = timeScale;
+
             }
         }
     }
