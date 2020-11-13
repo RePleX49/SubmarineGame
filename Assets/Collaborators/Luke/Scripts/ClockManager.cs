@@ -7,6 +7,11 @@ public class ClockManager : ButtonScript
     public ClockDoor[] symbolHolders;
     public SymbolRotater[] rotatorSymbols;
 
+    public AudioClip correctSound;
+    public AudioClip wrongSound;
+
+    public AudioSource audioSource;
+
     // Statue to point at ex: statue 4, statue 7, statue 2, statue 0
     public int[] statueOrder;
     public int[] answerOrder;
@@ -53,6 +58,8 @@ public class ClockManager : ButtonScript
             bUpdated = false;
             Debug.Log("Change symbol");
             symbolHolders[currentRot].ChangeSymbol(revealMats[answerIndex]);
+            audioSource.clip = correctSound;
+            audioSource.Play();
             //answerIndex++;
         }
     }
@@ -67,6 +74,9 @@ public class ClockManager : ButtonScript
                 Debug.Log("Congratulations Puzzle Solved");
                 return;
             }
+
+            audioSource.clip = correctSound;
+            audioSource.Play();
 
             answerIndex++;
             UpdateSymbols();
