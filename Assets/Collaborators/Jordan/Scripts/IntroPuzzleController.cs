@@ -29,6 +29,8 @@ public class IntroPuzzleController : MonoBehaviour
 
     public AudioSource correctBeep;
 
+    public EndDoormanager doorManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +39,7 @@ public class IntroPuzzleController : MonoBehaviour
             SetUpClues();
         }
 
-        if (puzzleTag == 2)
+        if (puzzleTag == 2 || puzzleTag == -2)
         {
             SetUpClueRot();
         }
@@ -120,9 +122,17 @@ public class IntroPuzzleController : MonoBehaviour
         correctBeep.Play();
         Debug.Log("Open the Door! You Win!!");
 
-        StartCoroutine(Systems.transforms.LerpMove(doorHolder.transform, doorTarget.transform.position, 
-        doorHolder.transform.rotation, doorHolder.transform.localScale, doorMoveDuration));
-    
+        if (puzzleTag < 1)
+        {
+            StartCoroutine(Systems.transforms.LerpMove(doorHolder.transform, doorTarget.transform.position,
+            doorHolder.transform.rotation, doorHolder.transform.localScale, doorMoveDuration));
+        }
+        else
+        {
+            doorManager.CompletePuzzle(puzzleTag);
+            //open main door
+        }
+
     }
 
 

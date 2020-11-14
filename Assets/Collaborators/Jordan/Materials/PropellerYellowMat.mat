@@ -63,7 +63,7 @@ Material:
     - _DstBlend: 0
     - _Float0: 1
     - _Float2: 0.5
-    - _Float3: 166.41
+    - _Float3: 1
     - _Frequency1: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -83,6 +83,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TimeScale: 1
     - _UVSec: 0
     - _ZWrite: 1
     - __dirty: 0
@@ -91,7 +92,7 @@ Material:
     - _ColorAlbedo: {r: 1, g: 0.9013662, b: 0, a: 0}
     - _ColorAlbedo1: {r: 1, g: 0.9013662, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _NormalizedRotAxis: {r: -4.01, g: 0, b: 0, a: 0}
+    - _NormalizedRotAxis: {r: 1, g: 0, b: 0, a: 0}
     - _PivotPoint: {r: 0, g: 0, b: 0, a: 0}
     - _PivotVector: {r: 0, g: 0, b: 0, a: 0}
     - _Position: {r: 0, g: 0, b: 0, a: 0}
