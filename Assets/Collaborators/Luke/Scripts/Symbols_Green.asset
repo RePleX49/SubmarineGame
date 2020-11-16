@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b822365ebfe9342894c632da2ddc20, type: 3}
+  m_Name: Symbols_Green
+  m_EditorClassIdentifier: 
+  symbolTexs: []
+  symbolMats:
+  - {fileID: 2100000, guid: 8b5d2ab4e44c24ac1aabc8358a560dd2, type: 2}
+  - {fileID: 2100000, guid: a4c2f03fd7fa2476bad421e8356abce1, type: 2}
+  - {fileID: 2100000, guid: 4c5ac86a091554becbdca7a987bd17ce, type: 2}
+  - {fileID: 2100000, guid: 5bd470b672b484e4fbef2d748ace8944, type: 2}
+  - {fileID: 2100000, guid: a7a62d95e591f4e0fa0b44487cd07f55, type: 2}
+  - {fileID: 2100000, guid: 60ef1f3d49cd2484ca80d51b5ca5c731, type: 2}
+  - {fileID: 2100000, guid: dacaa6d0342430043a24075e2d9b8213, type: 2}
+  - {fileID: 2100000, guid: 4db1ab210f9ee8145968c0414c08bfa3, type: 2}

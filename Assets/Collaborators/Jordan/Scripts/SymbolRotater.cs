@@ -10,6 +10,7 @@ public class SymbolRotater : MonoBehaviour
     [SerializeField] private Material[] symbols;
     [Header("Set this number to the symbol you want the button to show")]
     [SerializeField] private CreatureSymbols currentSymbol = CreatureSymbols.Angler;
+    [SerializeField] private TabletData symbolsData;
 
     private GameObject rotHolder;
     private Vector3 symbolRot = Vector3.zero;
@@ -22,7 +23,7 @@ public class SymbolRotater : MonoBehaviour
     void Start()
     {
         //sets to the correct symbol to display
-        gameObject.GetComponent<MeshRenderer>().material = symbols[(int)currentSymbol];
+        gameObject.GetComponent<MeshRenderer>().material = symbolsData.symbolMats[(int)currentSymbol];
         symbolRot.z = currentRot * 45;
         rotHolder = gameObject.transform.parent.gameObject;
         rotHolder.transform.localEulerAngles = symbolRot;
@@ -47,16 +48,18 @@ public class SymbolRotater : MonoBehaviour
     public int GetCurrentRot()
     {
         return currentRot;
-    }
-
-    public enum CreatureSymbols
-    { 
-        Angler,
-        Fish,
-        Snail,
-        Star,
-        Jellyfish,
-        Crab,
-        count
-    };
+    }   
 }
+
+public enum CreatureSymbols
+{
+    Angler,
+    Clam,
+    Conch,
+    Crab,
+    Fish,
+    Jellyfish,
+    Snail,
+    Star,
+    count
+};
