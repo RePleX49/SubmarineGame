@@ -28,6 +28,12 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector3 alignmentPosition = new Vector3();
     [SerializeField] private Quaternion alignmentRotation = new Quaternion();
 
+    public PropellerSpin propellerManager;
+    public int movingPropScale = 10;
+    public int idlePropScale = 1;
+    public int strafePropScale = 6;
+    public int boostPropScale = 15;
+
 
     //public UI
 
@@ -60,20 +66,24 @@ public class Player : MonoBehaviour
         {
             targetSpeed.x = forwardMoveSpeed;
             foreach(ParticleSystem particle in forwardParticles) { particle.emissionRate = 40f; }
+            propellerManager.SetTimeScale(movingPropScale);
         }
         else if (Input.GetKey(KeyCode.S))
         {
             targetSpeed.x = -forwardMoveSpeed * 0.5f;
+            propellerManager.SetTimeScale(-strafePropScale);
         }
         else if (Input.GetKey(KeyCode.A))
         {
             targetSpeed.z = -sideMoveSpeed;
             foreach (ParticleSystem particle in leftParticles) { particle.emissionRate = 40f; }
+            propellerManager.SetTimeScale(strafePropScale);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             targetSpeed.z = sideMoveSpeed;
             foreach (ParticleSystem particle in rightParticles) { particle.emissionRate = 40f; }
+            propellerManager.SetTimeScale(-strafePropScale);
         }
         else
         {
@@ -85,10 +95,12 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             targetSpeed.y = upMoveSpeed;
+            //propellerManager.SetTimeScale(strafePropScale);
         }
         else if (Input.GetKey(KeyCode.LeftControl))
         {
             targetSpeed.y = -upMoveSpeed;
+            propellerManager.SetTimeScale(strafePropScale);
         }
 
         currentSpeed = Vector3.SmoothDamp(currentSpeed, targetSpeed, ref currentVelocity, speedSmoothTime);
@@ -149,6 +161,7 @@ public class Player : MonoBehaviour
     {
         if (forwardMoveSpeed < forwardMax) { forwardMoveSpeed = 32f; }
         foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 480f; }
+        propellerManager.SetTimeScale(boostPropScale);
 
         for (float timer = 0; timer < timeLimit; timer += Time.deltaTime)
         {
