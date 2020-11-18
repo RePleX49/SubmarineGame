@@ -32,6 +32,7 @@ public class ClockManager : MonoBehaviour
 
     public TabletData images;
     public TabletData revealImages;
+    public Material blankSymbol;
 
     bool bAnswered = false;
     bool bIsTurning = false;
@@ -94,9 +95,21 @@ public class ClockManager : MonoBehaviour
             bAnswered = true;
             Debug.Log("Change symbol");
             symbolHolders[currentRot].ChangeSymbol(revealImages.symbolMats[(int)revealSymbol]);
+            ClearSymbols();
             audioSource.clip = correctSound;
             audioSource.Play();
             //answerIndex++;
+        }
+    }
+
+    void ClearSymbols()
+    {
+        for (int i = 0; i < symbolHolders.Length; i++)
+        {
+            if (i == correctStatueIndex)
+                continue;
+
+            symbolHolders[i].ChangeSymbol(blankSymbol);
         }
     }
 
