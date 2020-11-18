@@ -18,9 +18,9 @@ EditorBuildSettings:
     path: Assets/Collaborators/Luke/Scenes/Clock_B.unity
     guid: 3af517d7fa02fc54e8088c498f05eed5
   - enabled: 0
-    path: Assets/Collaborators/Luke/Scenes/Clock_B_Final.unity
-    guid: c1471fa1847c7a74e95700a0c83ecd94
+    path: Assets/Collaborators/Jordan/Scenes/StableMainSceneA.unity
+    guid: 4a7c0c85111754ffa92cf2cf3e22dfcb
   - enabled: 1
-    path: Assets/Collaborators/Luke/Scenes/Clock_A_Final.unity
-    guid: 9661e50ff984ee8479bf30d69af13e5f
+    path: Assets/Collaborators/Jordan/Scenes/StableMainSceneB.unity
+    guid: 7b63a9e996f7c4850963638321ed30f2
   m_configObjects: {}
