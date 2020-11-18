@@ -11140,27 +11140,27 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2accb235fabab2343b21906bf1e9e4bf, type: 2}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarPos.x
-      value: -46.93856
+      value: -1352.96
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarPos.y
-      value: 0.7082391
+      value: -0.06999943
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarPos.z
-      value: 97.513596
+      value: 422.1
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarRot.x
-      value: 357.63724
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarRot.y
-      value: 349.79614
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarRot.z
-      value: 26.30184
+      value: 31.560966
       objectReference: {fileID: 0}
     - target: {fileID: 6562741046132034435, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13389,27 +13389,27 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2accb235fabab2343b21906bf1e9e4bf, type: 2}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarPos.x
-      value: 52.923344
+      value: -1253.4
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarPos.y
-      value: 118.72194
+      value: 120.2
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarPos.z
-      value: 216.82135
+      value: 541
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarRot.x
-      value: 50.83484
+      value: 40.76637
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarRot.y
-      value: 274.76184
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarRot.z
-      value: 3.7114718
+      value: 0.000006763649
       objectReference: {fileID: 0}
     - target: {fileID: 6562741046132034435, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -106259,15 +106259,27 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2accb235fabab2343b21906bf1e9e4bf, type: 2}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarPos.x
-      value: -64.247894
+      value: -1368
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarPos.y
-      value: 13.42
+      value: 11.600001
       objectReference: {fileID: 0}
     - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: pillarPos.z
-      value: 216.77092
+      value: 540.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
+      propertyPath: pillarRot.x
+      value: 351.6641
+      objectReference: {fileID: 0}
+    - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
+      propertyPath: pillarRot.y
+      value: 129.51437
+      objectReference: {fileID: 0}
+    - target: {fileID: 6562741045698380903, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
+      propertyPath: pillarRot.z
+      value: 0.00000086289
       objectReference: {fileID: 0}
     - target: {fileID: 6562741046132034435, guid: 7e4e18af7fb1dd5409909e166555622c, type: 3}
       propertyPath: m_LocalPosition.x
