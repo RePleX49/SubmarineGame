@@ -3196,6 +3196,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a74565ca3cc4616ac93e718094bc77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  correctInputSize: 4
+  correctInputMin: 1
+  correctInputMax: 6
   correctInput: 06000000010000000500000002000000
   inputs:
   - {fileID: 0}
@@ -51098,6 +51101,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79a74565ca3cc4616ac93e718094bc77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  correctInputSize: 6
+  correctInputMin: 1
+  correctInputMax: 4
   correctInput: 010000000300000004000000020000000100000004000000
   inputs:
   - {fileID: 0}

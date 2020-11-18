@@ -4,75 +4,68 @@ using UnityEngine;
 using System.Text;
 using System;
 
-public class RandomSeedTesting : MonoBehaviour
+public class RandomSeeding : MonoBehaviour
 {
-    private int[] noiseValues;
+    //private int[] noiseValues;
 
     public string seed;
 
     private int seedParsed;
 
-    private List<int> usedRands = new List<int>();
-
     void Start()
     {
-        Debug.Log("Seed as Give " + seed);
+        Systems.randomSeeding = this;
+    }
+
+    public int[] SetUpArrayBySeed (int[] target, int min, int max)
+    {
+        List<int> usedRands = new List<int>();
+        int length = target.Length;
+        //Debug.Log("Seed as Give " + seed);
 
         seedParsed = IntParseASCII(seed);
 
-        Debug.Log("Seed as Parsed " + seedParsed);
+        //Debug.Log("Seed as Parsed " + seedParsed);
 
         UnityEngine.Random.InitState(seedParsed);
 
-        noiseValues = new int[4];
+        target = new int[length];
 
-        Debug.Log("Random Values: ");
+        //Debug.Log("Random Values: ");
 
-        for (int i = 0; i < noiseValues.Length; i++)
+        for (int i = 0; i < target.Length; i++)
         {
             bool isValid = false;
 
-            noiseValues[i] = UnityEngine.Random.Range(1, 7);
+            target[i] = UnityEngine.Random.Range(min, max + 1);
 
-            while (!isValid)
+            int infStopper = 0;
+
+            while (!isValid && infStopper < 1000)
             {
-                if (Find(noiseValues[i], usedRands))
+                if (Find(target[i], usedRands))
                 {
-                    noiseValues[i]++;
-                    noiseValues[i]  = noiseValues[i] % noiseValues.Length;
+                    target[i]++;
+                    target[i] = target[i] % target.Length;
+                    if (target[i] == 0)
+                    {
+                        target[i] = 1;
+                    }
                 }
                 else
                 {
                     isValid = true;
-                    usedRands.Add(noiseValues[i]);
+                    usedRands.Add(target[i]);
 
                 }
 
-
+                infStopper++;
             }
-            //foreach (int val in usedRands)
-            //{
-            //    if (val == noiseValues[i])
-            //    {
-
-            //    }
-            //}
-
-
-
-
-
-            //for (int j = 0; j < i; j++) {
-
-            //    while (noiseValues[i] == noiseValues[j])
-            //    {
-            //        noiseValues[i]++;
-            //    }
-
-            //}
-
-            Debug.Log(noiseValues[i]);
+         
+            //Debug.Log(noiseValues[i]);
         }
+
+        return target;
     }
 
 
@@ -83,7 +76,7 @@ public class RandomSeedTesting : MonoBehaviour
         var hexString = BitConverter.ToString(ba);
         hexString = hexString.Replace("-", "");
 
-        Debug.Log("ASCIIConvert: " + hexString);
+        //Debug.Log("ASCIIConvert: " + hexString);
 
         //result = int.Parse(hexString);
         result = IntParseFast(hexString);

@@ -8,4 +8,5 @@ public static class Systems
     public static Player player;
     public static Cam cam;
     public static Transformations transforms;
+    public static RandomSeeding randomSeeding;
 }
