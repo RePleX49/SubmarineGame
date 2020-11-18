@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75b822365ebfe9342894c632da2ddc20, type: 3}
-  m_Name: ClockA_Mats
+  m_Name: Symbols_Green
   m_EditorClassIdentifier: 
   symbolTexs: []
   symbolMats:
-  - {fileID: 2100000, guid: 7291f91525093f9478d2911d78c9754b, type: 2}
-  - {fileID: 2100000, guid: 59f6b83b531b8ae42a6a8ba302598bcd, type: 2}
-  - {fileID: 2100000, guid: 4432e2e7cde6495479260f7b3f8f39f3, type: 2}
-  - {fileID: 2100000, guid: 3f25455fb0550684ca1ce1494669a0b1, type: 2}
-  - {fileID: 2100000, guid: 2b120a3d3b334414eb74ae1f888b5041, type: 2}
-  - {fileID: 2100000, guid: a5245e3d3e46cb340a0e84708e9bd596, type: 2}
   - {fileID: 2100000, guid: 8b5d2ab4e44c24ac1aabc8358a560dd2, type: 2}
+  - {fileID: 2100000, guid: a4c2f03fd7fa2476bad421e8356abce1, type: 2}
+  - {fileID: 2100000, guid: 4c5ac86a091554becbdca7a987bd17ce, type: 2}
+  - {fileID: 2100000, guid: 5bd470b672b484e4fbef2d748ace8944, type: 2}
+  - {fileID: 2100000, guid: a7a62d95e591f4e0fa0b44487cd07f55, type: 2}
   - {fileID: 2100000, guid: 60ef1f3d49cd2484ca80d51b5ca5c731, type: 2}
+  - {fileID: 2100000, guid: dacaa6d0342430043a24075e2d9b8213, type: 2}
+  - {fileID: 2100000, guid: 4db1ab210f9ee8145968c0414c08bfa3, type: 2}

@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     {
         Vector3 targetSpeed = Vector3.zero;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             StartCoroutine(SpeedBoost(5f));
 

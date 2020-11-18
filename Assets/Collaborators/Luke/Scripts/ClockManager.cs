@@ -5,24 +5,33 @@ using UnityEngine;
 public class ClockManager : ButtonScript
 {
     public ClockDoor[] symbolHolders;
-    public SymbolRotater[] rotatorSymbols;
+
+    public AudioClip correctSound;
+    public AudioClip wrongSound;
+
+    public AudioSource audioSource;
 
     // Statue to point at ex: statue 4, statue 7, statue 2, statue 0
-    public int[] statueOrder;
-    public int[] answerOrder;
+    public int correctStatueIndex;
 
     public MeshRenderer clueDisplay;
-    public Material[] clueMats;
-    public Material[] answerMats;
-    public Material[] revealMats;
-    int answerIndex = 0;
+
+    // clue to give to other player
+    public CreatureSymbols clueSymbol;
+
+    // clue from other player
+    public CreatureSymbols answerSymbol;
+
+    // rotator symbol to give to other player
+    public CreatureSymbols revealSymbol;
 
     int currentRot = 0;
     Vector3 dialRotation = Vector3.zero;
 
     public TabletData images;
+    public TabletData revealImages;
 
-    bool bUpdated = false;
+    bool bAnswered = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +39,7 @@ public class ClockManager : ButtonScript
         dialRotation.y = currentRot * 45;
 
         UpdateSymbols();
-        clueDisplay.material = clueMats[answerIndex];
+        clueDisplay.material = images.symbolMats[(int)clueSymbol];
     }
 
     public override void UseButton()
@@ -48,59 +57,60 @@ public class ClockManager : ButtonScript
 
     public void TryCurrentRot()
     {
-        if (bUpdated && statueOrder[answerIndex] == currentRot)
+        if (!bAnswered && correctStatueIndex == currentRot)
         {
-            bUpdated = false;
+            bAnswered = true;
             Debug.Log("Change symbol");
-            symbolHolders[currentRot].ChangeSymbol(revealMats[answerIndex]);
+            symbolHolders[currentRot].ChangeSymbol(revealImages.symbolMats[(int)revealSymbol]);
+            audioSource.clip = correctSound;
+            audioSource.Play();
             //answerIndex++;
         }
     }
 
     // button press to update clue and statue symbols
-    public void UpdateClue()
-    {
-        if(!bUpdated && rotatorSymbols[answerIndex].GetCurrentRot() == answerOrder[answerIndex])
-        {
-            if(answerIndex == answerOrder.Length - 1)
-            {
-                Debug.Log("Congratulations Puzzle Solved");
-                return;
-            }
+    //public void UpdateClue()
+    //{
+    //    if(!bUpdated && rotatorSymbols[answerIndex].GetCurrentRot() == answerOrder[answerIndex])
+    //    {
+    //        if(answerIndex == answerOrder.Length - 1)
+    //        {
+    //            Debug.Log("Congratulations Puzzle Solved");
+    //            return;
+    //        }
 
-            answerIndex++;
-            UpdateSymbols();
-        } 
-    }
+    //        audioSource.clip = correctSound;
+    //        audioSource.Play();
+
+    //        answerIndex++;
+    //        UpdateSymbols();
+    //    } 
+    //}
 
     void UpdateSymbols()
     {
-        List<int> usedSymbols = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7 };
+        //List<int> usedSymbols = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7 };
+        List<Material> usedMaterials = new List<Material>(images.symbolMats);
 
-        // gets the correct door direction from current answer index
-        int correctIndex = statueOrder[answerIndex];
+        Material answerMat = images.symbolMats[(int)answerSymbol];
 
-        // Remove index from list to prevent repeats
-        usedSymbols.Remove(statueOrder[answerIndex]);
-        
         // assign the right symbol material based on answer index
-        symbolHolders[correctIndex].ChangeSymbol(answerMats[answerIndex]);
+        symbolHolders[correctStatueIndex].ChangeSymbol(answerMat);
+        usedMaterials.Remove(answerMat);
 
-        clueDisplay.material = clueMats[answerIndex];
+        clueDisplay.material = images.symbolMats[(int)clueSymbol];
 
         // switch the remaining doors to random incorrect symbols
         for (int i = 0; i < symbolHolders.Length; i++)
         {
-            if (i == correctIndex)
+            if (i == correctStatueIndex)
                 continue;
 
-            int random = Random.Range(0, usedSymbols.Count);
+            int random = Random.Range(0, usedMaterials.Count);
 
-            symbolHolders[i].ChangeSymbol(images.symbolMats[usedSymbols[random]]);
+            symbolHolders[i].ChangeSymbol(usedMaterials[random]);
 
-            usedSymbols.RemoveAt(random);
+            usedMaterials.RemoveAt(random);
         }
-
-        bUpdated = true;
     }
 }
