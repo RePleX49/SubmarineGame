@@ -4,28 +4,37 @@ using UnityEngine;
 
 public class PillarPuzzleGen : MonoBehaviour
 {
-    public bool isPlayer1;
+    public bool isPlayerA;
     public int pillar1;
     public int pillar2;
     public int pillar3;
     public GameObject[] pillars1;
     public GameObject[] pillars2;
     public GameObject[] pillars3;
-    public Transform pillar1Transform;
-    public Transform pillar2Transform;
-    public Transform pillar3Transform;
+    public IntroPuzzleController puzzleController;
 
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate(pillars1[pillar1], pillar1Transform.position, pillar1Transform.rotation);
-        Instantiate(pillars2[pillar2], pillar2Transform.position, pillar2Transform.rotation);
-        Instantiate(pillars3[pillar3], pillar3Transform.position, pillar3Transform.rotation);
-    }
+        if (isPlayerA)
+        {
+            pillar1 = puzzleController.correctInput[1];
+            pillar2 = puzzleController.correctInput[3];
+            pillar3 = puzzleController.correctInput[5];
+        }
+        else
+        {
+            pillar1 = puzzleController.correctInput[0];
+            pillar2 = puzzleController.correctInput[2];
+            pillar3 = puzzleController.correctInput[4];
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        foreach (GameObject pillar in pillars1) { pillar.SetActive(false); }
+        foreach (GameObject pillar in pillars2) { pillar.SetActive(false); }
+        foreach (GameObject pillar in pillars3) { pillar.SetActive(false); }
+
+        pillars1[pillar1].SetActive(true);
+        pillars2[pillar2].SetActive(true);
+        pillars3[pillar3].SetActive(true);
     }
 }
