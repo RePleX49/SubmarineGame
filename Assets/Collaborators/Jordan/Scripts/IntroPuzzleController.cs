@@ -5,6 +5,10 @@ using UnityEngine;
 public class IntroPuzzleController : MonoBehaviour
 {
     [Header("Input Settings")]
+
+    [SerializeField] private int correctInputSize;
+    [SerializeField] private int correctInputMin;
+    [SerializeField] private int correctInputMax;
     //An array containing the series of correct inputs for the puzzle in int form
     [SerializeField] private int[] correctInput;
 
@@ -34,6 +38,11 @@ public class IntroPuzzleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        //correctInput = new int[correctInputSize];
+        correctInput = Systems.randomSeeding.SetUpArrayBySeed(correctInput, correctInputMin, correctInputMax);
+
+
         if (puzzleTag == 0)
         {
             SetUpClues();
