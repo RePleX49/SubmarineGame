@@ -9,7 +9,7 @@ public class SymbolRotater : MonoBehaviour
     [Header("What's up let's set this baby up")]
     [SerializeField] private Material[] symbols;
     [Header("Set this number to the symbol you want the button to show")]
-    [SerializeField] private CreatureSymbols currentSymbol = CreatureSymbols.Angler;
+    public CreatureSymbols currentSymbol = CreatureSymbols.Angler;
     [SerializeField] private TabletData symbolsData;
 
     private GameObject rotHolder;
@@ -23,7 +23,7 @@ public class SymbolRotater : MonoBehaviour
     void Start()
     {
         //sets to the correct symbol to display
-        gameObject.GetComponent<MeshRenderer>().material = symbolsData.symbolMats[(int)currentSymbol];
+        //gameObject.GetComponent<MeshRenderer>().material = symbolsData.symbolMats[(int)currentSymbol];
         symbolRot.z = currentRot * 45;
         rotHolder = gameObject.transform.parent.gameObject;
         rotHolder.transform.localEulerAngles = symbolRot;
