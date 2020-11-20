@@ -20,7 +20,7 @@ public class PillarPuzzleGen : MonoBehaviour
         {
             pillar1 = puzzleController.correctInput[1];
             pillar2 = puzzleController.correctInput[3];
-            pillar3 = puzzleController.correctInput[5];
+            pillar3 = puzzleController.correctInput[5]; 
         }
         else
         {
@@ -33,8 +33,8 @@ public class PillarPuzzleGen : MonoBehaviour
         foreach (GameObject pillar in pillars2) { pillar.SetActive(false); }
         foreach (GameObject pillar in pillars3) { pillar.SetActive(false); }
 
-        pillars1[pillar1].SetActive(true);
-        pillars2[pillar2].SetActive(true);
-        pillars3[pillar3].SetActive(true);
+        pillars1[pillar1 - 1].SetActive(true);
+        pillars2[pillar2 - 1].SetActive(true);
+        pillars3[pillar3 - 1].SetActive(true);
     }
 }

@@ -105,7 +105,25 @@ public class Player : MonoBehaviour
 
         currentSpeed = Vector3.SmoothDamp(currentSpeed, targetSpeed, ref currentVelocity, speedSmoothTime);
         if (canMove) { Move(); }
-        if (dockable && Input.GetKeyDown(KeyCode.E)) { dockable = false; StartCoroutine(Dock(2f, 2f)); }
+
+
+        if (dockable && Input.GetKey(KeyCode.E))
+        {
+            canMove = false;
+            transform.position = Vector3.Lerp(transform.position, alignmentPosition, Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, alignmentRotation, Time.deltaTime);
+            Systems.cam.gameObject.transform.position = Vector3.Lerp(Systems.cam.gameObject.transform.position, alignmentPosition, Time.deltaTime);
+            Systems.cam.gameObject.transform.rotation = Quaternion.Slerp(Systems.cam.gameObject.transform.rotation, alignmentRotation, Time.deltaTime);
+        } else
+        {
+            canMove = true;
+        }
+
+        if (dockable && Input.GetKeyUp(KeyCode.E))
+        {
+            Systems.cam.yaw = alignmentRotation.eulerAngles.x;
+            Systems.cam.pitch = -alignmentRotation.eulerAngles.y;
+        }
     }
 
     void Move()
