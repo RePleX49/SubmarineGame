@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClockManager : ButtonScript
+public class ClockManager : MonoBehaviour
 {
+    public float rotationDuration = 1.0f;
+
     public ClockDoor[] symbolHolders;
 
     public AudioClip correctSound;
@@ -30,8 +32,10 @@ public class ClockManager : ButtonScript
 
     public TabletData images;
     public TabletData revealImages;
+    public Material blankSymbol;
 
     bool bAnswered = false;
+    bool bIsTurning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,8 +46,13 @@ public class ClockManager : ButtonScript
         clueDisplay.material = images.symbolMats[(int)clueSymbol];
     }
 
-    public override void UseButton()
+    public void TurnRight()
     {
+        if(bAnswered || bIsTurning)
+        {
+            return;
+        }
+
         //changes the current rot which can be used to figure out if the button is set to the correct orientation
         currentRot++;
 
@@ -52,40 +61,77 @@ public class ClockManager : ButtonScript
 
         //actually set the rotation in increments of 45 degrees
         dialRotation.y = currentRot * 45;
-        transform.eulerAngles = dialRotation;
+        StartCoroutine(RotateDial(dialRotation));
+    }
+
+    public void TurnLeft()
+    {
+        if (bAnswered || bIsTurning)
+        {
+            return;
+        }
+
+        //changes the current rot which can be used to figure out if the button is set to the correct orientation
+        currentRot--;
+
+        // modulo to loop through values
+        currentRot = currentRot % 8;
+        currentRot = currentRot < 0 ? currentRot + 8 : currentRot;
+
+        //actually set the rotation in increments of 45 degrees
+        dialRotation.y = currentRot * 45;
+        StartCoroutine(RotateDial(dialRotation));
     }
 
     public void TryCurrentRot()
     {
-        if (!bAnswered && correctStatueIndex == currentRot)
+        if(bIsTurning || bAnswered)
+        {
+            return;
+        }
+
+        if (correctStatueIndex == currentRot)
         {
             bAnswered = true;
             Debug.Log("Change symbol");
             symbolHolders[currentRot].ChangeSymbol(revealImages.symbolMats[(int)revealSymbol]);
+            ClearSymbols();
             audioSource.clip = correctSound;
             audioSource.Play();
             //answerIndex++;
         }
     }
 
-    // button press to update clue and statue symbols
-    //public void UpdateClue()
-    //{
-    //    if(!bUpdated && rotatorSymbols[answerIndex].GetCurrentRot() == answerOrder[answerIndex])
-    //    {
-    //        if(answerIndex == answerOrder.Length - 1)
-    //        {
-    //            Debug.Log("Congratulations Puzzle Solved");
-    //            return;
-    //        }
+    void ClearSymbols()
+    {
+        for (int i = 0; i < symbolHolders.Length; i++)
+        {
+            if (i == correctStatueIndex)
+                continue;
 
-    //        audioSource.clip = correctSound;
-    //        audioSource.Play();
+            symbolHolders[i].ChangeSymbol(blankSymbol);
+        }
+    }
 
-    //        answerIndex++;
-    //        UpdateSymbols();
-    //    } 
-    //}
+    IEnumerator RotateDial(Vector3 targetEuler)
+    {
+        Quaternion targetRot = Quaternion.Euler(targetEuler);
+        Quaternion initialRot = transform.rotation;
+
+        float elapsedTime = 0.0f;
+
+        bIsTurning = true;
+
+        while(elapsedTime < rotationDuration)
+        {
+            transform.rotation = Quaternion.Lerp(initialRot, targetRot, elapsedTime / rotationDuration);
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        bIsTurning = false;
+    }
 
     void UpdateSymbols()
     {

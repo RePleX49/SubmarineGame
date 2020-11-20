@@ -10,7 +10,7 @@ public class IntroPuzzleController : MonoBehaviour
     [SerializeField] private int correctInputMin;
     [SerializeField] private int correctInputMax;
     //An array containing the series of correct inputs for the puzzle in int form
-    [SerializeField] private int[] correctInput;
+    [SerializeField] public int[] correctInput;
 
     //An array to hold references to the objects (scripts) providing the inputs
     [SerializeField] private GameObject[] inputs;
