@@ -6,7 +6,7 @@ public class IntroPuzzleController : MonoBehaviour
 {
     [Header("Input Settings")]
 
-    [SerializeField] private int correctInputSize;
+    public int correctInputSize;
     [SerializeField] private int correctInputMin;
     [SerializeField] private int correctInputMax;
     //An array containing the series of correct inputs for the puzzle in int form
@@ -17,6 +17,8 @@ public class IntroPuzzleController : MonoBehaviour
 
     //An array to hold the objects displaying the clues, this script will populate them with the correct answers
     [SerializeField] private GameObject[] clues;
+
+    [SerializeField] private TabletData[] allSymbolsObj;
 
     //An array holding all possible symbols
     [SerializeField] private Material[] allSymbols;
@@ -59,7 +61,8 @@ public class IntroPuzzleController : MonoBehaviour
     {
         for (int i = 0; i < clues.Length; i++)
         {
-            clues[i].GetComponent<MeshRenderer>().material = allSymbols[correctInput[i]];
+            clues[i].GetComponent<MeshRenderer>().material = allSymbolsObj[i].symbolMats[correctInput[i] - 1];
+            //clues[i].GetComponent<MeshRenderer>().material = allSymbols[correctInput[i]];
             //set the texture of each clue to the corresponding correct symbol 
         }
         
@@ -69,12 +72,15 @@ public class IntroPuzzleController : MonoBehaviour
     {
         for (int i = 0; i < clues.Length; i++)
         {
-            Vector3 clueRot = new Vector3 (0,clues[i].transform.eulerAngles.y, 0);
+            Vector3 clueRot = new Vector3 (clues[i].transform.localEulerAngles.x, clues[i].transform.localEulerAngles.y, 0);
             clueRot.z = correctInput[i] * 45;
-            clues[i].transform.eulerAngles = clueRot;
+            clues[i].transform.localEulerAngles = clueRot;
             //clues[i].transform.eulerAngles = new Vector3(0, 0, 180);
             Debug.Log("Correct: " + correctInput[i] + "  Rot: " + correctInput[i] * 45 + "  ActualRot: " + clues[i].transform.eulerAngles);
-            clues[i].GetComponent<MeshRenderer>().material = allSymbols[i];
+
+            clues[i].GetComponent<MeshRenderer>().material = allSymbolsObj[i % 2].symbolMats[(int)inputs[i].GetComponent<SymbolRotater>().currentSymbol];
+            inputs[i].GetComponent<MeshRenderer>().material = allSymbolsObj[i % 2].symbolMats[(int)inputs[i].GetComponent<SymbolRotater>().currentSymbol];
+            //clues[i].GetComponent<MeshRenderer>().material = allSymbols[i];
 
 
 

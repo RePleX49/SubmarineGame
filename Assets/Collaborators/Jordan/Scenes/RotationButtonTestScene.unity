@@ -3210,6 +3210,7 @@ MonoBehaviour:
   - {fileID: 1071954934}
   - {fileID: 405078428}
   - {fileID: 811005283}
+  allSymbolsObj: []
   allSymbols:
   - {fileID: 2100000, guid: 0778eb4ae0afc4e91a0f17871566da97, type: 2}
   - {fileID: 2100000, guid: 786cdd51c324fe440ad1da4166537e43, type: 2}
@@ -10044,6 +10045,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 24b532d048c2448cbab64300a1ed0dce, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 1eaedb44140ed4a6fac6f8ae16802468, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5611087096184871397, guid: de997bfeb2868459fa2f4f4beef3397e, type: 3}
     - target: {fileID: -4683669308469848369, guid: 1eaedb44140ed4a6fac6f8ae16802468, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -48464,6 +48469,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 4aacac458672b764599dbfd29240917e, type: 2}
   - {fileID: 2100000, guid: d6544d10df94a92419257496311b0e73, type: 2}
   currentSymbol: 2
+  symbolsData: {fileID: 0}
   currentRot: 0
 --- !u!1001 &1440048909
 PrefabInstance:
@@ -51113,6 +51119,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   clues: []
+  allSymbolsObj: []
   allSymbols:
   - {fileID: 2100000, guid: 0778eb4ae0afc4e91a0f17871566da97, type: 2}
   - {fileID: 2100000, guid: 8b5d2ab4e44c24ac1aabc8358a560dd2, type: 2}
