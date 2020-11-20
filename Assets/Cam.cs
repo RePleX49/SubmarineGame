@@ -19,7 +19,7 @@ public class Cam : MonoBehaviour
     public float targetSmoothTime;
     Vector3 targetSmoothVelocity;
 
-    private float pitch, yaw;
+    public float pitch, yaw;
 
     public Vector3 cameraOffset;
     Vector3 startingEuler;
