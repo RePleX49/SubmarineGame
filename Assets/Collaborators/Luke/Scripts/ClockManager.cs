@@ -41,14 +41,14 @@ public class ClockManager : MonoBehaviour
     [SerializeField] private int correctInputMin;
     [SerializeField] private int correctInputMax;
 
-    private int[] correctInputHolder;
+    public int[] correctInputHolder = new int[4];
 
     public bool isPlayerA;
     // Start is called before the first frame update
     void Start()
     {
-
-        correctInputHolder = new int[correctInputSize];
+        Debug.Log(Systems.randomSeeding.gameObject.name);
+        //correctInputHolder = new int[correctInputSize];
         correctInputHolder = Systems.randomSeeding.SetUpArrayBySeed(correctInputHolder, correctInputMin, correctInputMax);
 
         if (isPlayerA)
