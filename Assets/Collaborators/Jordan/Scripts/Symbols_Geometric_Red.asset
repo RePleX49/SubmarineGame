@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   symbolTexs: []
   symbolMats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 4f7a5fef5f706054c8e130ea95deb204, type: 2}
+  - {fileID: 2100000, guid: 4de82134006d5114593faf01973afabf, type: 2}
+  - {fileID: 2100000, guid: 2d1f6363eba800f4793b1a88b0cb0cdc, type: 2}

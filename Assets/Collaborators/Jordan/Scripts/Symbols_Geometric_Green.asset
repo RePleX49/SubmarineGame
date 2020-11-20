@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75b822365ebfe9342894c632da2ddc20, type: 3}
-  m_Name: Symbols_Geometric_Geometric
+  m_Name: Symbols_Geometric_Green
   m_EditorClassIdentifier: 
   symbolTexs: []
   symbolMats:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 13af0bd1662544246be49d2c08631f68, type: 2}
+  - {fileID: 2100000, guid: 7327f59f517310949a2486986ad2e7dd, type: 2}
+  - {fileID: 2100000, guid: 45f93425b9e70a141bca94d7025a2c43, type: 2}
