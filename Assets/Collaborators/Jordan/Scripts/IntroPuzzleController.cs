@@ -72,9 +72,9 @@ public class IntroPuzzleController : MonoBehaviour
     {
         for (int i = 0; i < clues.Length; i++)
         {
-            Vector3 clueRot = new Vector3 (0,clues[i].transform.eulerAngles.y, 0);
+            Vector3 clueRot = new Vector3 (clues[i].transform.localEulerAngles.x, clues[i].transform.localEulerAngles.y, 0);
             clueRot.z = correctInput[i] * 45;
-            clues[i].transform.eulerAngles = clueRot;
+            clues[i].transform.localEulerAngles = clueRot;
             //clues[i].transform.eulerAngles = new Vector3(0, 0, 180);
             Debug.Log("Correct: " + correctInput[i] + "  Rot: " + correctInput[i] * 45 + "  ActualRot: " + clues[i].transform.eulerAngles);
 
