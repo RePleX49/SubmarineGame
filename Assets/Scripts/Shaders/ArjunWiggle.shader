@@ -1,90 +1,37 @@
-﻿Shader "Custom/FishWiggle"
+// Made with Amplify Shader Editor
+// Available at the Unity Asset Store - http://u3d.as/y3X 
+Shader "Custom/FishWiggle"
 {
-    Properties
-    {
-        _Color("MainColor", Color) = (1,1,1,1)
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        _Metallic ("Metallic", Range(0,1)) = 0.0
-        _SpeedX("SpeedX", Range(0, 100)) = 1
-        _FrequencyX("FrequencyX", Range(0, 10)) = 1
-        _AmplitudeX("AmplitudeX", Range(0, 0.2)) = 1
-        _SpeedY("SpeedY", Range(0, 100)) = 1
-        _FrequencyY("FrequencyY", Range(0, 10)) = 1
-        _AmplitudeY("AmplitudeY", Range(0, 0.2)) = 1
-        _SpeedZ("SpeedZ", Range(0, 100)) = 1
-        _FrequencyZ("FrequencyZ", Range(0, 10)) = 1
-        _AmplitudeZ("AmplitudeZ", Range(0,  2)) = 1
-        _HeadLimit("HeadLimit", Range(-2,  2)) = 0.05
-    }
-    SubShader
-        {
-            Pass{
-            Tags { "RenderType" = "Opaque" }
-            LOD 200
+	Properties
+	{
+		[HideInInspector] __dirty( "", Int ) = 1
+	}
 
-            CGPROGRAM
+	SubShader
+	{
+		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" }
+		Cull Back
+		CGPROGRAM
+		#pragma target 3.0
+		#pragma surface surf Standard keepalpha addshadow fullforwardshadows 
+		struct Input
+		{
+			half filler;
+		};
 
-            // Use shader model 3.0 target, to get nicer looking lighting
-            #pragma vertex vert
-            #pragma fragment frag
-            #include "UnityCG.cginc"
+		void surf( Input i , inout SurfaceOutputStandard o )
+		{
+			o.Alpha = 1;
+		}
 
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
-
-            struct v2f {
-                float4 pos : SV_POSITION;
-                float2 uv : TEXCOORD0;
-            };
-
-            half _Glossiness;
-            half _Metallic;
-            fixed4 _Color;
-
-            float _SpeedX;
-            float _FrequencyX;
-            float _AmplitudeX;
-
-            float _SpeedY;
-            float _FrequencyY;
-            float _AmplitudeY;
-
-            float _SpeedZ;
-            float _FrequencyZ;
-            float _AmplitudeZ;
-
-            // Mask value to reduce influence on head
-            float _HeadLimit;
-
-            v2f vert(appdata_base v)
-            {
-                v2f o;
-
-                v.vertex.z += sin((v.vertex.z + _Time.y * _SpeedX) * _FrequencyX) * _AmplitudeX;
-
-                v.vertex.y += sin((v.vertex.y + _Time.y * _SpeedY) * _FrequencyY) * _AmplitudeY;
-
-                if (v.vertex.z > _HeadLimit)
-                {
-                    v.vertex.x += sin((0.05 + _Time.y * _SpeedZ) * _FrequencyZ) * _AmplitudeZ * _HeadLimit;
-                }
-                else
-                {
-                    v.vertex.x += sin((v.vertex.z + _Time.y * _SpeedZ) * _FrequencyZ) * _AmplitudeZ * v.vertex.z;
-                }
-
-                o.pos = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
-                return o;
-            }
-
-            fixed4 frag(v2f i) : SV_Target
-            {
-                return tex2D(_MainTex, i.uv) * _Color;
-            }
-            ENDCG
-            }
-        }
-    FallBack "Diffuse"
+		ENDCG
+	}
+	Fallback "Diffuse"
+	CustomEditor "ASEMaterialInspector"
 }
+/*ASEBEGIN
+Version=18500
+255.2;73.6;914.8;366.2;1277.303;175.8747;2.033514;True;False
+Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;0,0;Float;False;True;-1;2;ASEMaterialInspector;0;0;Standard;Custom/FishWiggle;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;Back;0;False;-1;0;False;-1;False;0;False;-1;0;False;-1;False;0;Opaque;0.5;True;True;0;False;Opaque;;Geometry;All;14;all;True;True;True;True;0;False;-1;False;0;False;-1;255;False;-1;255;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;-1;False;2;15;10;25;False;0.5;True;0;0;False;-1;0;False;-1;0;0;False;-1;0;False;-1;0;False;-1;0;False;-1;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;Relative;0;;-1;-1;-1;-1;0;False;0;0;False;-1;-1;0;False;-1;0;0;0;False;0.1;False;-1;0;False;-1;False;16;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
+ASEEND*/
+//CHKSM=11EF193A335FECBF83A23173C150C52F14CEF980

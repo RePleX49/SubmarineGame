@@ -9,8 +9,12 @@ public class BoidSpawner : MonoBehaviour
     public float radius = 10.0f;
     public int spawnAmount = 10;
     public bool bPreviewRegion = false;
-    public Color colorOne;
-    public Color colorTwo;
+    public int baseBody = 1;
+
+    public Material[] bodyMats;
+
+    //public Color colorOne;
+    //public Color colorTwo;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,7 +28,8 @@ public class BoidSpawner : MonoBehaviour
             boid.transform.forward = Random.insideUnitSphere;
 
             float colorLerp = Random.Range(0.0f, 1.0f);
-            boid.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.Lerp(colorOne, colorTwo, colorLerp));
+            boid.GetComponent<MeshRenderer>().materials[baseBody] = bodyMats[Random.Range(0, bodyMats.Length)];
+            //boid.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.Lerp(colorOne, colorTwo, colorLerp));
         }
     }
 
