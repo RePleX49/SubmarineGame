@@ -10,7 +10,7 @@ public class SymbolRotater : MonoBehaviour
     [SerializeField] private Material[] symbols;
     [Header("Set this number to the symbol you want the button to show")]
     public CreatureSymbols currentSymbol = CreatureSymbols.Angler;
-    [SerializeField] private TabletData symbolsData;
+    [SerializeField] public TabletData symbolsData;
 
     private GameObject rotHolder;
     private Vector3 symbolRot = Vector3.zero;
