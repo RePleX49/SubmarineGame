@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OpeningManager : MonoBehaviour
 {
@@ -43,6 +44,8 @@ public class OpeningManager : MonoBehaviour
     public TMP_Text[] credits;
     public TMP_Text invalidText;
     bool invalidOn = false;
+    public string cutscene1Scene;
+    public string cutscene2Scene;
 
 
     // Start is called before the first frame update
@@ -127,7 +130,8 @@ public class OpeningManager : MonoBehaviour
 
     public IEnumerator Player1Start()
     {
-        seedGen.text = Systems.randomSeeding.generat
+        Systems.randomSeeding.GenerateNewSeed();
+        seedGen.text = Systems.randomSeeding.seed;
         StartCoroutine(Fade(player1Button.GetComponentInChildren<TMP_Text>(), 1));
         StartCoroutine(Fade(player2Button.GetComponentInChildren<TMP_Text>(), 1));
         yield return new WaitForSeconds(1f);
@@ -345,23 +349,51 @@ public class OpeningManager : MonoBehaviour
 
     public IEnumerator StartGamePlayer1()
     {
-        Systems.randomSeeding.s
-        //Systems.RandomSeeding.seed = input.field.string;
-        StartCoroutine(Fade(player1Button.GetComponentInChildren<TMP_Text>(), 1));
-        StartCoroutine(Fade(player2Button.GetComponentInChildren<TMP_Text>(), 1));
-        yield return new WaitForSeconds(1f);
-        player1Button.gameObject.SetActive(false);
-        player2Button.gameObject.SetActive(false);
-        yield return new WaitForSeconds(1f);
-        StartCoroutine(TextFade(player2Title, 1, 0, false));
-        yield return new WaitForSeconds(2f);
-        seedInput.gameObject.SetActive(true);
-        StartCoroutine(TextFade(seedInput.GetComponentInChildren<TMP_Text>(), 1, 0, false));
-        yield return new WaitForSeconds(4f);
-        StartCoroutine(TextFade(player2Insturctions, 1, 0, false));
-        yield return new WaitForSeconds(5f);
-        player2Start.gameObject.SetActive(true);
-        StartCoroutine(TextFade(player2Start.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        StartCoroutine(Fade(player1Title, 1));
+        StartCoroutine(Fade(seedGen, 1));
+        StartCoroutine(Fade(player1Insturctions, 1));
+        StartCoroutine(Fade(player1Start.GetComponentInChildren<TMP_Text>(), 1));
+
+        yield return new WaitForSeconds(1.2f);
+        player1Start.gameObject.SetActive(false);
+
+        SceneManager.LoadScene(cutscene1Scene);
+    }
+
+    public IEnumerator StartGamePlayer2()
+    {
+        StartCoroutine(Fade(player2Title, 1));
+        StartCoroutine(Fade(seedInput.GetComponentsInChildren<TMP_Text>()[0], 1));
+        StartCoroutine(Fade(seedInput.GetComponentsInChildren<TMP_Text>()[1], 1));
+        StartCoroutine(Fade(player2Insturctions, 1));
+        StartCoroutine(Fade(player2Start.GetComponentInChildren<TMP_Text>(), 1));
+        if (invalidOn) { StartCoroutine(Fade(invalidText, 1)); }
+
+        Systems.randomSeeding.seed = seedInput.text;
+
+        yield return new WaitForSeconds(1.2f);
+        player2Start.gameObject.SetActive(false);
+
+        SceneManager.LoadScene(cutscene2Scene);
+    }
+
+    public IEnumerator InvalidSeed()
+    {
+        StartCoroutine(TextFade(invalidText, 1, 0, false));
+        invalidOn = true;
+        yield return null;
+    }
+
+    public void StartPlayer1()
+    {
+        StartCoroutine(StartGamePlayer1());
+        Debug.Log("NewSceneA");
+    }
+
+    public void StartPlayer2()
+    {
+        if (seedInput.text.Length != 4) { StartCoroutine(InvalidSeed()); }
+        else { StartCoroutine(StartGamePlayer2()); Debug.Log("NewSceneB"); }
     }
 
     public void Quit()

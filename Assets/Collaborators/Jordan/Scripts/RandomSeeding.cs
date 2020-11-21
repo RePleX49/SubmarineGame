@@ -14,8 +14,12 @@ public class RandomSeeding : MonoBehaviour
 
     void Awake()
     {
-        Systems.randomSeeding = this;
-        GenerateNewSeed();
+        //GenerateNewSeed();
+        if (Systems.randomSeeding != null && Systems.randomSeeding != this)
+            Destroy(this.gameObject);
+        else
+            Systems.randomSeeding = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void GenerateNewSeed()
