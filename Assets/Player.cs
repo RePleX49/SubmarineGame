@@ -29,10 +29,10 @@ public class Player : MonoBehaviour
     [SerializeField] private Quaternion alignmentRotation = new Quaternion();
 
     public PropellerSpin propellerManager;
-    public int movingPropScale = 10;
+    public int movingPropScale = 12;
     public int idlePropScale = 1;
-    public int strafePropScale = 6;
-    public int boostPropScale = 15;
+    public int strafePropScale = 7;
+    public int boostPropScale = 18;
 
 
     //public UI
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             StartCoroutine(SpeedBoost(5f));
-
+            propellerManager.SetTimeScale(boostPropScale);
         }
 
         if (Input.GetKey(KeyCode.W))
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
         if (canMove) { Move(); }
 
 
-        if (dockable && Input.GetKey(KeyCode.E))
+        if (dockable && Input.GetKey(KeyCode.F))
         {
             canMove = false;
             transform.position = Vector3.Lerp(transform.position, alignmentPosition, Time.deltaTime);
@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
             canMove = true;
         }
 
-        if (dockable && Input.GetKeyUp(KeyCode.E))
+        if (dockable && Input.GetKeyUp(KeyCode.F))
         {
             Systems.cam.yaw = alignmentRotation.eulerAngles.x;
             Systems.cam.pitch = -alignmentRotation.eulerAngles.y;
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Pillar")
         {
-            StartCoroutine(Systems.UI.FadeInText(Systems.UI.pillarText, "Press E to Dock", 1f, Color.white));
+            StartCoroutine(Systems.UI.FadeInText(Systems.UI.pillarText, "Press F to Dock", 1f, Color.white));
             dockable = true;
             alignmentPosition = other.GetComponent<PillarData>().pillarPos;
             alignmentRotation = Quaternion.Euler(other.GetComponent<PillarData>().pillarRot);
@@ -147,14 +147,14 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Pillar")
         {
-            StartCoroutine(Systems.UI.FadeOutText(Systems.UI.pillarText, "Press E to Dock", 1f, Color.white));
+            StartCoroutine(Systems.UI.FadeOutText(Systems.UI.pillarText, "Press F to Dock", 1f, Color.white));
             dockable = false;
         }
     }
 
     private IEnumerator Dock(float time, float waitTime)
     {
-        StartCoroutine(Systems.UI.FadeOutText(Systems.UI.pillarText, "Press E to Dock", 1f, Color.white));
+        StartCoroutine(Systems.UI.FadeOutText(Systems.UI.pillarText, "Press F to Dock", 1f, Color.white));
         canMove = false;
         Vector3 position = transform.position;
         Quaternion rotation = transform.rotation;

@@ -52,7 +52,7 @@ public class IntroPuzzleController : MonoBehaviour
         }
 
 
-        if (puzzleTag == 0)
+        if (puzzleTag == 0 || puzzleTag == -1)
         {
             SetUpClues();
         }
