@@ -42,7 +42,14 @@ public class IntroPuzzleController : MonoBehaviour
     {
 
         //correctInput = new int[correctInputSize];
-        correctInput = Systems.randomSeeding.SetUpArrayBySeed(correctInput, correctInputMin, correctInputMax);
+        if (puzzleTag != 1)
+        {
+            correctInput = Systems.randomSeeding.SetUpArrayBySeed(correctInput, correctInputMin, correctInputMax);
+        }
+        else
+        {
+            correctInput = Systems.randomSeeding.SetUpArrayBySeed(correctInput, correctInputMin, correctInputMax, 1);
+        }
 
 
         if (puzzleTag == 0)
@@ -76,7 +83,7 @@ public class IntroPuzzleController : MonoBehaviour
             clueRot.z = correctInput[i] * 45;
             clues[i].transform.localEulerAngles = clueRot;
             //clues[i].transform.eulerAngles = new Vector3(0, 0, 180);
-            Debug.Log("Correct: " + correctInput[i] + "  Rot: " + correctInput[i] * 45 + "  ActualRot: " + clues[i].transform.eulerAngles);
+            //Debug.Log("Correct: " + correctInput[i] + "  Rot: " + correctInput[i] * 45 + "  ActualRot: " + clues[i].transform.eulerAngles);
 
             clues[i].GetComponent<MeshRenderer>().material = allSymbolsObj[i % 2].symbolMats[(int)inputs[i].GetComponent<SymbolRotater>().currentSymbol];
             inputs[i].GetComponent<MeshRenderer>().material = allSymbolsObj[i % 2].symbolMats[(int)inputs[i].GetComponent<SymbolRotater>().currentSymbol];

@@ -38,33 +38,18 @@ public class ClockManager : MonoBehaviour
     bool bIsTurning = false;
 
     public int correctInputSize;
-    [SerializeField] private int correctInputMin;
-    [SerializeField] private int correctInputMax;
+
 
     public int[] correctInputHolder = new int[4];
 
-    public bool isPlayerA;
+    //public bool isPlayerA;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(Systems.randomSeeding.gameObject.name);
+        //Debug.Log(Systems.randomSeeding.gameObject.name);
         //correctInputHolder = new int[correctInputSize];
-        correctInputHolder = Systems.randomSeeding.SetUpArrayBySeed(correctInputHolder, correctInputMin, correctInputMax);
+        //correctInputHolder = Systems.randomSeeding.SetUpArrayBySeed(correctInputHolder, correctInputMin, correctInputMax);
 
-        if (isPlayerA)
-        {
-            answerSymbol = (CreatureSymbols)correctInputHolder[0];
-            clueSymbol = (CreatureSymbols)correctInputHolder[1];
-            revealSymbol = (CreatureSymbols)correctInputHolder[2];
-            correctStatueIndex = correctInputHolder[3];
-        }
-        else
-        {
-            answerSymbol = (CreatureSymbols)correctInputHolder[1];
-            clueSymbol = (CreatureSymbols)correctInputHolder[0];
-            revealSymbol = (CreatureSymbols)correctInputHolder[3];
-            correctStatueIndex = correctInputHolder[2];
-        }
 
         dialRotation.y = currentRot * 45;
 
