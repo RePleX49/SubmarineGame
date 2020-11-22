@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Button
   - Pillar
+  - RaycastTrigger
   layers:
   - Default
   - TransparentFX

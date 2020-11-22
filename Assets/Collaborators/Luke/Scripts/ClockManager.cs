@@ -37,9 +37,20 @@ public class ClockManager : MonoBehaviour
     bool bAnswered = false;
     bool bIsTurning = false;
 
+    public int correctInputSize;
+
+
+    public int[] correctInputHolder = new int[4];
+
+    //public bool isPlayerA;
     // Start is called before the first frame update
     void Start()
     {
+        //Debug.Log(Systems.randomSeeding.gameObject.name);
+        //correctInputHolder = new int[correctInputSize];
+        //correctInputHolder = Systems.randomSeeding.SetUpArrayBySeed(correctInputHolder, correctInputMin, correctInputMax);
+
+
         dialRotation.y = currentRot * 45;
 
         UpdateSymbols();

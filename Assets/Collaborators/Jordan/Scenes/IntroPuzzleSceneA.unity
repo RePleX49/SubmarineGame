@@ -53215,10 +53215,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctInput: 06000000010000000500000002000000
   inputs:
-  - {fileID: 347482995}
-  - {fileID: 1952989348}
-  - {fileID: 956596205}
-  - {fileID: 373475295}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   clues:
   - {fileID: 1040995531}
   - {fileID: 246828488}
@@ -63344,12 +63344,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correctInput: 010000000300000004000000020000000100000004000000
   inputs:
-  - {fileID: 2055561199}
-  - {fileID: 1482326880}
-  - {fileID: 325783931}
-  - {fileID: 2025200250}
-  - {fileID: 1310938249}
-  - {fileID: 595696372}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   clues: []
   allSymbols:
   - {fileID: 2100000, guid: 0778eb4ae0afc4e91a0f17871566da97, type: 2}
@@ -67534,7 +67534,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 57a3dd65e078dc7418ae3fab023166da, type: 2}
+  - {fileID: 2100000, guid: 8b5d2ab4e44c24ac1aabc8358a560dd2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -69542,7 +69542,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnAroundSpeed: 0.2
   forwardMoveSpeed: 8
+  forwardMin: 20
+  speedBoost: 10
+  forwardMax: 80
   sideMoveSpeed: 5
+  upMoveSpeed: 6
   currentSpeed: {x: 0, y: 0, z: 0}
   currentVelocity: {x: 0, y: 0, z: 0}
   speedSmoothTime: 0.5

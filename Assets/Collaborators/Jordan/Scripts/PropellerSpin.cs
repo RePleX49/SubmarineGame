@@ -26,7 +26,7 @@ public class PropellerSpin : MonoBehaviour
     {
         time = Time.time;
 
-        if (time % 1 >= 0.95 || time % 1 <= 0.05)
+        if (time % 1 >= 0.97 || time % 1 <= 0.03)
         {
             //Debug.Log("OnSec: " + (timeScale - shaderScale));
             if (timeScale != shaderScale)

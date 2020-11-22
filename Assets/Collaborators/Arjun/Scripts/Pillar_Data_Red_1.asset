@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b822365ebfe9342894c632da2ddc20, type: 3}
+  m_Name: Pillar_Data_Red_1
+  m_EditorClassIdentifier: 
+  symbolTexs: []
+  symbolMats:
+  - {fileID: 2100000, guid: e138bac8da86c764db9ab4d3fe63d5be, type: 2}
+  - {fileID: 2100000, guid: 66b7ac314917d094ab3847421e82e68b, type: 2}
+  - {fileID: 2100000, guid: 352248da9f059bc4b990f2a798812194, type: 2}
+  - {fileID: 2100000, guid: f328e5298df3bbc4ab580d212cdcdf47, type: 2}
+  - {fileID: 2100000, guid: 2accb235fabab2343b21906bf1e9e4bf, type: 2}

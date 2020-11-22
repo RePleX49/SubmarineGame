@@ -9,6 +9,56 @@ public class FinalButton : ButtonScript
     public SymbolRotater[] locks;
     public GameObject finalText;
 
+    public ClockManager[] dials;
+
+    public bool isPlayerA;
+
+    [SerializeField] private int correctInputMin;
+    [SerializeField] private int correctInputMax;
+    [SerializeField] private int[] correctInputHolder = new int[16];
+
+    void Awake()
+    {
+
+        correctInputHolder = Systems.randomSeeding.SetUpArrayBySeed(correctInputHolder, correctInputMin, correctInputMax, 4, 2, 4, 1);
+        //if (isPlayerA)
+        //{
+        //    correctInputHolder = Systems.randomSeeding.SetUpArrayBySeed(correctInputHolder, correctInputMin, correctInputMax, 4, 2);
+        //}
+        //else
+        //{
+        //    correctInputHolder = Systems.randomSeeding.SetUpArrayBySeed(correctInputHolder, correctInputMin, correctInputMax, 4, 1);
+        //}
+
+        for (int i = 0; i < dials.Length; i++)
+        {
+          
+            if (isPlayerA) 
+            {
+                dials[i].answerSymbol = (CreatureSymbols)correctInputHolder[0 + (4 * i)];
+                dials[i].clueSymbol = (CreatureSymbols)correctInputHolder[1 + (4 * i)];
+                dials[i].revealSymbol = (CreatureSymbols)correctInputHolder[2 + (4 * i)];
+                dials[i].correctStatueIndex = correctInputHolder[3 + (4 * i)];
+                locks[i].currentSymbol = (CreatureSymbols)correctInputHolder[3 + (4 * i)];
+                lockRotationAnswer[i] = correctInputHolder[2 + (4 * i)];
+                locks[i].GetComponent<MeshRenderer>().material = locks[i].symbolsData.symbolMats[(int)locks[i].currentSymbol];
+            }
+            else
+            {
+                Debug.Log("ANSWER: " + (CreatureSymbols)correctInputHolder[1 + (4 * i)]);
+                Debug.Log("ROTATOR: " + (CreatureSymbols)correctInputHolder[2 + (4 * i)]);
+                Debug.Log("ROTATOR ANGLE: " + correctInputHolder[3 + (4 * i)]);
+                dials[i].answerSymbol = (CreatureSymbols)correctInputHolder[1 + (4 * i)];
+                dials[i].clueSymbol = (CreatureSymbols)correctInputHolder[0 + (4 * i)];
+                dials[i].revealSymbol = (CreatureSymbols)correctInputHolder[3 + (4 * i)];
+                dials[i].correctStatueIndex = correctInputHolder[2 + (4 * i)];
+                locks[i].currentSymbol = (CreatureSymbols)correctInputHolder[2 + (4 * i)]; 
+                lockRotationAnswer[i] = correctInputHolder[3 + (4 * i)];
+                locks[i].GetComponent<MeshRenderer>().material = locks[i].symbolsData.symbolMats[(int)locks[i].currentSymbol];
+            }
+        }
+    }
+
     public override void UseButton()
     {
         bool bCorrectCombination = true;
