@@ -38,7 +38,7 @@ public class IntroPuzzleController : MonoBehaviour
     public EndDoormanager doorManager;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
         //correctInput = new int[correctInputSize];
@@ -68,6 +68,7 @@ public class IntroPuzzleController : MonoBehaviour
     {
         for (int i = 0; i < clues.Length; i++)
         {
+            Debug.Log("NUMBER: " + (correctInput[i] - 1) + "SYMBOL: " + allSymbolsObj[i].symbolMats[correctInput[i] - 1]);
             clues[i].GetComponent<MeshRenderer>().material = allSymbolsObj[i].symbolMats[correctInput[i] - 1];
             //clues[i].GetComponent<MeshRenderer>().material = allSymbols[correctInput[i]];
             //set the texture of each clue to the corresponding correct symbol 
