@@ -36,6 +36,8 @@ public class Cam : MonoBehaviour
     public Vector3 crossSmall;
     public Vector3 crossLarge;
 
+    public float crossChangeRate = .0075f;
+
     private string buttonTag = "Button";
 
 
@@ -63,15 +65,16 @@ public class Cam : MonoBehaviour
             //Debug.Log("Hit");
             if (Hit.transform.gameObject.CompareTag(buttonTag) && !Hit.collider.isTrigger)
             {
-                if (crosshair.transform.localScale.x > crossSmall.x)
+                if (prevSprite != crossEmpty)
                 {
-                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - .0075f, crosshair.transform.localScale.y - .0075f, crosshair.transform.localScale.z);
+                    crosshair.sprite = crossEmpty;
+                    prevSprite = crossEmpty;
                 }
-                else if (prevSprite != crossFull)
+                if (crosshair.transform.localScale.x < crossLarge.x)
                 {
-                    crosshair.sprite = crossFull;
-                    prevSprite = crossFull;
+                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x + crossChangeRate, crosshair.transform.localScale.y + crossChangeRate, crosshair.transform.localScale.z);
                 }
+
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -87,30 +90,29 @@ public class Cam : MonoBehaviour
             else
             {
                 //Debug.DrawRay(crosshair.transform.position, transform.TransformDirection(Vector3.forward) * castDist, Color.yellow);
-                if (prevSprite != crossEmpty)
-                {
-                    crosshair.sprite = crossEmpty;
-                    prevSprite = crossEmpty;
-                }
 
-                if (crosshair.transform.localScale.x < crossLarge.x)
+
+                if (crosshair.transform.localScale.x > crossSmall.x)
                 {
-                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x + .0075f, crosshair.transform.localScale.y + .0075f, crosshair.transform.localScale.z);
+                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - crossChangeRate, crosshair.transform.localScale.y - crossChangeRate, crosshair.transform.localScale.z);
+                } else if (prevSprite != crossFull)
+                {
+                    crosshair.sprite = crossFull;
+                    prevSprite = crossFull;
                 }
             }
         }
         else
         {
             //Debug.DrawRay(crosshair.transform.position, transform.TransformDirection(Vector3.forward) * castDist, Color.yellow);
-            if (prevSprite != crossEmpty)
-            {
-                crosshair.sprite = crossEmpty;
-                prevSprite = crossEmpty;
-            }
 
-            if (crosshair.transform.localScale.x < crossLarge.x)
+            if (crosshair.transform.localScale.x > crossSmall.x)
             {
-                crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x + .0075f, crosshair.transform.localScale.y + .0075f, crosshair.transform.localScale.z);
+                crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - crossChangeRate, crosshair.transform.localScale.y - crossChangeRate, crosshair.transform.localScale.z);
+            } else if (prevSprite != crossFull)
+            {
+                crosshair.sprite = crossFull;
+                prevSprite = crossFull;
             }
         }
 
