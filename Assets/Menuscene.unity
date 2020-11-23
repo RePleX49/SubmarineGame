@@ -4249,6 +4249,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8ff40e15b915dee4495530ef5002eeef, type: 2}
   - {fileID: 2100000, guid: bc17d29b526d136409f19a89a8724108, type: 2}
   - {fileID: 2100000, guid: 0db010432243f1b409840f4e215facd4, type: 2}
+  symbolsObj: {fileID: 0}
+  puzzleTag: 0
 --- !u!65 &280214105
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12236,6 +12238,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 5bd470b672b484e4fbef2d748ace8944, type: 2}
   - {fileID: 2100000, guid: a7a62d95e591f4e0fa0b44487cd07f55, type: 2}
   - {fileID: 2100000, guid: 60ef1f3d49cd2484ca80d51b5ca5c731, type: 2}
+  symbolsObj: {fileID: 0}
+  puzzleTag: 0
 --- !u!65 &703876786
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12367,9 +12371,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 38a4d6f9009e46149bc9ce087833a667, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 90c3b1cd0fdcc45a78e4bbdcb34376c7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.498
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -22333,6 +22337,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: a5245e3d3e46cb340a0e84708e9bd596, type: 2}
   - {fileID: 2100000, guid: 59f6b83b531b8ae42a6a8ba302598bcd, type: 2}
   - {fileID: 2100000, guid: 10ee1a97c4c1c024389c2e10f73e33da, type: 2}
+  symbolsObj: {fileID: 0}
+  puzzleTag: 0
 --- !u!65 &1552667318
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27338,6 +27344,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: d6544d10df94a92419257496311b0e73, type: 2}
   - {fileID: 2100000, guid: bbef7e3111fd3da4a94f915384b7e366, type: 2}
   - {fileID: 2100000, guid: 4aacac458672b764599dbfd29240917e, type: 2}
+  symbolsObj: {fileID: 0}
+  puzzleTag: 0
 --- !u!65 &1885200456
 BoxCollider:
   m_ObjectHideFlags: 0

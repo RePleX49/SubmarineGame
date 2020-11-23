@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cam : MonoBehaviour
 {
@@ -25,6 +26,20 @@ public class Cam : MonoBehaviour
     public Vector3 cameraOffset;
     Vector3 startingEuler;
 
+    public Image crosshair;
+
+    public Sprite crossFull;
+    public Sprite crossEmpty;
+
+    private Sprite prevSprite;
+
+    public Vector3 crossSmall;
+    public Vector3 crossLarge;
+
+    public float crossChangeRate = .0075f;
+
+    private string buttonTag = "Button";
+
 
 
     // Start is called before the first frame update
@@ -33,32 +48,95 @@ public class Cam : MonoBehaviour
         Systems.cam = this;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        prevSprite = crossEmpty;
 
         startingEuler = transform.eulerAngles;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
+
             //Debug.Log("Click");
             RaycastHit Hit;
+        Debug.DrawRay(viewCamera.position, viewCamera.forward * raycastDistance, Color.green, 2);
 
-            if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
+        if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
+        {
+            //Debug.Log("Hit");
+            if (Hit.transform.gameObject.CompareTag(buttonTag) && !Hit.collider.isTrigger)
             {
-                //Debug.Log("Hit");
-                if (Hit.transform.gameObject.CompareTag("Button"))
+                if (prevSprite != crossEmpty)
+                {
+                    crosshair.sprite = crossEmpty;
+                    prevSprite = crossEmpty;
+                }
+                if (crosshair.transform.localScale.x < crossLarge.x)
+                {
+                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x + crossChangeRate, crosshair.transform.localScale.y + crossChangeRate, crosshair.transform.localScale.z);
+                }
+
+
+                if (Input.GetKeyDown(KeyCode.F))
                 {
                     ButtonScript button = Hit.transform.gameObject.GetComponent<ButtonScript>();
-                    
-                    if(button)
+
+                    if (button)
                     {
                         button.UseButton();
 
                     }
                 }
             }
+            else
+            {
+                //Debug.DrawRay(crosshair.transform.position, transform.TransformDirection(Vector3.forward) * castDist, Color.yellow);
+
+
+                if (crosshair.transform.localScale.x > crossSmall.x)
+                {
+                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - crossChangeRate, crosshair.transform.localScale.y - crossChangeRate, crosshair.transform.localScale.z);
+                } else if (prevSprite != crossFull)
+                {
+                    crosshair.sprite = crossFull;
+                    prevSprite = crossFull;
+                }
+            }
         }
+        else
+        {
+            //Debug.DrawRay(crosshair.transform.position, transform.TransformDirection(Vector3.forward) * castDist, Color.yellow);
+
+            if (crosshair.transform.localScale.x > crossSmall.x)
+            {
+                crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - crossChangeRate, crosshair.transform.localScale.y - crossChangeRate, crosshair.transform.localScale.z);
+            } else if (prevSprite != crossFull)
+            {
+                crosshair.sprite = crossFull;
+                prevSprite = crossFull;
+            }
+        }
+
+
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    //Debug.Log("Click");
+        //    RaycastHit Hit;
+
+        //    if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
+        //    {
+        //        //Debug.Log("Hit");
+        //        if (Hit.transform.gameObject.CompareTag("Button"))
+        //        {
+        //            ButtonScript button = Hit.transform.gameObject.GetComponent<ButtonScript>();
+
+        //            if(button)
+        //            {
+        //                button.UseButton();
+
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     void LateUpdate()

@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Menuscene.unity
+    guid: 5fc932c54f9539a4baf1dba2690303db
   - enabled: 0
     path: Assets/Collaborators/Luke/Scenes/ViewPuzzleA.unity
     guid: e91116f105c5c9c47bf0c40092b9b5d0
