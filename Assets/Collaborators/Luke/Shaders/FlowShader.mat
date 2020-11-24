@@ -39,4 +39,5 @@ Material:
     m_Colors:
     - _Color0: {r: 0, g: 0.6890354, b: 1, a: 0}
     - _FlowEndNoiseSpeed: {r: 0.1, g: -0.1, b: 0, a: 0}
+    - _WaterColor: {r: 0, g: 3.3503952, b: 5.0387836, a: 0}
   m_BuildTextureStacks: []
