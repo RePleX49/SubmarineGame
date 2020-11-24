@@ -72,7 +72,7 @@ public class Cam : MonoBehaviour
                 }
                 if (crosshair.transform.localScale.x < crossLarge.x)
                 {
-                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x + crossChangeRate, crosshair.transform.localScale.y + crossChangeRate, crosshair.transform.localScale.z);
+                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x + (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.y + (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.z);
                 }
 
 
@@ -94,7 +94,7 @@ public class Cam : MonoBehaviour
 
                 if (crosshair.transform.localScale.x > crossSmall.x)
                 {
-                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - crossChangeRate, crosshair.transform.localScale.y - crossChangeRate, crosshair.transform.localScale.z);
+                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.y - (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.z);
                 } else if (prevSprite != crossFull)
                 {
                     crosshair.sprite = crossFull;
@@ -108,7 +108,7 @@ public class Cam : MonoBehaviour
 
             if (crosshair.transform.localScale.x > crossSmall.x)
             {
-                crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - crossChangeRate, crosshair.transform.localScale.y - crossChangeRate, crosshair.transform.localScale.z);
+                crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.y - (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.z);
             } else if (prevSprite != crossFull)
             {
                 crosshair.sprite = crossFull;
