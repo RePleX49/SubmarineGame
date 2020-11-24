@@ -45,9 +45,9 @@ public class FinalButton : ButtonScript
             }
             else
             {
-                Debug.Log("ANSWER: " + (CreatureSymbols)correctInputHolder[1 + (4 * i)]);
-                Debug.Log("ROTATOR: " + (CreatureSymbols)correctInputHolder[2 + (4 * i)]);
-                Debug.Log("ROTATOR ANGLE: " + correctInputHolder[3 + (4 * i)]);
+                //Debug.Log("ANSWER: " + (CreatureSymbols)correctInputHolder[1 + (4 * i)]);
+                //Debug.Log("ROTATOR: " + (CreatureSymbols)correctInputHolder[2 + (4 * i)]);
+                //Debug.Log("ROTATOR ANGLE: " + correctInputHolder[3 + (4 * i)]);
                 dials[i].answerSymbol = (CreatureSymbols)correctInputHolder[1 + (4 * i)];
                 dials[i].clueSymbol = (CreatureSymbols)correctInputHolder[0 + (4 * i)];
                 dials[i].revealSymbol = (CreatureSymbols)correctInputHolder[3 + (4 * i)];

@@ -121,7 +121,7 @@ public class RandomSeeding : MonoBehaviour
         List<int> usedRands2 = new List<int>();
         List<int> usedRands3 = new List<int>();
 
-        for (int i = 0; i < max; i++)
+        for (int i = min; i < max; i++)
         {
             usedRands.Add(i);
             usedRands2.Add(i);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EndDoormanager : MonoBehaviour
 {
 
-    private int puzzlesComplete = 0;
+    [SerializeField] private int puzzlesComplete = 0;
 
     private char prevPuzzleComplete = 'a';
 
@@ -36,12 +36,19 @@ public class EndDoormanager : MonoBehaviour
     {
         if (puzzleTag == 1)
         {
-            prevPuzzleComplete = 'p';
+            if (prevPuzzleComplete != 'p')
+            {
+                puzzlesComplete++;
+                prevPuzzleComplete = 'p';
+            }
         } else if (puzzleTag == 2)
         {
-            prevPuzzleComplete = 's';
+            if (prevPuzzleComplete != 's')
+            {
+                puzzlesComplete++;
+                prevPuzzleComplete = 's';
+            }
         }
 
-        puzzlesComplete++;
     }
 }
