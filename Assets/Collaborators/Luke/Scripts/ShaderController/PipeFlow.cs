@@ -26,6 +26,22 @@ public class PipeFlow : MonoBehaviour
         }
     }
 
+    public void FillPipe()
+    {
+        float initialVal = pipeRenderer.material.GetFloat("_FillValue");
+
+        if (initialVal < 0.1f)
+            StartCoroutine(ChangeFlow(2.0f));
+    }
+
+    public void DrainPipe()
+    {
+        float initialVal = pipeRenderer.material.GetFloat("_FillValue");
+
+        if (initialVal >= 1.9f)
+            StartCoroutine(ChangeFlow(0.0f));
+    }
+
     IEnumerator ChangeFlow(float targetVal)
     {
         float elaspedTime = 0.0f;

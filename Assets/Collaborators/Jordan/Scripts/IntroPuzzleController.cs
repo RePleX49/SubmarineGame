@@ -20,6 +20,8 @@ public class IntroPuzzleController : MonoBehaviour
 
     [SerializeField] private TabletData[] allSymbolsObj;
 
+    [SerializeField] private PipeFlow[] pipes;
+
     //An array holding all possible symbols
     [SerializeField] private Material[] allSymbols;
 
@@ -153,10 +155,22 @@ public class IntroPuzzleController : MonoBehaviour
         else
         {
             doorManager.CompletePuzzle(puzzleTag);
+            StartCoroutine(ActivatePipes());
             //open main door
         }
 
     }
 
+    IEnumerator ActivatePipes()
+    {
+        foreach(PipeFlow pipe in pipes)
+        {
+            pipe.FillPipe();
+
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        yield return null;
+    }
 
 }
