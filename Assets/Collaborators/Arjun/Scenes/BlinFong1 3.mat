@@ -30,7 +30,7 @@ Material:
     m_Floats:
     - _Partition: 0.38
     - _Shininess: 0.1
-    - __dirty: 1
+    - __dirty: 0
     m_Colors:
     - _Albedo: {r: 1, g: 1, b: 1, a: 0}
     - _Dark: {r: 0.4205834, g: 0.03556424, b: 0.509434, a: 1}
