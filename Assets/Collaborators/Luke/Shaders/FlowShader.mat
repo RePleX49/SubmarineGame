@@ -34,7 +34,7 @@ Material:
     m_Floats:
     - _Cutoff: 0.6
     - _EdgePower: 5.75
-    - _FillValue: 0
+    - _FillValue: 0.046
     - __dirty: 0
     m_Colors:
     - _Color0: {r: 0, g: 0.6890354, b: 1, a: 0}
