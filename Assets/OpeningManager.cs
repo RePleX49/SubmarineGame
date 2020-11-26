@@ -72,12 +72,16 @@ public class OpeningManager : MonoBehaviour
     public IEnumerator TextCutscene()
     {
         StartCoroutine(TextFade(gameText, 1, 5f, true));
+        //for (float timer = 0; timer < 1f; timer += Time.deltaTime) { if (Input.GetKeyDown(KeyCode.Space)) { break; } yield return null; }
         yield return new WaitForSeconds(1f);
         StartCoroutine(TextFade(arjunName, 1, 4f, true));
+        //for (float timer = 0; timer < 1f; timer += Time.deltaTime) { if (Input.GetKeyDown(KeyCode.Space)) { break; } yield return null; }
         yield return new WaitForSeconds(1f);
         StartCoroutine(TextFade(jordanName, 1, 3f, true));
+        //for (float timer = 0; timer < 1f; timer += Time.deltaTime) { if (Input.GetKeyDown(KeyCode.Space)) { break; } yield return null; }
         yield return new WaitForSeconds(1f);
         StartCoroutine(TextFade(lukeName, 1, 2f, true));
+        //for (float timer = 0; timer < 5f; timer += Time.deltaTime) { if (Input.GetKeyDown(KeyCode.Space)) { break; } yield return null; }
         yield return new WaitForSeconds(5f);
         StartCoroutine(TextFade(warningText1, 1, 15, true));
         yield return new WaitForSeconds(3f);
