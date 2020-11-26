@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float turnAroundSpeed = 0.2f;
     [SerializeField] private float forwardMoveSpeed = 20.0f;
-    [SerializeField] private float forwardMin = 20.0f;
-    [SerializeField] private float speedBoost = 10f;
+    [SerializeField] private float normalSpeed = 20.0f;
+    [SerializeField] private float boostSpeed = 32f;
     [SerializeField] private float forwardMax = 80f;
     [SerializeField] private float sideMoveSpeed = 10.0f;
     [SerializeField] private float upMoveSpeed = 6.0f;
@@ -56,10 +56,17 @@ public class Player : MonoBehaviour
     {
         Vector3 targetSpeed = Vector3.zero;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
-            StartCoroutine(SpeedBoost(5f));
-            propellerManager.SetTimeScale(boostPropScale);
+            //StartCoroutine(SpeedBoost(5f));
+            forwardMoveSpeed = 32f;
+            foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 480f; }
+            propellerManager.SetTimeScale(boostPropScale);           
+        }
+        else
+        {
+            foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 40f; }
+            forwardMoveSpeed = normalSpeed;
         }
 
         if (Input.GetKey(KeyCode.W))
@@ -92,12 +99,12 @@ public class Player : MonoBehaviour
             foreach (ParticleSystem particle in leftParticles) { particle.emissionRate = 0f; }
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.E))
         {
             targetSpeed.y = upMoveSpeed;
             //propellerManager.SetTimeScale(strafePropScale);
         }
-        else if (Input.GetKey(KeyCode.LeftControl))
+        else if (Input.GetKey(KeyCode.Q))
         {
             targetSpeed.y = -upMoveSpeed;
             propellerManager.SetTimeScale(strafePropScale);

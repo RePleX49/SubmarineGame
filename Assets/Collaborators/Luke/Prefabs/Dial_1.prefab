@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42616a772d0e2b94baf6adce293070f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationDuration: 1
   symbolHolders:
   - {fileID: 0}
   - {fileID: 0}
@@ -368,6 +369,9 @@ MonoBehaviour:
   revealSymbol: 5
   images: {fileID: 11400000, guid: cc9c5314abc3ad74083bbb3849bec6af, type: 2}
   revealImages: {fileID: 11400000, guid: 313274204afc22a4a87b531aaf979701, type: 2}
+  blankSymbol: {fileID: 0}
+  correctInputSize: 0
+  correctInputHolder: 00000000000000000000000000000000
 --- !u!1 &4382617940336194672
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +603,7 @@ GameObject:
   - component: {fileID: 4729336974325830044}
   - component: {fileID: 8506773573610823225}
   - component: {fileID: 5902765795042142963}
+  - component: {fileID: 8218383588243930248}
   m_Layer: 0
   m_Name: DialPanel
   m_TagString: Untagged
@@ -672,6 +677,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8218383588243930248
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5398173589188872998}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4068373912626513877, guid: e278e3c6af2aab44c9ddc76ec70a8786, type: 3}
 --- !u!1 &8968303980221447761
 GameObject:
   m_ObjectHideFlags: 0

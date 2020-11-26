@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 3c72c1f871c2ff84aa4543403a7dd66f
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _WaterFoam: {fileID: 2800000, guid: ed7ba18ac1b0b5b409d784d22399347a, type: 3}
+  - _TextureSample0: {fileID: 2800000, guid: ed7ba18ac1b0b5b409d784d22399347a, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
