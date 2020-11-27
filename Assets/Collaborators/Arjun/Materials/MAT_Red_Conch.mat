@@ -31,5 +31,5 @@ Material:
     - __dirty: 0
     m_Colors:
     - _FillColor: {r: 0.6037736, g: 0.11685942, b: 0, a: 0}
-    - _OutlineColor: {r: 1.2392157, g: 0.8581315, b: 0, a: 0}
+    - _OutlineColor: {r: 1.4980392, g: 1.0431373, b: 0, a: 0}
   m_BuildTextureStacks: []

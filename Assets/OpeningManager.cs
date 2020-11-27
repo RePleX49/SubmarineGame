@@ -46,7 +46,16 @@ public class OpeningManager : MonoBehaviour
     bool invalidOn = false;
     public string cutscene1Scene;
     public string cutscene2Scene;
-
+    public TMP_Text optionsTitle;
+    public TMP_Text musicTitle;
+    public TMP_Text sfxTitle;
+    public Button returnButton;
+    public Button optionsButton;
+    public GameObject musicSlider;
+    public GameObject sfxSlider;
+    public TMP_Text[] assistText;
+    public Image[] imgArr1;
+    public Image[] imgArr2;
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +70,10 @@ public class OpeningManager : MonoBehaviour
         player1Start.gameObject.SetActive(false);
         player2Start.gameObject.SetActive(false);
         seedInput.gameObject.SetActive(false);
+        returnButton.gameObject.SetActive(false);
+        optionsButton.gameObject.SetActive(false);
+        musicSlider.SetActive(false);
+        sfxSlider.SetActive(false);
     }
 
     // Update is called once per frame
@@ -72,12 +85,16 @@ public class OpeningManager : MonoBehaviour
     public IEnumerator TextCutscene()
     {
         StartCoroutine(TextFade(gameText, 1, 5f, true));
+        //for (float timer = 0; timer < 1f; timer += Time.deltaTime) { if (Input.GetKeyDown(KeyCode.Space)) { break; } yield return null; }
         yield return new WaitForSeconds(1f);
         StartCoroutine(TextFade(arjunName, 1, 4f, true));
+        //for (float timer = 0; timer < 1f; timer += Time.deltaTime) { if (Input.GetKeyDown(KeyCode.Space)) { break; } yield return null; }
         yield return new WaitForSeconds(1f);
         StartCoroutine(TextFade(jordanName, 1, 3f, true));
+        //for (float timer = 0; timer < 1f; timer += Time.deltaTime) { if (Input.GetKeyDown(KeyCode.Space)) { break; } yield return null; }
         yield return new WaitForSeconds(1f);
         StartCoroutine(TextFade(lukeName, 1, 2f, true));
+        //for (float timer = 0; timer < 5f; timer += Time.deltaTime) { if (Input.GetKeyDown(KeyCode.Space)) { break; } yield return null; }
         yield return new WaitForSeconds(5f);
         StartCoroutine(TextFade(warningText1, 1, 15, true));
         yield return new WaitForSeconds(3f);
@@ -93,8 +110,11 @@ public class OpeningManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         playButton.gameObject.SetActive(true);
         creditsButton.gameObject.SetActive(true);
+        optionsButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
         StartCoroutine(TextFade(playButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(optionsButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
         yield return new WaitForSeconds(1f);
         StartCoroutine(TextFade(creditsButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
         yield return new WaitForSeconds(1f);
@@ -107,10 +127,12 @@ public class OpeningManager : MonoBehaviour
         StartCoroutine(Fade(rendTexture, 1));
         StartCoroutine(Fade(gameTitle, 1));
         StartCoroutine(Fade(playButton.GetComponentInChildren<TMP_Text>(), 1));
+        StartCoroutine(Fade(optionsButton.GetComponentInChildren<TMP_Text>(), 1));
         StartCoroutine(Fade(creditsButton.GetComponentInChildren<TMP_Text>(), 1));
         StartCoroutine(Fade(quitButton.GetComponentInChildren<TMP_Text>(), 1));
         yield return new WaitForSeconds(1f);
         playButton.gameObject.SetActive(false);
+        optionsButton.gameObject.SetActive(false);
         creditsButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
@@ -120,6 +142,7 @@ public class OpeningManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         foreach (TMP_Text text in controlText) { StartCoroutine(TextFade(text, 1, 7, true)); }
         yield return new WaitForSeconds(9f);
+        foreach (TMP_Text text in assistText) { StartCoroutine(TextFade(text, 1, 8, true)); }
         foreach (TMP_Text text in controlInsturctions) { StartCoroutine(TextFade(text, 1, 8, true)); }
         yield return new WaitForSeconds(12f);
         player1Button.gameObject.SetActive(true);
@@ -306,10 +329,12 @@ public class OpeningManager : MonoBehaviour
         StartCoroutine(Fade(rendTexture, 1));
         StartCoroutine(Fade(gameTitle, 1));
         StartCoroutine(Fade(playButton.GetComponentInChildren<TMP_Text>(), 1));
+        StartCoroutine(Fade(optionsButton.GetComponentInChildren<TMP_Text>(), 1));
         StartCoroutine(Fade(creditsButton.GetComponentInChildren<TMP_Text>(), 1));
         StartCoroutine(Fade(quitButton.GetComponentInChildren<TMP_Text>(), 1));
         yield return new WaitForSeconds(1f);
         playButton.gameObject.SetActive(false);
+        optionsButton.gameObject.SetActive(false);
         creditsButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
@@ -333,9 +358,12 @@ public class OpeningManager : MonoBehaviour
         StartCoroutine(TextFade(gameTitle, 1, 0, false));
         yield return new WaitForSeconds(1f);
         playButton.gameObject.SetActive(true);
+        optionsButton.gameObject.SetActive(true);
         creditsButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
         StartCoroutine(TextFade(playButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(optionsButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
         yield return new WaitForSeconds(1f);
         StartCoroutine(TextFade(creditsButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
         yield return new WaitForSeconds(1f);
@@ -399,6 +427,79 @@ public class OpeningManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public IEnumerator OptionsMenuIn()
+    {
+        StartCoroutine(Fade(borderImage, 1));
+        StartCoroutine(Fade(rendTexture, 1));
+        StartCoroutine(Fade(gameTitle, 1));
+        StartCoroutine(Fade(playButton.GetComponentInChildren<TMP_Text>(), 1));
+        StartCoroutine(Fade(optionsButton.GetComponentInChildren<TMP_Text>(), 1));
+        StartCoroutine(Fade(creditsButton.GetComponentInChildren<TMP_Text>(), 1));
+        StartCoroutine(Fade(quitButton.GetComponentInChildren<TMP_Text>(), 1));
+        yield return new WaitForSeconds(1f);
+        playButton.gameObject.SetActive(false);
+        optionsButton.gameObject.SetActive(false);
+        creditsButton.gameObject.SetActive(false);
+        quitButton.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(TextFade(optionsTitle, 1, 2, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(musicTitle, 1, 2, false));
+        yield return new WaitForSeconds(1f);
+        musicSlider.gameObject.SetActive(true);
+        foreach (Image img in imgArr1) { StartCoroutine(TextFade(img, 1f, 20, false)); }
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(sfxTitle, 1, 2, false));
+        yield return new WaitForSeconds(1f);
+        sfxSlider.gameObject.SetActive(true);
+        foreach (Image img in imgArr2) { StartCoroutine(TextFade(img, 1f, 20, false)); }
+        returnButton.gameObject.SetActive(true);
+        StartCoroutine(TextFade(returnButton.GetComponentInChildren<TMP_Text>(), 1, 2, false));
+    }
+
+    public IEnumerator OptionsMenuOut()
+    {
+        StartCoroutine(Fade(optionsTitle, 1));
+        StartCoroutine(Fade(musicTitle, 1));
+        StartCoroutine(Fade(sfxTitle, 1));
+        foreach (Image img in imgArr1) { StartCoroutine(Fade(img, 1f)); }
+        foreach (Image img in imgArr2) { StartCoroutine(Fade(img, 1f)); }
+        StartCoroutine(Fade(returnButton.GetComponentInChildren<TMP_Text>(), 1));
+        
+
+        yield return new WaitForSeconds(2f);
+        musicSlider.gameObject.SetActive(false);
+        sfxSlider.gameObject.SetActive(false);
+        returnButton.gameObject.SetActive(false);
+        StartCoroutine(TextFade(borderImage, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(rendTexture, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(gameTitle, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        playButton.gameObject.SetActive(true);
+        optionsButton.gameObject.SetActive(true);
+        creditsButton.gameObject.SetActive(true);
+        quitButton.gameObject.SetActive(true);
+        StartCoroutine(TextFade(playButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(optionsButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(creditsButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(quitButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+    }
+
+    public void OptionsIn()
+    {
+        StartCoroutine(OptionsMenuIn());
+    }
+
+    public void OptionsOut()
+    {
+        StartCoroutine(OptionsMenuOut());
     }
 
 
