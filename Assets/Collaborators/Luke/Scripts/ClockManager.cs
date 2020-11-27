@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ClockManager : MonoBehaviour
 {
+    public StatueJuice statueJuice;
+
     public float rotationDuration = 1.0f;
 
     public ClockDoor[] symbolHolders;
@@ -109,6 +111,8 @@ public class ClockManager : MonoBehaviour
             ClearSymbols();
             audioSource.clip = correctSound;
             audioSource.Play();
+
+            statueJuice.isPuzzleComplete = true;
             //answerIndex++;
         }
     }
