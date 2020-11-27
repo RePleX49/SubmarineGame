@@ -155,6 +155,10 @@ public class Player : MonoBehaviour
             alignmentPosition = other.GetComponent<PillarData>().pillarPos;
             alignmentRotation = Quaternion.Euler(other.GetComponent<PillarData>().pillarRot);
         }
+        else if (other.tag == "HolyLight")
+        {
+            other.GetComponent<EndingCutscene>().showWinText = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -163,6 +167,10 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(Systems.UI.FadeOutText(Systems.UI.pillarText, "Press F to Dock", 1f, Color.white));
             dockable = false;
+        }
+        else if (other.tag == "HolyLight")
+        {
+            other.GetComponent<EndingCutscene>().showWinText = false;
         }
     }
 
