@@ -37,6 +37,8 @@ public class IntroPuzzleController : MonoBehaviour
 
     public EndDoormanager doorManager;
 
+    public StatueJuice statueJuice;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -131,6 +133,10 @@ public class IntroPuzzleController : MonoBehaviour
         if (correct)
         {
             OpenDoor();
+            if (puzzleTag == 2)
+            {
+                statueJuice.isPuzzleComplete = true;
+            }
         }
         else
         {
