@@ -110,7 +110,7 @@ public class EndingCutscene : MonoBehaviour
         StartCoroutine(TextFade(winText2, 2f, 6f, true));
 
         yield return new WaitForSeconds(8f);
-        SceneManager.LoadScene("ReturnMenuScene");
+        SceneManager.LoadScene("Menuscene");
     }
 
     IEnumerator CutsceneHelper()
