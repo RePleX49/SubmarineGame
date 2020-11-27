@@ -8,6 +8,7 @@ TagManager:
   - Pillar
   - RaycastTrigger
   - Emissive_to_baked
+  - HolyLight
   layers:
   - Default
   - TransparentFX
