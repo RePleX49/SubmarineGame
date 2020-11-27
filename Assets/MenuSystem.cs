@@ -77,6 +77,8 @@ public class MenuSystem : MonoBehaviour
 
     IEnumerator MenuIn()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Systems.player.canMove = false;
         Color zeroAlphaWhite = new Color(background.color.r, background.color.g, background.color.b, alpha);
         Color fullAlphaWhite = new Color(background.color.r, background.color.g, background.color.b, 1);
         Color zeroAlphaBlack = new Color(titleText.color.r, titleText.color.g, titleText.color.b, alpha);
@@ -126,6 +128,7 @@ public class MenuSystem : MonoBehaviour
 
     IEnumerator MenuOut()
     {
+        
         Color zeroAlphaWhite = new Color(background.color.r, background.color.g, background.color.b, 0);
         Color fullAlphaWhite = new Color(background.color.r, background.color.g, background.color.b, alpha);
         Color zeroAlphaBlack = new Color(titleText.color.r, titleText.color.g, titleText.color.b, 0);
@@ -171,5 +174,7 @@ public class MenuSystem : MonoBehaviour
         quitButton.SetActive(false);
         soundSlider.gameObject.SetActive(false);
         sfxSlider.gameObject.SetActive(false);
+        Systems.player.canMove = true;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

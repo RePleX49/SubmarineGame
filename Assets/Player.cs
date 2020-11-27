@@ -116,21 +116,28 @@ public class Player : MonoBehaviour
 
         if (dockable && Input.GetKey(KeyCode.F))
         {
+            //    Cursor.visible = false;
+
+            //    Cursor.lockState = CursorLockMode.Confined;
             canMove = false;
             transform.position = Vector3.Lerp(transform.position, alignmentPosition, Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, alignmentRotation, Time.deltaTime);
             Systems.cam.gameObject.transform.position = Vector3.Lerp(Systems.cam.gameObject.transform.position, alignmentPosition, Time.deltaTime);
             Systems.cam.gameObject.transform.rotation = Quaternion.Slerp(Systems.cam.gameObject.transform.rotation, alignmentRotation, Time.deltaTime);
-        } else
+        }
+        else if (dockable && Input.GetKeyUp(KeyCode.F))
         {
             canMove = true;
+            //Cursor.visible = true;
+            //Cursor.lockState = CursorLockMode.Locked;
+            
         }
 
-        if (dockable && Input.GetKeyUp(KeyCode.F))
-        {
-            Systems.cam.yaw = alignmentRotation.eulerAngles.x;
-            Systems.cam.pitch = -alignmentRotation.eulerAngles.y;
-        }
+        //if (dockable && Input.GetKeyUp(KeyCode.F))
+        //{
+        //    Systems.cam.yaw = alignmentRotation.eulerAngles.x;
+        //    Systems.cam.pitch = -alignmentRotation.eulerAngles.y;
+        //}
     }
 
     void Move()
