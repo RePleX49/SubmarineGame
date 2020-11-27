@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &177014938510946629
+--- !u!64 &3242324269927372404
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 9126787673907291396, guid: 88e458024f652f74aa0248ac5f7da78b, type: 3}
+  m_Mesh: {fileID: -8155082116000741454, guid: 88e458024f652f74aa0248ac5f7da78b, type: 3}
 --- !u!114 &8732513578387688174
 MonoBehaviour:
   m_ObjectHideFlags: 0
