@@ -20,6 +20,8 @@ public class IntroPuzzleController : MonoBehaviour
 
     [SerializeField] private TabletData[] allSymbolsObj;
 
+    [SerializeField] private PipeFlow[] pipes;
+
     //An array holding all possible symbols
     [SerializeField] private Material[] allSymbols;
 
@@ -28,6 +30,8 @@ public class IntroPuzzleController : MonoBehaviour
     public GameObject doorTarget;
 
     public float doorMoveDuration;
+
+    public float doorDropDistance;
 
     public int puzzleTag;
 
@@ -142,7 +146,10 @@ public class IntroPuzzleController : MonoBehaviour
         {
             //the inputs are incorrect
             Debug.Log("Incorrect Combination.");
-            incorrectBeep.Play();
+            if (!incorrectBeep.isPlaying)
+            {
+                incorrectBeep.Play();
+            }
         }
     }
 
@@ -153,16 +160,29 @@ public class IntroPuzzleController : MonoBehaviour
 
         if (puzzleTag < 1)
         {
-            StartCoroutine(Systems.transforms.LerpMove(doorHolder.transform, doorTarget.transform.position,
-            doorHolder.transform.rotation, doorHolder.transform.localScale, doorMoveDuration));
+            Vector3 targetEnd = doorHolder.transform.localPosition + new Vector3(0f, -doorDropDistance, 0f);
+
+            StartCoroutine(Systems.transforms.DoorLerp(doorHolder.transform, targetEnd, doorMoveDuration));
         }
         else
         {
             doorManager.CompletePuzzle(puzzleTag);
+            StartCoroutine(ActivatePipes());
             //open main door
         }
 
     }
 
+    IEnumerator ActivatePipes()
+    {
+        foreach(PipeFlow pipe in pipes)
+        {
+            pipe.FillPipe();
+
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        yield return null;
+    }
 
 }

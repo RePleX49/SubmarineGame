@@ -12228,7 +12228,7 @@ MonoBehaviour:
   - {fileID: 1917759848}
   - {fileID: 550607077}
   invalidText: {fileID: 1584182250}
-  cutscene1Scene: StableMainSceneA
+  cutscene1Scene: StableMainSceneA2
   cutscene2Scene: StableMainSceneB
   optionsTitle: {fileID: 1709102386}
   musicTitle: {fileID: 645216567}

@@ -11,11 +11,14 @@ public class FinalButton : ButtonScript
 
     public ClockManager[] dials;
 
+    public EndDoormanager finalDoorScript;
+
     public bool isPlayerA;
 
     [SerializeField] private int correctInputMin;
     [SerializeField] private int correctInputMax;
     [SerializeField] private int[] correctInputHolder = new int[16];
+    [SerializeField] private PipeFlow[] pipes;
 
     void Awake()
     {
@@ -75,7 +78,21 @@ public class FinalButton : ButtonScript
         if(bCorrectCombination)
         {
             // TODO activate final door/ cutscene
-            finalText.SetActive(true);
+            //finalText.SetActive(true);          
+            StartCoroutine(ActivatePipes());
+            finalDoorScript.OpenDoor();
         }
+    }
+
+    IEnumerator ActivatePipes()
+    {
+        foreach (PipeFlow pipe in pipes)
+        {
+            pipe.FillPipe();
+
+            yield return new WaitForSeconds(1.0f);
+        }
+
+        yield return null;
     }
 }

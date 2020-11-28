@@ -56,8 +56,8 @@ public class Cam : MonoBehaviour
     void Update()
     {
 
-            //Debug.Log("Click");
-            RaycastHit Hit;
+        //Debug.Log("Click");
+        RaycastHit Hit;
         Debug.DrawRay(viewCamera.position, viewCamera.forward * raycastDistance, Color.green, 2);
 
         if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
@@ -70,11 +70,11 @@ public class Cam : MonoBehaviour
                     crosshair.sprite = crossEmpty;
                     prevSprite = crossEmpty;
                 }
+
                 if (crosshair.transform.localScale.x < crossLarge.x)
                 {
                     crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x + (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.y + (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.z);
                 }
-
 
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -83,7 +83,6 @@ public class Cam : MonoBehaviour
                     if (button)
                     {
                         button.UseButton();
-
                     }
                 }
             }

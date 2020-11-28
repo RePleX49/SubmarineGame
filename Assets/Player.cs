@@ -15,6 +15,13 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector3 currentVelocity = Vector3.zero;
     [SerializeField] private float speedSmoothTime = 1.0f;
 
+    float defaultFOV;
+    float currentFOV;
+    float targetFOV;
+    [SerializeField] private float rateFOV = 2.0f;
+    [SerializeField] private float boostFOV;
+
+
     [SerializeField] private float maxSpeed = 40.0f;
     [SerializeField] private float acceleration = 2.0f;
 
@@ -44,6 +51,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        defaultFOV = Camera.main.fieldOfView;
         Systems.player = this;
         cc = GetComponent<CharacterController>();
         foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 0f; }
@@ -59,12 +67,14 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //StartCoroutine(SpeedBoost(5f));
+            targetFOV = boostFOV;
             forwardMoveSpeed = 32f;
             foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 480f; }
             propellerManager.SetTimeScale(boostPropScale);           
         }
         else
         {
+            targetFOV = defaultFOV;
             foreach (ParticleSystem particle in forwardParticles) { particle.emissionRate = 40f; }
             forwardMoveSpeed = normalSpeed;
         }
@@ -111,6 +121,7 @@ public class Player : MonoBehaviour
         }
 
         currentSpeed = Vector3.SmoothDamp(currentSpeed, targetSpeed, ref currentVelocity, speedSmoothTime);
+        Camera.main.fieldOfView = Mathf.SmoothDamp(Camera.main.fieldOfView, targetFOV, ref currentFOV, rateFOV);
         if (canMove) { Move(); }
 
 
