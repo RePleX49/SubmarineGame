@@ -7,12 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class OpeningManager : MonoBehaviour
 {
-    //[SerializeField] private string[] openingText = {"A Major Studio Game", "This game has autosaving"};
-    //[SerializeField] private TMP_Text openingTextMesh;
-    //[SerializeField] private float fadeTime = 1f;
-    //[SerializeField] private float stayTime = 3f;
-    //[SerializeField] private Color textColor;
-
     public TMP_Text gameText;
     public TMP_Text arjunName;
     public TMP_Text jordanName;
@@ -56,12 +50,20 @@ public class OpeningManager : MonoBehaviour
     public TMP_Text[] assistText;
     public Image[] imgArr1;
     public Image[] imgArr2;
+    public TMP_InputField player1SeedInput;
+    public Button player1SeedButton;
+    public TMP_Text player1SeedInputInsturctions;
+    private bool customSeed = false;
+    public Button goBackToSeed;
+
+    public bool longMenu;
+
 
     // Start is called before the first frame update
     void Start()
     {
         //StartCoroutine(Systems.UI.TextCutscene(openingTextMesh, openingText, fadeTime, stayTime, textColor));
-        StartCoroutine(TextCutscene());
+        if (longMenu) { StartCoroutine(TextCutscene()); } else { StartCoroutine(ShorterTextCutscene()); }
         playButton.gameObject.SetActive(false);
         creditsButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
@@ -74,6 +76,9 @@ public class OpeningManager : MonoBehaviour
         optionsButton.gameObject.SetActive(false);
         musicSlider.SetActive(false);
         sfxSlider.SetActive(false);
+        player1SeedInput.gameObject.SetActive(false);
+        player1SeedButton.gameObject.SetActive(false);
+        goBackToSeed.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -102,6 +107,27 @@ public class OpeningManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         StartCoroutine(TextFade(warningText3, 1, 9, true));
         yield return new WaitForSeconds(12f);
+        StartCoroutine(TextFade(borderImage, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(rendTexture, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(gameTitle, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        playButton.gameObject.SetActive(true);
+        creditsButton.gameObject.SetActive(true);
+        optionsButton.gameObject.SetActive(true);
+        quitButton.gameObject.SetActive(true);
+        StartCoroutine(TextFade(playButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(optionsButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(creditsButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(quitButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+    }
+
+    public IEnumerator ShorterTextCutscene()
+    {
         StartCoroutine(TextFade(borderImage, 1, 0, false));
         yield return new WaitForSeconds(1f);
         StartCoroutine(TextFade(rendTexture, 1, 0, false));
@@ -167,8 +193,13 @@ public class OpeningManager : MonoBehaviour
         yield return new WaitForSeconds(4f);
         StartCoroutine(TextFade(player1Insturctions, 1, 0, false));
         yield return new WaitForSeconds(5f);
+
         player1Start.gameObject.SetActive(true);
         StartCoroutine(TextFade(player1Start.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(2f);
+        player1SeedButton.gameObject.SetActive(true);
+        StartCoroutine(TextFade(player1SeedButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        
     }
 
     public IEnumerator Player2Start()
@@ -382,6 +413,8 @@ public class OpeningManager : MonoBehaviour
         StartCoroutine(Fade(player1Insturctions, 1));
         StartCoroutine(Fade(player1Start.GetComponentInChildren<TMP_Text>(), 1));
 
+        if (customSeed) { Systems.randomSeeding.seed = player1SeedInput.text; }
+
         yield return new WaitForSeconds(1.2f);
         player1Start.gameObject.SetActive(false);
 
@@ -403,6 +436,56 @@ public class OpeningManager : MonoBehaviour
         player2Start.gameObject.SetActive(false);
 
         SceneManager.LoadScene(cutscene2Scene);
+    }
+
+    public IEnumerator Player1InputSeed()
+    {
+        StartCoroutine(Fade(player1Title, 1));
+        StartCoroutine(Fade(seedGen, 1));
+        StartCoroutine(Fade(player1SeedButton.GetComponentInChildren<TMP_Text>(), 1));
+        //player1Start.gameObject.SetActive(false);
+        customSeed = true;
+
+        yield return new WaitForSeconds(1.2f);
+        player1SeedButton.gameObject.SetActive(false);
+        goBackToSeed.gameObject.SetActive(false);
+
+        StartCoroutine(TextFade(player1SeedInputInsturctions, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        player1SeedInput.gameObject.SetActive(true);
+        StartCoroutine(TextFade(player1SeedInput.GetComponentsInChildren<TMP_Text>()[0], 1, 0, false));
+        StartCoroutine(TextFade(player1SeedInput.GetComponentsInChildren<TMP_Text>()[1], 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(goBackToSeed.GetComponent<TMP_Text>(), 1, 0, false));
+
+    }
+
+    public void InputCustomSeed()
+    {
+        StartCoroutine(Player1InputSeed());
+    }
+
+    public IEnumerator Player1GoBackInputSeed()
+    {
+        StartCoroutine(Fade(player1SeedInputInsturctions, 1));
+        StartCoroutine(Fade(player1SeedInput.GetComponentsInChildren<TMP_Text>()[0], 1));
+        StartCoroutine(Fade(player1SeedInput.GetComponentsInChildren<TMP_Text>()[1], 1));
+        StartCoroutine(Fade(goBackToSeed.GetComponent<TMP_Text>(), 1));
+        yield return new WaitForSeconds(1f);
+        player1SeedInput.gameObject.SetActive(false);
+        goBackToSeed.gameObject.SetActive(false);
+        customSeed = false;
+
+        StartCoroutine(TextFade(player1Title, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(seedGen, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(player1SeedButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+    }
+
+    public void DontInputCustomSeed()
+    {
+        StartCoroutine(Player1GoBackInputSeed());
     }
 
     public IEnumerator InvalidSeed()

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -47,6 +48,10 @@ public class CutsceneManager : MonoBehaviour
     bool cameramoving = true;
     public float newSpeed = 1;
     public Image blackBackground;
+
+    public AnimationCurve testCurve;
+    public AnimationCurve testCurve2;
+    public string scene;
 
 
     // Start is called before the first frame update
@@ -105,34 +110,42 @@ public class CutsceneManager : MonoBehaviour
 
         CameraPlace(player2, sub2UnrevealedPos, sub2UnrevealedRot);
 
-        StartCoroutine(Systems.transforms.LerpMove(player.transform, cam.transform.position + sub1TogetherPos, Quaternion.Euler(sub1TogetherRot), Vector3.one, 6f));
-        StartCoroutine(Systems.transforms.LerpMove(player2.transform, cam.transform.position + sub2TogetherPos, Quaternion.Euler(sub2TogetherRot), Vector3.one, 6f));
-
+        StartCoroutine(Systems.transforms.LerpMove(player.transform, cam.transform.position + sub1TogetherPos, Quaternion.Euler(sub1TogetherRot), Vector3.one, 6f, testCurve, testCurve2));
+        StartCoroutine(Systems.transforms.LerpMove(player2.transform, cam.transform.position + sub2TogetherPos, Quaternion.Euler(sub2TogetherRot), Vector3.one, 6f, testCurve, testCurve2));
         yield return new WaitForSeconds(12f);
-
+            
         cameramoving = false;
 
-        StartCoroutine(Systems.transforms.LerpMove(player.transform, beat1_1pos, Quaternion.Euler(beat1_1rot), Vector3.one, 3f));
-        StartCoroutine(Systems.transforms.LerpMove(player2.transform, beat2_1pos, Quaternion.Euler(beat2_1rot), Vector3.one, 3f));
+        StartCoroutine(Systems.transforms.LerpMove(player.transform, beat1_1pos, Quaternion.Euler(beat1_1rot), Vector3.one, 3f, testCurve, testCurve2));
+        StartCoroutine(Systems.transforms.LerpMove(player2.transform, beat2_1pos, Quaternion.Euler(beat2_1rot), Vector3.one, 3f, testCurve, testCurve2));
         yield return new WaitForSeconds(3f);
-        StartCoroutine(Systems.transforms.LerpMove(player.transform, beat1_2pos, Quaternion.Euler(beat1_2rot), Vector3.one, 5f));
-        StartCoroutine(Systems.transforms.LerpMove(player2.transform, beat2_2pos, Quaternion.Euler(beat2_2rot), Vector3.one, 5f));
+
+        StartCoroutine(BegoneBackground());
+        StartCoroutine(Systems.transforms.LerpMove(player.transform, beat1_2pos, Quaternion.Euler(beat1_2rot), Vector3.one, 5f, testCurve, testCurve2));
+        StartCoroutine(Systems.transforms.LerpMove(player2.transform, beat2_2pos, Quaternion.Euler(beat2_2rot), Vector3.one, 5f, testCurve, testCurve2));
         yield return new WaitForSeconds(5f);
-        StartCoroutine(Systems.transforms.LerpMove(player.transform, beat1_3pos, Quaternion.Euler(beat1_3rot), Vector3.one, 2f));
-        StartCoroutine(Systems.transforms.LerpMove(player2.transform, beat2_3pos, Quaternion.Euler(beat2_3rot), Vector3.one, 2f));
+        StartCoroutine(Systems.transforms.LerpMove(player.transform, beat1_3pos, Quaternion.Euler(beat1_3rot), Vector3.one, 2f, testCurve, testCurve2));
+        StartCoroutine(Systems.transforms.LerpMove(player2.transform, beat2_3pos, Quaternion.Euler(beat2_3rot), Vector3.one, 2f, testCurve, testCurve2));
         yield return new WaitForSeconds(2f);
 
-        zeroAlpha = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, 0);
-        fullAlpha = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, 1);
+        SceneManager.LoadScene(scene);
+
+        
+
+        //StartCoroutine(Systems.transforms.LerpMove(player2.transform, cam.transform.position + sub2TogetherPos, Quaternion.Euler(sub2TogetherRot), Vector3.one, 6f));
+    }
+
+    IEnumerator BegoneBackground()
+    {
+        Color zeroAlpha = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, 0);
+        Color fullAlpha = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, 1);
         blackBackground.color = zeroAlpha;
-        for (float timer = 0; timer < 6f; timer += Time.deltaTime)
+        for (float timer = 0; timer < 8f; timer += Time.deltaTime)
         {
-            blackBackground.color = Color.Lerp(zeroAlpha, fullAlpha, timer / 6f);
+            blackBackground.color = Color.Lerp(zeroAlpha, fullAlpha, timer / 8f);
             yield return null;
         }
         blackBackground.color = fullAlpha;
-
-        //StartCoroutine(Systems.transforms.LerpMove(player2.transform, cam.transform.position + sub2TogetherPos, Quaternion.Euler(sub2TogetherRot), Vector3.one, 6f));
     }
 
     public void CameraPlace(GameObject obj, Vector3 pos, Vector3 rot)
