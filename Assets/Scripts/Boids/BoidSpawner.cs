@@ -28,7 +28,13 @@ public class BoidSpawner : MonoBehaviour
             boid.transform.forward = Random.insideUnitSphere;
 
             float colorLerp = Random.Range(0.0f, 1.0f);
+            //for (int j = 0; j < bodyMats.Length; j++)
+            //{
+            //    boid.GetComponent<MeshRenderer>().materials[i] = bodyMats[i];
+            //}
+
             boid.GetComponent<MeshRenderer>().materials[baseBody] = bodyMats[Random.Range(0, bodyMats.Length)];
+
             //boid.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.Lerp(colorOne, colorTwo, colorLerp));
         }
     }

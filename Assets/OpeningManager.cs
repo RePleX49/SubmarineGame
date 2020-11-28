@@ -56,12 +56,13 @@ public class OpeningManager : MonoBehaviour
     public TMP_Text[] assistText;
     public Image[] imgArr1;
     public Image[] imgArr2;
+    public bool longMenu;
 
     // Start is called before the first frame update
     void Start()
     {
         //StartCoroutine(Systems.UI.TextCutscene(openingTextMesh, openingText, fadeTime, stayTime, textColor));
-        StartCoroutine(TextCutscene());
+        if (longMenu) { StartCoroutine(TextCutscene()); } else { StartCoroutine(ShorterTextCutscene()); }
         playButton.gameObject.SetActive(false);
         creditsButton.gameObject.SetActive(false);
         quitButton.gameObject.SetActive(false);
@@ -102,6 +103,27 @@ public class OpeningManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         StartCoroutine(TextFade(warningText3, 1, 9, true));
         yield return new WaitForSeconds(12f);
+        StartCoroutine(TextFade(borderImage, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(rendTexture, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(gameTitle, 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        playButton.gameObject.SetActive(true);
+        creditsButton.gameObject.SetActive(true);
+        optionsButton.gameObject.SetActive(true);
+        quitButton.gameObject.SetActive(true);
+        StartCoroutine(TextFade(playButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(optionsButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(creditsButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(TextFade(quitButton.GetComponentInChildren<TMP_Text>(), 1, 0, false));
+    }
+
+    public IEnumerator ShorterTextCutscene()
+    {
         StartCoroutine(TextFade(borderImage, 1, 0, false));
         yield return new WaitForSeconds(1f);
         StartCoroutine(TextFade(rendTexture, 1, 0, false));
