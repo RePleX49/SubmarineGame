@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Transformations : MonoBehaviour
 {
+    [SerializeField] private AnimationCurve doorCurve;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,22 @@ public class Transformations : MonoBehaviour
         obj.rotation = targetRot;
         obj.localScale = targetScale;
         
+    }
+
+    public IEnumerator DoorLerp(Transform obj, Vector3 targetPos, float duration)
+    {
+        Debug.Log("Should be Transforming");
+        Vector3 startPos = obj.localPosition;
+
+        for (float timer = 0; timer < duration; timer += Time.deltaTime)
+        {
+            //obj.position = Vector3.Lerp(startPos, targetPos, timer / duration);
+            float doorY = Mathf.Abs(startPos.y - targetPos.y) * doorCurve.Evaluate(timer / duration);
+            obj.localPosition = new Vector3(startPos.x, startPos.y - doorY, startPos.z);
+            yield return null;
+        }
+
+        obj.localPosition = targetPos;
     }
 
     public IEnumerator LerpMaterial(MeshRenderer rend, Material newMat, float duration)

@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 8dd65001f4865ec41b13eeb15367d931
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Mixolydian Titling
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b86acfc1acce3454dbe856f9dfbc9d4b, type: 3}
+  - {fileID: 12800000, guid: e8ba7c1389417bd44b42dcc58df24e2e, type: 3}
+  - {fileID: 12800000, guid: 5c07b2c53b24f6e449320fccb254b307, type: 3}
+  - {fileID: 12800000, guid: f79867e6f7b9e614baf9c8c9a427f24e, type: 3}
+  - {fileID: 12800000, guid: 74684c2870d038a4788403219432df9b, type: 3}
+  - {fileID: 12800000, guid: 4a95d9e8b28b27a45929d8e1ce89b49a, type: 3}
+  - {fileID: 12800000, guid: b82841fcd9f20bf4f9036aad8eea9874, type: 3}
+  - {fileID: 12800000, guid: 576fda5d24a55df40b7e7c04b718f151, type: 3}
+  - {fileID: 12800000, guid: 145d733fb1fdb1748834b541d4772d07, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

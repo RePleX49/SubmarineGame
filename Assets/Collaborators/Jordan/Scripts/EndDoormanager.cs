@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndDoormanager : MonoBehaviour
+public class EndDoormanager : ButtonScript
 {
 
     [SerializeField] private int puzzlesComplete = 0;
@@ -15,22 +15,21 @@ public class EndDoormanager : MonoBehaviour
 
     public float doorMoveDuration;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float doorDropDistance;
 
-    // Update is called once per frame
-    void Update()
+    public AudioSource incorrectBeep;
+
+    public AudioSource correctBeep;
+
+    public void Update()
     {
-        if (puzzlesComplete >= 2)
+        //TODO TAKE THIS OUT!!!!!!!!!!!!!!!!!!!
+        if(Input.GetKeyDown(KeyCode.H))
         {
-            StartCoroutine(Systems.transforms.LerpMove(doorHolder.transform, doorTarget.transform.position,
-            doorHolder.transform.rotation, doorHolder.transform.localScale, doorMoveDuration));
+            puzzlesComplete = 2;
+            UseButton();
         }
     }
-
 
     public void CompletePuzzle (int puzzleTag)
     {
@@ -49,6 +48,30 @@ public class EndDoormanager : MonoBehaviour
                 prevPuzzleComplete = 's';
             }
         }
+    }
 
+    public void OpenDoor()
+    {
+        puzzlesComplete = 2;
+        UseButton();
+    }
+
+    public override void UseButton()
+    {
+        if(puzzlesComplete >= 2)
+        {
+            Vector3 targetEnd = doorHolder.transform.localPosition + new Vector3(0f, -doorDropDistance, 0f);
+
+            StartCoroutine(Systems.transforms.DoorLerp(doorHolder.transform, targetEnd, doorMoveDuration));
+
+            correctBeep.Play();
+        }
+        else
+        {
+            if(!incorrectBeep.isPlaying)
+            {
+                incorrectBeep.Play();
+            }
+        }
     }
 }

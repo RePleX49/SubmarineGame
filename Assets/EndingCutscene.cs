@@ -37,6 +37,7 @@ public class EndingCutscene : MonoBehaviour
 
     public GameObject cam;
     public GameObject player;
+    private bool safety = false;
 
 
     // Start is called before the first frame update
@@ -52,6 +53,11 @@ public class EndingCutscene : MonoBehaviour
         {
             Color col = new Color(winInputText.color.r, winInputText.color.g, winInputText.color.b, 1f);
             winInputText.color = Color.Lerp(winInputText.color, col, Time.deltaTime * speed);
+            if (Input.GetKeyDown(KeyCode.F) && !safety)
+            {
+                StartCoroutine(WinGame());
+                safety = true;
+            }
         } else
         {
             Color col = new Color(winInputText.color.r, winInputText.color.g, winInputText.color.b, 0f);
@@ -104,7 +110,7 @@ public class EndingCutscene : MonoBehaviour
         StartCoroutine(TextFade(winText2, 2f, 6f, true));
 
         yield return new WaitForSeconds(8f);
-        SceneManager.LoadScene("ReturnMenuScene");
+        SceneManager.LoadScene("Menuscene");
     }
 
     IEnumerator CutsceneHelper()
