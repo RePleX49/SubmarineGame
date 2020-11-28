@@ -33,9 +33,9 @@ public class BoidSpawner : MonoBehaviour
             //    boid.GetComponent<MeshRenderer>().materials[i] = bodyMats[i];
             //}
 
-            boid.GetComponent<MeshRenderer>().materials[baseBody] = bodyMats[Random.Range(0, bodyMats.Length)];
+            boid.GetComponent<Renderer>().materials[baseBody] = bodyMats[Random.Range(0, bodyMats.Length)];
 
-            //boid.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.Lerp(colorOne, colorTwo, colorLerp));
+            //boid.GetComponent<MeshRenderer>().materials[baseBody].SetColor("_Color", Color.Lerp(colorOne, colorTwo, colorLerp));
         }
     }
 

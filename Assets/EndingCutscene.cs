@@ -55,12 +55,21 @@ public class EndingCutscene : MonoBehaviour
     {
         if(showWinText && canWin)
         {
-            Color col = new Color(winInputText.color.r, winInputText.color.g, winInputText.color.b, 1f);
-            winInputText.color = Color.Lerp(winInputText.color, col, Time.deltaTime * speed);
+            if (!safety)
+            {
+                Color col = new Color(winInputText.color.r, winInputText.color.g, winInputText.color.b, 1f);
+                winInputText.color = Color.Lerp(winInputText.color, col, Time.deltaTime * speed);
+            }
+            
             if (Input.GetKeyDown(KeyCode.F) && !safety)
             {
                 StartCoroutine(WinGame());
                 safety = true;
+            }
+            if (safety)
+            {
+                Color col = new Color(winInputText.color.r, winInputText.color.g, winInputText.color.b, 0f);
+                winInputText.color = Color.Lerp(winInputText.color, col, Time.deltaTime * speed);
             }
         } else
         {
@@ -84,6 +93,7 @@ public class EndingCutscene : MonoBehaviour
             cam.gameObject.transform.position = Vector3.Lerp(initPosCam, cameraPos, positionCurve.Evaluate(timer / 5f));
             player.gameObject.transform.rotation = Quaternion.Slerp(initRotPlayer, Quaternion.Euler(sub1InitialRot), positionCurve.Evaluate(timer / 5f));
             cam.gameObject.transform.rotation = Quaternion.Slerp(initRotCam, Quaternion.Euler(cameraRot), positionCurve.Evaluate(timer / 5f));
+
             yield return null;
         }
 
@@ -99,19 +109,21 @@ public class EndingCutscene : MonoBehaviour
         }
 
         yield return new WaitForSeconds(3f);
+        player.gameObject.transform.position = sub1InitialPos;
 
+        submarine2.transform.position = sub2InitialPos;
         StartCoroutine(CutsceneHelper());
 
         for (float timer = 0; timer < 9f; timer += Time.deltaTime)
         {
-            player.transform.position = Vector3.Lerp(sub1InitialRot, sub1FinalPos, positionCurve.Evaluate(timer / 9f));
-            submarine2.transform.position = Vector3.Lerp(sub2InitialRot, sub2FinalPos, positionCurve.Evaluate(timer / 9f));
+            player.gameObject.transform.position = Vector3.Lerp(sub1InitialPos, sub1FinalPos, positionCurve.Evaluate(timer / 9f));
+            submarine2.transform.position = Vector3.Lerp(sub2InitialPos, sub2FinalPos, positionCurve.Evaluate(timer / 9f));
             yield return null;
         }
 
-        StartCoroutine(TextFade(winText, 2f, 9f, true));
+        StartCoroutine(TextFade(winText, 2f, 5f, true));
         yield return new WaitForSeconds(3f);
-        StartCoroutine(TextFade(winText2, 2f, 6f, true));
+        StartCoroutine(TextFade(winText2, 2f, 2f, true));
 
         yield return new WaitForSeconds(8f);
         SceneManager.LoadScene("Menuscene");
@@ -155,5 +167,18 @@ public class EndingCutscene : MonoBehaviour
 
             text.color = zeroAlpha;
         }
+    }
+
+    public IEnumerator Fade(TMP_Text text, float fadeTime)
+    {
+        Color zeroAlpha = new Color(text.color.r, text.color.g, text.color.b, 0f);
+        Color fullAlpha = new Color(text.color.r, text.color.g, text.color.b, 1f);
+        for (float timer = 0; timer < fadeTime; timer += Time.deltaTime)
+        {
+            text.color = Color.Lerp(fullAlpha, zeroAlpha, timer / fadeTime);
+            yield return null;
+        }
+
+        text.color = zeroAlpha;
     }
 }

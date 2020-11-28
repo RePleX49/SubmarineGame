@@ -28648,9 +28648,9 @@ MonoBehaviour:
   bPreviewRegion: 1
   baseBody: 1
   bodyMats:
-  - {fileID: 2100000, guid: e883c20b1fc313045a83f9c87e2ef574, type: 2}
-  - {fileID: 2100000, guid: 180543aba9536c4448e64a98236b0b1a, type: 2}
-  - {fileID: 2100000, guid: d05be39e549e68f42a16330b0e2c22a4, type: 2}
+  - {fileID: 2100000, guid: a122d77c2fe85434bb7dd796f44b8335, type: 2}
+  - {fileID: 2100000, guid: 245c20eba824f6d48a120d97804b2f8c, type: 2}
+  - {fileID: 2100000, guid: 88010eb2f8a9cc6459775281656371b7, type: 2}
 --- !u!4 &1757940496
 Transform:
   m_ObjectHideFlags: 0
