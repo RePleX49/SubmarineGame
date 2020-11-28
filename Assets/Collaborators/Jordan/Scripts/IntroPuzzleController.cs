@@ -31,6 +31,8 @@ public class IntroPuzzleController : MonoBehaviour
 
     public float doorMoveDuration;
 
+    public float doorDropDistance;
+
     public int puzzleTag;
 
     public AudioSource incorrectBeep;
@@ -144,7 +146,10 @@ public class IntroPuzzleController : MonoBehaviour
         {
             //the inputs are incorrect
             Debug.Log("Incorrect Combination.");
-            incorrectBeep.Play();
+            if (!incorrectBeep.isPlaying)
+            {
+                incorrectBeep.Play();
+            }
         }
     }
 
@@ -155,8 +160,9 @@ public class IntroPuzzleController : MonoBehaviour
 
         if (puzzleTag < 1)
         {
-            StartCoroutine(Systems.transforms.LerpMove(doorHolder.transform, doorTarget.transform.position,
-            doorHolder.transform.rotation, doorHolder.transform.localScale, doorMoveDuration));
+            Vector3 targetEnd = doorHolder.transform.localPosition + new Vector3(0f, -doorDropDistance, 0f);
+
+            StartCoroutine(Systems.transforms.DoorLerp(doorHolder.transform, targetEnd, doorMoveDuration));
         }
         else
         {
