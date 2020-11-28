@@ -39,6 +39,10 @@ public class EndingCutscene : MonoBehaviour
     public GameObject player;
     private bool safety = false;
 
+    public AnimationCurve positionCurve;
+
+    public bool canWin = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +53,7 @@ public class EndingCutscene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(showWinText)
+        if(showWinText && canWin)
         {
             Color col = new Color(winInputText.color.r, winInputText.color.g, winInputText.color.b, 1f);
             winInputText.color = Color.Lerp(winInputText.color, col, Time.deltaTime * speed);
@@ -76,10 +80,10 @@ public class EndingCutscene : MonoBehaviour
         cam.GetComponent<Cam>().enabled = false;
         for (float timer = 0; timer < 5f; timer += Time.deltaTime)
         {
-            player.gameObject.transform.position = Vector3.Lerp(initPosPlayer, sub1InitialPos, timer / 5f);
-            cam.gameObject.transform.position = Vector3.Lerp(initPosCam, cameraPos, timer / 5f);
-            player.gameObject.transform.rotation = Quaternion.Slerp(initRotPlayer, Quaternion.Euler(sub1InitialRot), timer / 5f);
-            cam.gameObject.transform.rotation = Quaternion.Slerp(initRotCam, Quaternion.Euler(cameraRot), timer / 5f);
+            player.gameObject.transform.position = Vector3.Lerp(initPosPlayer, sub1InitialPos, positionCurve.Evaluate(timer / 5f));
+            cam.gameObject.transform.position = Vector3.Lerp(initPosCam, cameraPos, positionCurve.Evaluate(timer / 5f));
+            player.gameObject.transform.rotation = Quaternion.Slerp(initRotPlayer, Quaternion.Euler(sub1InitialRot), positionCurve.Evaluate(timer / 5f));
+            cam.gameObject.transform.rotation = Quaternion.Slerp(initRotCam, Quaternion.Euler(cameraRot), positionCurve.Evaluate(timer / 5f));
             yield return null;
         }
 
@@ -89,8 +93,8 @@ public class EndingCutscene : MonoBehaviour
 
         for (float timer = 0; timer < 5f; timer += Time.deltaTime)
         {
-            submarine2.transform.position = Vector3.Lerp(sub2PreInitialPos, sub2InitialPos, timer/ 5f);
-            submarine2.transform.rotation = Quaternion.Slerp(Quaternion.Euler(sub2PreInitialRot), Quaternion.Euler(sub2InitialRot), timer / 5f);
+            submarine2.transform.position = Vector3.Lerp(sub2PreInitialPos, sub2InitialPos, positionCurve.Evaluate(timer / 5f));
+            submarine2.transform.rotation = Quaternion.Slerp(Quaternion.Euler(sub2PreInitialRot), Quaternion.Euler(sub2InitialRot), positionCurve.Evaluate(timer / 5f));
             yield return null;
         }
 
@@ -100,8 +104,8 @@ public class EndingCutscene : MonoBehaviour
 
         for (float timer = 0; timer < 9f; timer += Time.deltaTime)
         {
-            player.transform.position = Vector3.Lerp(sub1InitialRot, sub1FinalPos, timer / 9f);
-            submarine2.transform.position = Vector3.Lerp(sub2InitialRot, sub2FinalPos, timer / 9f);
+            player.transform.position = Vector3.Lerp(sub1InitialRot, sub1FinalPos, positionCurve.Evaluate(timer / 9f));
+            submarine2.transform.position = Vector3.Lerp(sub2InitialRot, sub2FinalPos, positionCurve.Evaluate(timer / 9f));
             yield return null;
         }
 

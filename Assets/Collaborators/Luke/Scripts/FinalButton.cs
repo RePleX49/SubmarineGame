@@ -12,6 +12,7 @@ public class FinalButton : ButtonScript
     public ClockManager[] dials;
 
     public EndDoormanager finalDoorScript;
+    public EndingCutscene endingCutscene;
 
     public bool isPlayerA;
 
@@ -81,6 +82,8 @@ public class FinalButton : ButtonScript
             //finalText.SetActive(true);          
             StartCoroutine(ActivatePipes());
             finalDoorScript.OpenDoor();
+            endingCutscene.canWin = true;
+
         }
     }
 
