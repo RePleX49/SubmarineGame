@@ -13,6 +13,8 @@ public class ClockManager : MonoBehaviour
     public AudioClip correctSound;
     public AudioClip wrongSound;
 
+    public AudioClip dialSound;
+
     public AudioSource audioSource;
 
     // Statue to point at ex: statue 4, statue 7, statue 2, statue 0
@@ -61,10 +63,11 @@ public class ClockManager : MonoBehaviour
 
     public void TurnRight()
     {
-        if(bAnswered || bIsTurning)
+        if (bAnswered || bIsTurning)
         {
             return;
         }
+        audioSource.PlayOneShot(dialSound);
 
         //changes the current rot which can be used to figure out if the button is set to the correct orientation
         currentRot++;
@@ -83,6 +86,7 @@ public class ClockManager : MonoBehaviour
         {
             return;
         }
+        audioSource.PlayOneShot(dialSound);
 
         //changes the current rot which can be used to figure out if the button is set to the correct orientation
         currentRot--;
