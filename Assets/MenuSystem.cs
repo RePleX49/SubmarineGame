@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MenuSystem : MonoBehaviour
 {
@@ -59,7 +60,7 @@ public class MenuSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && menuAccess)
+        if (Input.GetKeyDown(KeyCode.Tab) && menuAccess)
         {
             if (!menuIsOn)
             {
@@ -178,5 +179,31 @@ public class MenuSystem : MonoBehaviour
         sfxSlider.gameObject.SetActive(false);
         Systems.player.canMove = true;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void Resume()
+    {
+        StopAllCoroutines();
+        StartCoroutine(MenuOut());
+        menuIsOn = false;
+    }
+
+    public IEnumerator QuitCo()
+    {
+        Color zeroAlphaWhite = new Color(background.color.r, background.color.g, background.color.b, alpha);
+        Color fullAlphaWhite = new Color(background.color.r, background.color.g, background.color.b, 1);
+
+        for (float timer = 0; timer < 1; timer += Time.deltaTime)
+        {
+            background.color = Color.Lerp(zeroAlphaWhite, fullAlphaWhite, timer);
+            yield return null;
+        }
+        background.color = fullAlphaWhite;
+        SceneManager.LoadScene("ReturnMenu");
+    }
+
+    void Quit()
+    {
+        StartCoroutine(QuitCo());
     }
 }
