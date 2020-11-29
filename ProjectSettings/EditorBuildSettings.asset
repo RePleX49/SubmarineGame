@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Collaborators/Jordan/Scenes/StableMainSceneA.unity
     guid: 4a7c0c85111754ffa92cf2cf3e22dfcb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Collaborators/Jordan/Scenes/StableMainSceneB.unity
     guid: 7b63a9e996f7c4850963638321ed30f2
   - enabled: 1
@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CutsceneSceneA.unity
     guid: 3c32b87baa560374db72c458d236fa70
+  - enabled: 1
+    path: Assets/CutsceneSceneB.unity
+    guid: aca2136d1d656f342b0cce4e726724cf
   m_configObjects: {}
