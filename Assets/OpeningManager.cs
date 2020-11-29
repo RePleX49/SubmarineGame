@@ -64,6 +64,8 @@ public class OpeningManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         //StartCoroutine(Systems.UI.TextCutscene(openingTextMesh, openingText, fadeTime, stayTime, textColor));
         if (longMenu) { StartCoroutine(TextCutscene()); } else { StartCoroutine(ShorterTextCutscene()); }
         playButton.gameObject.SetActive(false);
@@ -83,6 +85,7 @@ public class OpeningManager : MonoBehaviour
         goBackToSeed.gameObject.SetActive(false);
         back1.gameObject.SetActive(false);
         back2.gameObject.SetActive(false);
+
     }
 
     public IEnumerator TextCutscene()

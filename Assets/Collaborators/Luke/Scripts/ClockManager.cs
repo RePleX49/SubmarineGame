@@ -67,7 +67,9 @@ public class ClockManager : MonoBehaviour
         {
             return;
         }
+        audioSource.volume = .18f;
         audioSource.PlayOneShot(dialSound);
+        audioSource.volume = .3f;
 
         //changes the current rot which can be used to figure out if the button is set to the correct orientation
         currentRot++;
@@ -86,7 +88,9 @@ public class ClockManager : MonoBehaviour
         {
             return;
         }
+        audioSource.volume = .18f;
         audioSource.PlayOneShot(dialSound);
+        audioSource.volume = .3f;
 
         //changes the current rot which can be used to figure out if the button is set to the correct orientation
         currentRot--;

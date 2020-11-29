@@ -85,6 +85,7 @@ public class MenuSystem : MonoBehaviour
     IEnumerator MenuIn()
     {
         Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         Systems.player.canMove = false;
         Color zeroAlphaWhite = new Color(background.color.r, background.color.g, background.color.b, alpha);
         Color fullAlphaWhite = new Color(background.color.r, background.color.g, background.color.b, 1);
@@ -183,6 +184,7 @@ public class MenuSystem : MonoBehaviour
         sfxSlider.gameObject.SetActive(false);
         Systems.player.canMove = true;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void Resume()
