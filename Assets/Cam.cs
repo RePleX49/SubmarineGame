@@ -40,7 +40,6 @@ public class Cam : MonoBehaviour
 
     private string buttonTag = "Button";
 
-    public AudioSource buttonClickSound;
 
 
     // Start is called before the first frame update
@@ -59,7 +58,7 @@ public class Cam : MonoBehaviour
 
         //Debug.Log("Click");
         RaycastHit Hit;
-        Debug.DrawRay(viewCamera.position, viewCamera.forward * raycastDistance, Color.green, 2);
+        //Debug.DrawRay(viewCamera.position, viewCamera.forward * raycastDistance, Color.green, 2);
 
         if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
         {
@@ -85,7 +84,7 @@ public class Cam : MonoBehaviour
                     {
                         button.UseButton();
 
-                            buttonClickSound.Play();
+
 
                     }
                 }

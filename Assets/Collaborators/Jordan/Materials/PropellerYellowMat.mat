@@ -10,7 +10,7 @@ Material:
   m_Name: PropellerYellowMat
   m_Shader: {fileID: 4800000, guid: 9e896bd4b83494742a7a888e0076f6a1, type: 3}
   m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -89,7 +89,7 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 1, g: 0.7853519, b: 0, a: 1}
-    - _ColorAlbedo: {r: 1, g: 0.9013662, b: 0, a: 0}
+    - _ColorAlbedo: {r: 0.6698113, g: 0.60414356, b: 0, a: 0}
     - _ColorAlbedo1: {r: 1, g: 0.9013662, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _NormalizedRotAxis: {r: 1, g: 0, b: 0, a: 0}

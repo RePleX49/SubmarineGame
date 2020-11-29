@@ -13,8 +13,11 @@ public class ScrollerButton : ButtonScript
     public SymbolScroller scrollObject;
     public SymbolRotater rotateObject;
 
+    public AudioSource buttonClickSound;
+
     public override void UseButton()
     {
+        buttonClickSound.Play();
         if (scrollObject)
         {
             scrollObject.ChangeSymbol(tagUpDown);
