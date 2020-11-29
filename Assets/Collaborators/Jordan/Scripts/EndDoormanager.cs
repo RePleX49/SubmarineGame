@@ -21,6 +21,8 @@ public class EndDoormanager : ButtonScript
 
     public AudioSource correctBeep;
 
+    public AudioSource doorOpenSound;
+
     public void Update()
     {
         //TODO TAKE THIS OUT!!!!!!!!!!!!!!!!!!!
@@ -63,7 +65,10 @@ public class EndDoormanager : ButtonScript
             Vector3 targetEnd = doorHolder.transform.localPosition + new Vector3(0f, -doorDropDistance, 0f);
 
             StartCoroutine(Systems.transforms.DoorLerp(doorHolder.transform, targetEnd, doorMoveDuration));
-
+            if (!doorOpenSound.isPlaying)
+            {
+                doorOpenSound.Play();
+            }
             correctBeep.Play();
         }
         else

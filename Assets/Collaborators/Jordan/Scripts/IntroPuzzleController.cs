@@ -45,6 +45,11 @@ public class IntroPuzzleController : MonoBehaviour
 
     public AudioSource doorOpenSound;
 
+    public AudioSource pipeSound;
+    public AudioSource pipeCorrectSound;
+
+    public bool hasFinished = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -136,8 +141,9 @@ public class IntroPuzzleController : MonoBehaviour
         }
 
         //the inputs are correct
-        if (correct)
+        if (correct && !hasFinished)
         {
+            hasFinished = true;
             OpenDoor();
             if (puzzleTag == 2)
             {
@@ -174,6 +180,8 @@ public class IntroPuzzleController : MonoBehaviour
         {
             doorManager.CompletePuzzle(puzzleTag);
             StartCoroutine(ActivatePipes());
+            pipeSound.Play();
+            pipeCorrectSound.Play();
             //open main door
         }
 
