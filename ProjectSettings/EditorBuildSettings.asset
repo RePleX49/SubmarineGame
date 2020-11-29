@@ -8,24 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menuscene.unity
     guid: 5fc932c54f9539a4baf1dba2690303db
-  - enabled: 0
-    path: Assets/Collaborators/Luke/Scenes/ViewPuzzleA.unity
-    guid: e91116f105c5c9c47bf0c40092b9b5d0
-  - enabled: 0
-    path: Assets/Collaborators/Jordan/Scenes/IntroPuzzleSceneA.unity
-    guid: eacf8cff8c36f4aa9b5a5196b5d30bb5
-  - enabled: 0
-    path: Assets/Collaborators/Jordan/Scenes/IntroPuzzleSceneB.unity
-    guid: 6401c64b2042d574da59996c8ea87e08
-  - enabled: 0
-    path: Assets/Collaborators/Luke/Scenes/Clock_B.unity
-    guid: 3af517d7fa02fc54e8088c498f05eed5
-  - enabled: 0
-    path: Assets/Collaborators/Jordan/Scenes/StableMainSceneA.unity
-    guid: 4a7c0c85111754ffa92cf2cf3e22dfcb
-  - enabled: 0
-    path: Assets/Collaborators/Jordan/Scenes/StableMainSceneB.unity
-    guid: 7b63a9e996f7c4850963638321ed30f2
   - enabled: 1
     path: Assets/MainScenes/StableMainSceneA2.unity
     guid: 5dcf48852a2f5964ea71076e9fac7a6c

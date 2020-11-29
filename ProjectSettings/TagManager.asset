@@ -9,6 +9,9 @@ TagManager:
   - RaycastTrigger
   - Emissive_to_baked
   - HolyLight
+  - Slider
+  - Slider2
+  - Random
   layers:
   - Default
   - TransparentFX

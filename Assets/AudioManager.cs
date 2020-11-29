@@ -18,12 +18,27 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+
         //if (Systems.randomSeeding != null && Systems.randomSeeding != this)
         //    Destroy(this.gameObject);
         //else
         //    Systems.randomSeeding = this;
         DontDestroyOnLoad(gameObject);
+        musicSlider = GameObject.FindWithTag("Slider").GetComponent<Slider>();
+        sfxSlider = GameObject.FindWithTag("Slider2").GetComponent<Slider>();
         SetupVolumes();
+        SetupVolumes();
+
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if (level < 3)
+        {
+            musicSlider = GameObject.FindWithTag("Slider").GetComponent<Slider>();
+            sfxSlider = GameObject.FindWithTag("Slider2").GetComponent<Slider>();
+            SetupVolumes();
+        }
     }
 
     // Update is called once per frame
