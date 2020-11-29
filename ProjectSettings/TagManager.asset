@@ -12,6 +12,8 @@ TagManager:
   - Slider
   - Slider2
   - Random
+  - Angler
+  - Fish
   layers:
   - Default
   - TransparentFX
