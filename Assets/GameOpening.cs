@@ -8,6 +8,7 @@ public class GameOpening : MonoBehaviour
 {
     public Image background;
     public TMP_Text seedText;
+    public MenuSystem menuSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class GameOpening : MonoBehaviour
 
     IEnumerator FadeIn()
     {
+        menuSystem.menuAccess = false;
         yield return null;
         seedText.text = "Seed: " + Systems.randomSeeding.seed;
         Systems.player.canMove = false;
@@ -36,5 +38,6 @@ public class GameOpening : MonoBehaviour
         }
         background.color = zeroAlpha;
         Systems.player.canMove = true;
+        menuSystem.menuAccess = true;
     }
 }

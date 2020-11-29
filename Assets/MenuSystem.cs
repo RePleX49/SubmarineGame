@@ -23,6 +23,8 @@ public class MenuSystem : MonoBehaviour
     public Image sfxFill;
     public Image sfxHandle;
 
+    public bool menuAccess = false;
+
     private float alpha = 0;
     bool menuIsOn = false;
 
@@ -57,7 +59,7 @@ public class MenuSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && menuAccess)
         {
             if (!menuIsOn)
             {

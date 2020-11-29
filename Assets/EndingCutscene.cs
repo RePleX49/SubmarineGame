@@ -43,6 +43,8 @@ public class EndingCutscene : MonoBehaviour
 
     public bool canWin = false;
 
+    public MenuSystem menuSystem;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +82,7 @@ public class EndingCutscene : MonoBehaviour
 
     IEnumerator WinGame()
     {
+        menuSystem.menuAccess = false;
         Vector3 initPosPlayer = player.gameObject.transform.position;
         Vector3 initPosCam = player.gameObject.transform.position;
         Quaternion initRotPlayer = player.gameObject.transform.rotation;
