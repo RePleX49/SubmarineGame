@@ -24,12 +24,13 @@ public class ObjData
         this.rot = rot;
     }
 }
+
 public class GPUSpawner : MonoBehaviour
 {
     public Vector3[] positions;
     public Vector3[] scales;
     public Quaternion[] rotations;
-    public GameObject[] gameObjects;
+    //public GameObject[] gameObjects;
     public Mesh objMesh;
     public Material objMat;
     public int batchIndexMax = 942;
@@ -37,13 +38,13 @@ public class GPUSpawner : MonoBehaviour
     private List<List<ObjData>> batches = new List<List<ObjData>>();
     void Start()
     {
-        for (int i = 0; i < gameObjects.Length; i++)
-        {
-            positions[i] = gameObjects[i].transform.position;
-            rotations[i] = gameObjects[i].transform.rotation;
-            scales[i] = gameObjects[i].transform.lossyScale;
-            gameObjects[i].SetActive(false);
-        }
+        //for (int i = 0; i < gameObjects.Length; i++)
+        //{
+        //    positions[i] = gameObjects[i].transform.position;
+        //    rotations[i] = gameObjects[i].transform.rotation;
+        //    scales[i] = gameObjects[i].transform.lossyScale;
+        //    gameObjects[i].SetActive(false);
+        //}
 
         int batchIndexNum = 0;
         List<ObjData> currBatch = new List<ObjData>();
