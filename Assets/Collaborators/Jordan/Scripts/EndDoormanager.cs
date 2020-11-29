@@ -24,11 +24,11 @@ public class EndDoormanager : ButtonScript
     public void Update()
     {
         //TODO TAKE THIS OUT!!!!!!!!!!!!!!!!!!!
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            puzzlesComplete = 2;
-            UseButton();
-        }
+        //if(Input.GetKeyDown(KeyCode.H))
+        //{
+        //    puzzlesComplete = 2;
+        //    UseButton();
+        //}
     }
 
     public void CompletePuzzle (int puzzleTag)

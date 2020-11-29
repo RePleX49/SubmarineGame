@@ -8958,7 +8958,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3b8f68c4514f848dbb22ff6b05edb284, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.5
   m_Pitch: 0.95
   Loop: 1
   Mute: 0
@@ -11394,7 +11394,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOU NAME CAN BE HERE
+  m_text: ALEX GRAYSON
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -17741,7 +17741,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'FONT BY
 
-    KEVIN MACLEOD'
+    RAY LARABIE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -22881,7 +22881,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c0207108928f040fa80be74a03c95683, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0

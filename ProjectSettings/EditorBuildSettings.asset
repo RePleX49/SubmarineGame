@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CutsceneSceneB.unity
     guid: aca2136d1d656f342b0cce4e726724cf
+  - enabled: 1
+    path: Assets/ReturnMenu.unity
+    guid: 772b94855f696ca47a09c2e53b116e36
   m_configObjects: {}
