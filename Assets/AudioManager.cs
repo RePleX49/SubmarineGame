@@ -27,7 +27,6 @@ public class AudioManager : MonoBehaviour
         musicSlider = GameObject.FindWithTag("Slider").GetComponent<Slider>();
         sfxSlider = GameObject.FindWithTag("Slider2").GetComponent<Slider>();
         SetupVolumes();
-        SetupVolumes();
 
     }
 
