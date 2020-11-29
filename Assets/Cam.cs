@@ -40,6 +40,7 @@ public class Cam : MonoBehaviour
 
     private string buttonTag = "Button";
 
+    public AudioSource buttonClickSound;
 
 
     // Start is called before the first frame update
@@ -83,6 +84,9 @@ public class Cam : MonoBehaviour
                     if (button)
                     {
                         button.UseButton();
+
+                            buttonClickSound.Play();
+
                     }
                 }
             }
