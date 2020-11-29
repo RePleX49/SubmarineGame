@@ -64,12 +64,16 @@ public class MenuSystem : MonoBehaviour
         {
             if (!menuIsOn)
             {
+                Cursor.lockState = CursorLockMode.Confined;
+                Cursor.visible = true;
                 StopAllCoroutines();
                 StartCoroutine(MenuIn());
                 
             }
             else
             {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
                 StopAllCoroutines();
                 StartCoroutine(MenuOut());
             }
@@ -181,7 +185,7 @@ public class MenuSystem : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Resume()
+    public void Resume()
     {
         StopAllCoroutines();
         StartCoroutine(MenuOut());
@@ -202,7 +206,7 @@ public class MenuSystem : MonoBehaviour
         SceneManager.LoadScene("ReturnMenu");
     }
 
-    void Quit()
+    public void Quit()
     {
         StartCoroutine(QuitCo());
     }

@@ -3531,7 +3531,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PERISCOPES
+  m_text: NEPTUNE'S GROTTO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -3558,8 +3558,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46.2
-  m_fontSizeBase: 46.2
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4454,7 +4454,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &251707141
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4625,7 +4625,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EVAN LIU
+  m_text: ALEX GRAYSON
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -7480,7 +7480,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DO NOT LOOK AT THE OTHER PLAYER'S SCREEN
+  m_text: AVOID LOOKING AT THE OTHER PLAYER'S SCREEN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -11394,7 +11394,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ALEX GRAYSON
+  m_text: YANG LOWE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -13036,7 +13036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PHILIPPE OLLIVIER
+  m_text: ADRIENE TIEN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -13937,7 +13937,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SAMMY CHUANG
+  m_text: CARSEN DECKER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -15746,7 +15746,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ESC
+  m_text: TAB
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -16133,7 +16133,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CARSEN DECKER
+  m_text: DANIEL LEGASPI IV
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -18871,7 +18871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: XIU MEI GOLDEN
+  m_text: MATT BOCH
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -24044,7 +24044,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MATT BOCH
+  m_text: KEVIN XIANG
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -24250,7 +24250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: KEVIN XIANG
+  m_text: EVAN LIU
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -25996,7 +25996,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DANIEL LEGASPI IV
+  m_text: PHILIPPE OLLIVIER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -31139,7 +31139,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YANG LOWE
+  m_text: SAMMY CHUANG
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -33198,7 +33198,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ADRIENE TIEN
+  m_text: XIU MEI GOLDEN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
   m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
@@ -33600,7 +33600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'ESC
+  m_text: 'TAB
 
     MENU'
   m_isRightToLeft: 0

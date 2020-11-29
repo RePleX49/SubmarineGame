@@ -51,6 +51,8 @@ public class Cam : MonoBehaviour
         prevSprite = crossEmpty;
 
         startingEuler = transform.eulerAngles;
+        yaw = 0;
+        pitch = 0;
     }
 
     void Update()
