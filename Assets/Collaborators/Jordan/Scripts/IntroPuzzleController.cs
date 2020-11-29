@@ -43,6 +43,8 @@ public class IntroPuzzleController : MonoBehaviour
 
     public StatueJuice statueJuice;
 
+    public AudioSource doorOpenSound;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -163,6 +165,10 @@ public class IntroPuzzleController : MonoBehaviour
             Vector3 targetEnd = doorHolder.transform.localPosition + new Vector3(0f, -doorDropDistance, 0f);
 
             StartCoroutine(Systems.transforms.DoorLerp(doorHolder.transform, targetEnd, doorMoveDuration));
+            if (!doorOpenSound.isPlaying)
+            {
+                doorOpenSound.Play();
+            }
         }
         else
         {
