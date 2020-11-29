@@ -140,9 +140,9 @@ public class CutsceneManager : MonoBehaviour
         Color zeroAlpha = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, 0);
         Color fullAlpha = new Color(blackBackground.color.r, blackBackground.color.g, blackBackground.color.b, 1);
         blackBackground.color = zeroAlpha;
-        for (float timer = 0; timer < 8f; timer += Time.deltaTime)
+        for (float timer = 0; timer < 6f; timer += Time.deltaTime)
         {
-            blackBackground.color = Color.Lerp(zeroAlpha, fullAlpha, timer / 8f);
+            blackBackground.color = Color.Lerp(zeroAlpha, fullAlpha, timer / 6f);
             yield return null;
         }
         blackBackground.color = fullAlpha;
