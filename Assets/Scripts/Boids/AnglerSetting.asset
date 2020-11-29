@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fcfdda7cd122c42a7e2a2c806ca823, type: 3}
   m_Name: AnglerSetting
   m_EditorClassIdentifier: 
-  minSpeed: 0
-  maxSpeed: 0
+  minSpeed: 1
+  maxSpeed: 2
   perceptionRadius: 20
   avoidanceRadius: 1
-  maxSteerForce: 0
-  alignWeight: 0
-  cohesionWeight: 0
-  seperateWeight: 0
-  targetWeight: 0
-  target: {fileID: 299882162623109862, guid: a10e49a7b2439cb46873b54c35ca0162, type: 3}
+  maxSteerForce: 10
+  alignWeight: 0.5
+  cohesionWeight: 0.4
+  seperateWeight: 0.4
+  targetWeight: 0.5
+  target: {fileID: 0}
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1
-  boundsRadius: 0
-  avoidCollisionWeight: 0
-  collisionAvoidDst: 0
+  boundsRadius: 0.4
+  avoidCollisionWeight: 20
+  collisionAvoidDst: 10
