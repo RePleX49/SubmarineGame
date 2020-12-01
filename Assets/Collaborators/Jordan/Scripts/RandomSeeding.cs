@@ -24,7 +24,7 @@ public class RandomSeeding : MonoBehaviour
 
     public void GenerateNewSeed()
     {
-        char[] alphaArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+        char[] alphaArray = "ABCDEFGHIJKLMNPQRSTUVWXYZ".ToCharArray();
         List<char> alphabet = new List<char>();
         List<int> digits = new List<int>();
 
@@ -52,7 +52,7 @@ public class RandomSeeding : MonoBehaviour
             }
             else
             {
-                int randNumber = UnityEngine.Random.Range(0, digits.Count);
+                int randNumber = UnityEngine.Random.Range(1, digits.Count);
                 buildingSeed += digits[randNumber];
                 digits.Remove(digits[randNumber]);
             }

@@ -3533,8 +3533,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SPLIT SEAS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
-  m_sharedMaterial: {fileID: -2795477797048732946, guid: 479571d658445d442b01a538fcf81ee1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d2832681475abbd49be745a6462e8d03, type: 2}
+  m_sharedMaterial: {fileID: -7688800594528515095, guid: d2832681475abbd49be745a6462e8d03, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3558,8 +3558,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38
-  m_fontSizeBase: 38
+  m_fontSize: 46.2
+  m_fontSizeBase: 46.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

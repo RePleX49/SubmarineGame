@@ -67,7 +67,7 @@ public class ClockManager : MonoBehaviour
         {
             return;
         }
-        audioSource.volume = .18f;
+        audioSource.volume = .1f;
         audioSource.PlayOneShot(dialSound);
         audioSource.volume = .3f;
 
@@ -88,7 +88,7 @@ public class ClockManager : MonoBehaviour
         {
             return;
         }
-        audioSource.volume = .18f;
+        audioSource.volume = .1f;
         audioSource.PlayOneShot(dialSound);
         audioSource.volume = .3f;
 

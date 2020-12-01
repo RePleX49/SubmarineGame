@@ -418,7 +418,7 @@ public class OpeningManager : MonoBehaviour
         StartCoroutine(Fade(player1Start.GetComponentInChildren<TMP_Text>(), 1));
         StartCoroutine(Fade(back1.GetComponentInChildren<TMP_Text>(), 1));
 
-        if (customSeed) { Systems.randomSeeding.seed = player1SeedInput.text; }
+        if (customSeed) { Systems.randomSeeding.seed = player1SeedInput.text.ToUpper(); }
 
         yield return new WaitForSeconds(1.2f);
         player1Start.gameObject.SetActive(false);
@@ -436,7 +436,7 @@ public class OpeningManager : MonoBehaviour
         StartCoroutine(Fade(back2.GetComponentInChildren<TMP_Text>(), 1));
         if (invalidOn) { StartCoroutine(Fade(invalidText, 1)); }
 
-        Systems.randomSeeding.seed = seedInput.text;
+        Systems.randomSeeding.seed = seedInput.text.ToUpper();
 
         yield return new WaitForSeconds(1.2f);
         player2Start.gameObject.SetActive(false);
