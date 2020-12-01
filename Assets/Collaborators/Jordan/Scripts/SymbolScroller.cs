@@ -11,18 +11,25 @@ public class SymbolScroller : MonoBehaviour
     [SerializeField] private Material[] symbols;
     private int numOfSymbols;
 
+    public TabletData symbolsObj;
+    public int puzzleTag = 0;
+
     //private Material material;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        if (puzzleTag != 0)
+        {
+            symbols = symbolsObj.symbolMats;
+            currentSymbol = 4;
+        }
+
         numOfSymbols = symbols.Length;
         gameObject.GetComponent<MeshRenderer>().material = symbols[currentSymbol];
 
     }
-
-
 
     //takes in the tag from which button was pressed
     public void ChangeSymbol (int tagUpDown)
@@ -48,6 +55,17 @@ public class SymbolScroller : MonoBehaviour
     //getter for managers
     public int GetCurrentSymbol()
     {
+        if (puzzleTag != 0) {
+            int symbolToReturn = currentSymbol + 1;
+            if (symbolToReturn > 4)
+            {
+                symbolToReturn = 0;
+            }
+
+            return symbolToReturn;
+
+        }
+
         return currentSymbol;
     }
 }

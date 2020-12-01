@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b822365ebfe9342894c632da2ddc20, type: 3}
+  m_Name: Pillar_Data_Green_2
+  m_EditorClassIdentifier: 
+  symbolTexs: []
+  symbolMats:
+  - {fileID: 2100000, guid: 3073f0e13aa2e5e41b3b2354c22c87dc, type: 2}
+  - {fileID: 2100000, guid: 57a3dd65e078dc7418ae3fab023166da, type: 2}
+  - {fileID: 2100000, guid: fe627b9c2a3244a4ea3dbf6898a97e69, type: 2}
+  - {fileID: 2100000, guid: d7b0ac355a3871d47bee60c2afb335d0, type: 2}
+  - {fileID: 2100000, guid: df8ccfc6cea446a4d8b43c42500ea141, type: 2}

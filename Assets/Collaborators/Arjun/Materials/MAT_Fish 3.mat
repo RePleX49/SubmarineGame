@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MAT_Fish 3
+  m_Shader: {fileID: 4800000, guid: f17c60eecd6f04c148def2701fe9aa73, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _TextureSample0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Amplitude: 0.2
+    - _AmplitudeZ: 1
+    - _Frequency: 6
+    - _Offset: 0
+    - _OffsetLengthScaler: 1
+    - _OffsetVertical: 0
+    - _OffsetVerticalZ: 0
+    - _OffsetZ: 1
+    - __dirty: 0
+    m_Colors:
+    - _Albedo: {r: 0.3679245, g: 0, b: 0.24462505, a: 0}
+    - _Albedo_1: {r: 1, g: 1, b: 1, a: 0}
+    - _Albedo_2: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 0}
+    - _Emmisivity: {r: 16, g: 16, b: 16, a: 0}
+  m_BuildTextureStacks: []

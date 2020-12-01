@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollerButton : MonoBehaviour
+public class ScrollerButton : ButtonScript
 {
     [Header("1 for Up Scrolling Button, -1 for Down")]
     [Header("Button Settings")]
@@ -13,17 +13,18 @@ public class ScrollerButton : MonoBehaviour
     public SymbolScroller scrollObject;
     public SymbolRotater rotateObject;
 
+    public AudioSource buttonClickSound;
 
-    public void TryButton()
+    public override void UseButton()
     {
+        buttonClickSound.Play();
         if (scrollObject)
         {
             scrollObject.ChangeSymbol(tagUpDown);
         }
-        else
+        else if(rotateObject)
         {
             rotateObject.ChangeRot(tagUpDown);
         }
     }
-
 }

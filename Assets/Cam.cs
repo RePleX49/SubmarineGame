@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cam : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Cam : MonoBehaviour
     public Transform viewCamera;
 
     public float raycastDistance = 20.0f;
+    public float racastDistanceLong = 35.0f;
 
     [Header("Player Settings")]
     public float mouseSensitivity = 10.0f;
@@ -19,10 +21,26 @@ public class Cam : MonoBehaviour
     public float targetSmoothTime;
     Vector3 targetSmoothVelocity;
 
-    private float pitch, yaw;
+    public float pitch, yaw;
 
     public Vector3 cameraOffset;
     Vector3 startingEuler;
+
+    public Image crosshair;
+
+    public Sprite crossFull;
+    public Sprite crossEmpty;
+
+    private Sprite prevSprite;
+
+    public Vector3 crossSmall;
+    public Vector3 crossLarge;
+
+    public float crossChangeRate = .0075f;
+
+    private string buttonTag = "Button";
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,66 +48,105 @@ public class Cam : MonoBehaviour
         Systems.cam = this;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        prevSprite = crossEmpty;
 
         startingEuler = transform.eulerAngles;
+        yaw = 0;
+        pitch = 0;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+
+        //Debug.Log("Click");
+        RaycastHit Hit;
+        //Debug.DrawRay(viewCamera.position, viewCamera.forward * raycastDistance, Color.green, 2);
+
+        if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
         {
-            //Debug.Log("Click");
-            RaycastHit Hit;
-
-            if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
+            //Debug.Log("Hit");
+            if (Hit.transform.gameObject.CompareTag(buttonTag) && !Hit.collider.isTrigger)
             {
-                //Debug.Log("Hit");
-                if (Hit.transform.gameObject.CompareTag("Button"))
+                if (prevSprite != crossEmpty)
                 {
-                    //Debug.Log("Tagged");
-                    TabletButton buttonScript = Hit.transform.gameObject.GetComponent<TabletButton>();
+                    crosshair.sprite = crossEmpty;
+                    prevSprite = crossEmpty;
+                }
 
-                    if (buttonScript)
+                if (crosshair.transform.localScale.x < crossLarge.x)
+                {
+                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x + (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.y + (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.z);
+                }
+
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    ButtonScript button = Hit.transform.gameObject.GetComponent<ButtonScript>();
+
+                    if (button)
                     {
-                        buttonScript.TryButton();
-                    }
-                    else
-                    {
-                        //Debug.Log("Cont");
-                        ScrollerButton scrollerButton = Hit.transform.gameObject.GetComponent<ScrollerButton>();
+                        button.UseButton();
 
-                        if (scrollerButton)
-                        {
-                            //Debug.Log("Script");
-                            scrollerButton.TryButton();
-                        }
-                        else
-                        {
 
-                            DoorButton doorButton = Hit.transform.gameObject.GetComponent<DoorButton>();
 
-                            if (doorButton)
-                            {
-                                doorButton.TryButton();
-                            }
-                            else
-                            {
-                                Debug.Log("Could not find button script");
-                            }
-                        }
                     }
                 }
             }
+            else
+            {
+                //Debug.DrawRay(crosshair.transform.position, transform.TransformDirection(Vector3.forward) * castDist, Color.yellow);
+
+
+                if (crosshair.transform.localScale.x > crossSmall.x)
+                {
+                    crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.y - (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.z);
+                } else if (prevSprite != crossFull)
+                {
+                    crosshair.sprite = crossFull;
+                    prevSprite = crossFull;
+                }
+            }
         }
+        else
+        {
+            //Debug.DrawRay(crosshair.transform.position, transform.TransformDirection(Vector3.forward) * castDist, Color.yellow);
+
+            if (crosshair.transform.localScale.x > crossSmall.x)
+            {
+                crosshair.transform.localScale = new Vector3(crosshair.transform.localScale.x - (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.y - (crossChangeRate * Time.deltaTime), crosshair.transform.localScale.z);
+            } else if (prevSprite != crossFull)
+            {
+                crosshair.sprite = crossFull;
+                prevSprite = crossFull;
+            }
+        }
+
+
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    //Debug.Log("Click");
+        //    RaycastHit Hit;
+
+        //    if (Physics.Raycast(viewCamera.position, viewCamera.forward, out Hit, raycastDistance))
+        //    {
+        //        //Debug.Log("Hit");
+        //        if (Hit.transform.gameObject.CompareTag("Button"))
+        //        {
+        //            ButtonScript button = Hit.transform.gameObject.GetComponent<ButtonScript>();
+
+        //            if(button)
+        //            {
+        //                button.UseButton();
+
+        //            }
+        //        }
+        //    }
+        //}
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
         if (Systems.player.canMove)
         {
-
-
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             // yaw for looking side to side, pitch for looking up and down
@@ -110,4 +167,14 @@ public class Cam : MonoBehaviour
             }
         }
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "RaycastTrigger")
+        {
+            raycastDistance = racastDistanceLong;
+        }
+    }
 }
+

@@ -6,6 +6,14 @@ TagManager:
   tags:
   - Button
   - Pillar
+  - RaycastTrigger
+  - Emissive_to_baked
+  - HolyLight
+  - Slider
+  - Slider2
+  - Random
+  - Angler
+  - Fish
   layers:
   - Default
   - TransparentFX
