@@ -67,9 +67,8 @@ public class ClockManager : MonoBehaviour
         {
             return;
         }
-        audioSource.volume = .1f;
+        audioSource.volume = .18f;
         audioSource.PlayOneShot(dialSound);
-        audioSource.volume = .3f;
 
         //changes the current rot which can be used to figure out if the button is set to the correct orientation
         currentRot++;
@@ -88,9 +87,8 @@ public class ClockManager : MonoBehaviour
         {
             return;
         }
-        audioSource.volume = .1f;
+        audioSource.volume = .18f;
         audioSource.PlayOneShot(dialSound);
-        audioSource.volume = .3f;
 
         //changes the current rot which can be used to figure out if the button is set to the correct orientation
         currentRot--;
@@ -117,11 +115,18 @@ public class ClockManager : MonoBehaviour
             Debug.Log("Change symbol");
             symbolHolders[currentRot].ChangeSymbol(revealImages.symbolMats[(int)revealSymbol]);
             ClearSymbols();
+            audioSource.volume = .3f;
             audioSource.clip = correctSound;
             audioSource.Play();
 
             statueJuice.isPuzzleComplete = true;
             //answerIndex++;
+        }
+        else
+        {
+            audioSource.volume = .15f;
+            audioSource.clip = wrongSound;
+            audioSource.Play();
         }
     }
 
