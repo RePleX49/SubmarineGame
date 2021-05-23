@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Pillar")
         {
-            StartCoroutine(Systems.UI.FadeInText(Systems.UI.pillarText, "Press F to Dock", 1f, Color.white));
+            StartCoroutine(Systems.UI.FadeInText(Systems.UI.pillarText, "HOLD F to Dock", 1f, Color.white));
             dockable = true;
             alignmentPosition = other.GetComponent<PillarData>().pillarPos;
             alignmentRotation = Quaternion.Euler(other.GetComponent<PillarData>().pillarRot);
@@ -176,7 +176,7 @@ public class Player : MonoBehaviour
     {
         if (other.tag == "Pillar")
         {
-            StartCoroutine(Systems.UI.FadeOutText(Systems.UI.pillarText, "Press F to Dock", 1f, Color.white));
+            StartCoroutine(Systems.UI.FadeOutText(Systems.UI.pillarText, "HOLD F to Dock", 1f, Color.white));
             dockable = false;
         }
         else if (other.tag == "HolyLight")
@@ -187,7 +187,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator Dock(float time, float waitTime)
     {
-        StartCoroutine(Systems.UI.FadeOutText(Systems.UI.pillarText, "Press F to Dock", 1f, Color.white));
+        StartCoroutine(Systems.UI.FadeOutText(Systems.UI.pillarText, "HOLD F to Dock", 1f, Color.white));
         canMove = false;
         Vector3 position = transform.position;
         Quaternion rotation = transform.rotation;

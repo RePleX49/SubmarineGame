@@ -21,6 +21,9 @@ public class FinalButton : ButtonScript
     [SerializeField] private int[] correctInputHolder = new int[16];
     [SerializeField] private PipeFlow[] pipes;
 
+    public AudioSource correctSound;
+    public AudioSource incorrectSound;
+
     void Awake()
     {
 
@@ -72,6 +75,7 @@ public class FinalButton : ButtonScript
             if(locks[i].GetCurrentRot() != lockRotationAnswer[i])
             {
                 bCorrectCombination = false;
+                incorrectSound.Play();
                 break;
             }
         }
@@ -79,7 +83,8 @@ public class FinalButton : ButtonScript
         if(bCorrectCombination)
         {
             // TODO activate final door/ cutscene
-            //finalText.SetActive(true);          
+            //finalText.SetActive(true); 
+            correctSound.Play();         
             StartCoroutine(ActivatePipes());
             finalDoorScript.OpenDoor();
             endingCutscene.canWin = true;
