@@ -76,6 +76,15 @@ public class IntroPuzzleController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        // TODO remove this debug 
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            OpenDoor();
+        }
+    }
+
     //Populate the clues with the correct symbols for the solution
     private void SetUpClues ()
     {

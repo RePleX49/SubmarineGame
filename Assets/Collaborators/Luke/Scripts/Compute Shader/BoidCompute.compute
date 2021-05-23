@@ -1,0 +1,54 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSMain
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+struct Boid
+{
+    float3 position;
+    float3 direction;  
+    float3 flockCenter;
+    float3 avgFlockDirection;
+    float3 avoidDirection;   
+
+    int flockMatesCount;
+};
+
+RWStructuredBuffer<Boid> boids;
+
+float perceiveRadius;
+float avoidRadius;
+
+int numBoids;
+
+[numthreads(8,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    // TODO: insert actual code here!
+
+    for (int index = 0; index < numBoids; index++)
+    {
+        if (id.x == index)
+        {
+            continue;
+        }
+
+        Boid other = boids[index];
+        
+        float3 offset = other.position - boids[id.x].position;
+        float distance = offset.x * offset.x + offset.y * offset.y + offset.z * offset.z;
+
+        if (distance <= perceiveRadius * perceiveRadius)
+        {
+            boids[id.x].flockMatesCount++;
+            boids[id.x].flockCenter += other.position;
+            boids[id.x].avgFlockDirection += other.direction;
+
+            if (distance <= avoidRadius * avoidRadius)
+            {
+                float3 avoidDir = offset / distance * distance;
+                boids[id.x].avoidDirection -= avoidDir;
+            }
+        }
+    }
+}

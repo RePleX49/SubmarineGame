@@ -15,8 +15,14 @@ public class BoidSettings : ScriptableObject
     public float cohesionWeight = 1;
     public float seperateWeight = 1;
     public float targetWeight = 1;
+    public float randWeight = 2;
 
     public GameObject target;
+
+    public bool IsTargetValid()
+    {
+        return target != null;
+    }
 
     [Header("Collisions")]
     public LayerMask obstacleMask;

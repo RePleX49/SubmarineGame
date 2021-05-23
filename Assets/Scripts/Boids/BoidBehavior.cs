@@ -16,32 +16,67 @@ public class BoidBehavior : MonoBehaviour
 
     [HideInInspector]
     public Vector3 position;
-    [HideInInspector]
+
     public Vector3 direction;
 
-    Transform boidTransform;
-
-    private void Awake()
-    {
-        boidTransform = transform;
-    }
+    float travelDistance;
+    Vector3 acceleration;
+    Vector3 randDirection;
 
     public void Initialize(BoidSettings settings)
     {
         this.settings = settings;
         
-        direction = boidTransform.forward;
-        position = boidTransform.position;
+        direction = transform.forward;
+        position = transform.position;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        //Gizmos.DrawWireSphere(transform.position + transform.forward * settings.collisionAvoidDst, settings.boundsRadius);
+
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, settings.perceptionRadius);
+
+        //Gizmos.color = Color.yellow;
+        //Gizmos.DrawWireSphere(transform.position, settings.avoidanceRadius);
+        Gizmos.DrawRay(transform.position, acceleration);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, velocity);
     }
 
     // Update is called once per frame
     public void BoidUpdate()
     {
-        Vector3 acceleration = Vector3.zero;
+        acceleration = Vector3.zero;
+
+        //if (settings.IsTargetValid())
+        //{
+        //    Vector3 targetDir = settings.target.transform.position - transform.position;
+        //    Vector3 targetForce = GetSteering(targetDir) * settings.targetWeight;
+        //    acceleration += targetForce;
+        //}
+
+        if (travelDistance > 0)
+        {
+            travelDistance -= Time.deltaTime;           
+            acceleration += GetSteering(randDirection) * settings.randWeight;
+        }
+        else
+        {
+            travelDistance = Random.Range(2.0f, 4.0f);
+            randDirection = Random.insideUnitSphere;
+        }
 
         if (perceivedFlockmates != 0)
-        {        
-            acceleration += GetSteering(flockCenter) * settings.cohesionWeight;
+        {
+            flockCenter /= perceivedFlockmates;
+            avgFlockDirection /= perceivedFlockmates;
+
+            Vector3 flockOffset = flockCenter - position;
+            acceleration += GetSteering(flockOffset) * settings.cohesionWeight;
             acceleration += GetSteering(avgFlockDirection) * settings.alignWeight;
             acceleration += GetSteering(avoidanceDirection) * settings.seperateWeight;
         }
@@ -53,13 +88,6 @@ public class BoidBehavior : MonoBehaviour
             acceleration += collisionAvoidForce;
         }
 
-        if(settings.target)
-        {
-            Vector3 targetDir = settings.target.transform.position - transform.position;
-            Vector3 targetForce = GetSteering(targetDir) * settings.targetWeight;
-            acceleration += targetForce;
-        }
-
         // get speed from velocity magnitude and clamp it
         velocity += acceleration * Time.deltaTime;
         float speed = velocity.magnitude;
@@ -67,14 +95,15 @@ public class BoidBehavior : MonoBehaviour
         velocity.Normalize();
         velocity *= speed;
 
-        boidTransform.position += velocity * Time.deltaTime;
-        boidTransform.forward = velocity.normalized;
-        position = boidTransform.position;
+        transform.position += velocity * Time.deltaTime;
+        transform.forward = velocity.normalized;
+        position = transform.position;
         direction = velocity.normalized;
     }
 
     Vector3 GetSteering(Vector3 input)
     {
+        // get clamped steering vector from direction input
         Vector3 outVector = input.normalized * settings.maxSpeed - velocity;
         return Vector3.ClampMagnitude(outVector, settings.maxSteerForce);
     }
@@ -96,7 +125,7 @@ public class BoidBehavior : MonoBehaviour
 
         for(int i = 0; i < rayDirections.Length; i++)
         {
-            Vector3 dir = boidTransform.TransformDirection(rayDirections[i]);
+            Vector3 dir = transform.TransformDirection(rayDirections[i]);
             Ray ray = new Ray(position, dir);
             if(!Physics.SphereCast(ray, settings.boundsRadius, settings.collisionAvoidDst, settings.obstacleMask))
             {
@@ -105,5 +134,15 @@ public class BoidBehavior : MonoBehaviour
         }
 
         return direction;
+    }
+
+    public void SetVelocity(Vector3 newVelocity)
+    {
+        velocity = newVelocity;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return velocity;
     }
 }

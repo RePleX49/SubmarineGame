@@ -23,6 +23,7 @@ Material:
     - _ChromaticAberration: 0
     - _Opacity: 0.3
     - _Refraction: 0
+    - _Specular: 1.25
     - __dirty: 0
     m_Colors:
     - _MainColor: {r: 0.16402636, g: 0.35493743, b: 0.3584906, a: 0}

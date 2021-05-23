@@ -13,18 +13,18 @@ public class PipeFlow : MonoBehaviour
         pipeRenderer = GetComponent<MeshRenderer>();
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    //if(Input.GetKeyDown(KeyCode.P))
-    //    //{
-    //    //    float initialVal = pipeRenderer.material.GetFloat("_FillValue");
-    //    //    if (initialVal < 0.1f)
-    //    //        StartCoroutine(ChangeFlow(2.0f));
-    //    //    else if (initialVal >= 1.9f)
-    //    //        StartCoroutine(ChangeFlow(0.0f));
-    //    //}
-    //}
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            float initialVal = pipeRenderer.material.GetFloat("_FillValue");
+            if (initialVal < 0.1f)
+                StartCoroutine(ChangeFlow(2.0f));
+            else if (initialVal >= 1.9f)
+                StartCoroutine(ChangeFlow(0.0f));
+        }
+    }
 
     public void FillPipe()
     {
